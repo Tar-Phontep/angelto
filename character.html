@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AngelTo character sticker and theme detail page."
+    />
+    <title id="page-title">AngelTo</title>
+
+    <!-- Open Graph / Social share preview — อัปเดตแบบ dynamic ต่อตัวละครใน character-render.js -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AngelTo" />
+    <meta property="og:title" content="AngelTo" id="og-title" />
+    <meta
+      property="og:description"
+      content="สติกเกอร์ ธีม และอีโมจิน่ารักๆ จาก AngelTo"
+      id="og-description"
+    />
+    <meta property="og:image" content="images/logo/angelto-sign-ai-250.png" id="og-image" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/png" href="images/logo/angelto-sign-ai-250.png" />
+    <link rel="apple-touch-icon" href="images/logo/angelto-sign-ai-250.png" />
+
+    <link rel="stylesheet" href="css/character.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="logo" href="index.html" aria-label="AngelTo home">
+          <span class="logo-mark">A</span>
+          <span>AngelTo</span>
+        </a>
+        <a class="back-link" href="index.html#line">← กลับหน้า Line Creators</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ============ CHARACTER HERO (เติมด้วย JS ตาม slug) ============ -->
+      <section class="char-hero">
+        <div class="container">
+          <div class="char-hero-inner reveal">
+            <div class="char-avatar" id="char-avatar"><span>❓</span></div>
+            <div>
+              <p class="eyebrow" id="char-eyebrow">Sticker Line</p>
+              <h1 id="char-name">—</h1>
+              <div class="char-name-th" id="char-name-th"></div>
+              <p class="bio" id="char-bio-en"></p>
+              <p class="bio" id="char-bio-th"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STICKER SET ============ -->
+      <section class="section" id="sticker-section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <h2>Sticker Set</h2>
+          </div>
+          <div id="sticker-container"></div>
+        </div>
+      </section>
+
+      <!-- ============ THEME SET ============ -->
+      <section class="section alt" id="theme-section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <h2>Theme Set</h2>
+          </div>
+          <div id="theme-container"></div>
+        </div>
+      </section>
+
+      <!-- ============ EMOJI SET (เฉพาะตัวที่มี emoji เช่น Cloud, PomPom) ============ -->
+      <section class="section" id="emoji-section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <h2>Emoji Set</h2>
+          </div>
+          <div id="emoji-container"></div>
+        </div>
+      </section>
+
+      <!-- ============ NOT FOUND (โชว์ตอน slug ไม่ตรงกับตัวไหนเลย) ============ -->
+      <section class="section" id="not-found-section" hidden>
+        <div class="container" style="text-align: center">
+          <h2>หาตัวละครนี้ไม่เจอ</h2>
+          <p class="bio" style="margin: 12px auto 24px">
+            ลิงก์อาจพิมพ์ผิด หรือตัวนี้ยังไม่ได้เพิ่มเข้าเว็บนะ
+          </p>
+          <a class="button" href="index.html#line">← กลับหน้า Line Creators</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong>AngelTo</strong>
+          <span>Cute Character Design</span>
+        </div>
+        <div class="footer-links" aria-label="Footer links">
+          <a href="index.html#contact">Facebook</a>
+          <a href="index.html#contact">Instagram</a>
+          <a href="http://angelto.com/">LINE Store</a>
+          <a href="https://lottiefiles.com/angelto">LottieFiles</a>
+          <span>© 2026</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/characters-data.js"></script>
+    <script src="js/character-render.js"></script>
+  </body>
+</html>
