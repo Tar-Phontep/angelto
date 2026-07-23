@@ -5,15 +5,8 @@
 // ============================================================
 
 (function () {
-  const TONE_CLASSES = ["", "tone-blue", "tone-green", "tone-yellow"];
-
-  function toneFor(index) {
-    return TONE_CLASSES[index % TONE_CLASSES.length];
-  }
-
   // การ์ด 1 ใบ สำหรับ sticker หรือ theme (ใช้ template เดียวกัน)
-  function buildDetailCard(item, index, labelPrefix) {
-    const tone = toneFor(index);
+  function buildDetailCard(item, index, labelPrefix, tone) {
     const nameTH = item.nameTH ? `<div class="detail-name-en">${item.nameTH}</div>` : "";
     // ตัด [TH]/[EN]/[JP] ออกจากหัวข้อที่โชว์ ให้ผู้ใช้เห็น (เก็บชื่อเต็มไว้ใน
     // data-item-name สำหรับระบบ deep-link/highlight เท่านั้น ไม่โชว์ตรงๆ)
@@ -53,7 +46,7 @@
       </div>`;
   }
 
-  function renderSection(sectionId, containerId, items, labelPrefix) {
+  function renderSection(sectionId, containerId, items, labelPrefix, tone) {
     const section = document.getElementById(sectionId);
     const container = document.getElementById(containerId);
     if (!items || items.length === 0) {
@@ -62,7 +55,7 @@
     }
     section.hidden = false;
     container.innerHTML = items
-      .map((item, i) => buildDetailCard(item, i, labelPrefix))
+      .map((item, i) => buildDetailCard(item, i, labelPrefix, tone))
       .join("");
   }
 
@@ -112,9 +105,9 @@
       avatar.innerHTML = `<img src="${data.cover}" alt="${data.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:2;" />`;
     }
 
-    renderSection("sticker-section", "sticker-container", data.stickers, "Sticker");
-    renderSection("theme-section", "theme-container", data.themes, "Theme");
-    renderSection("emoji-section", "emoji-container", data.emoji, "Emoji");
+    renderSection("sticker-section", "sticker-container", data.stickers, "Sticker", data.tone);
+    renderSection("theme-section", "theme-container", data.themes, "Theme", data.tone);
+    renderSection("emoji-section", "emoji-container", data.emoji, "Emoji", data.tone);
 
     // ============ SCROLL-TO + HIGHLIGHT รายการที่กดมาจากหน้าเมนู ============
     // กันปัญหา "กดสติ๊กเกอร์ตัวหนึ่ง แต่หน้าที่เปิดขึ้นโชว์ทุกแพ็คปนกัน ไม่รู้ว่า

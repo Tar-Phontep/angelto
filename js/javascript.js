@@ -8,17 +8,14 @@
   const grid = document.getElementById("featured-characters-grid");
   if (!grid) return;
 
-  const TONES = ["", "tone-blue", "tone-green", "tone-yellow"];
-
-  Object.keys(window.characters).forEach((slug, i) => {
+  Object.keys(window.characters).forEach((slug) => {
     const data = window.characters[slug];
     const categories = [];
     if ((data.stickers || []).length) categories.push("Sticker");
     if ((data.themes || []).length) categories.push("Theme");
     if ((data.emoji || []).length) categories.push("Emoji");
     const label = categories.join(" · ") || "Character";
-    const tone = TONES[i % TONES.length];
-    const toneClass = tone ? ` ${tone}` : "";
+    const toneClass = data.tone ? ` ${data.tone}` : "";
 
     grid.insertAdjacentHTML(
       "beforeend",
@@ -29,7 +26,7 @@
             <h3 class="card-title">${data.name}</h3>
             <p class="card-meta">${label}</p>
           </div>
-          <span class="arrow">→</span>
+          <span class="arrow"><img src="images/icons/icon-arrow.png" alt="" loading="lazy" /></span>
         </div>
       </a>`,
     );
@@ -44,7 +41,6 @@
 (function renderLineCards() {
   if (typeof window.characters === "undefined") return;
 
-  const TONES = ["", "tone-blue", "tone-green", "tone-yellow"];
   const stickerGrid = document.getElementById("sticker-grid");
   const themeGrid = document.getElementById("theme-grid");
   const emojiGrid = document.getElementById("emoji-grid");
@@ -70,14 +66,10 @@
             <h3 class="card-title">${displayName}</h3>
             <p class="card-meta">${typeLabel}</p>
           </div>
-          <span class="arrow">→</span>
+          <span class="arrow"><img src="images/icons/icon-arrow.png" alt="" loading="lazy" /></span>
         </div>
       </a>`;
   }
-
-  let stickerIdx = 0;
-  let themeIdx = 0;
-  let emojiIdx = 0;
 
   Object.keys(window.characters).forEach((slug) => {
     const data = window.characters[slug];
@@ -88,27 +80,24 @@
       if (!stickerGrid || item.name.includes("[EN]")) return;
       stickerGrid.insertAdjacentHTML(
         "beforeend",
-        buildCard(slug, item, data.cover, "Sticker", TONES[stickerIdx % TONES.length]),
+        buildCard(slug, item, data.cover, "Sticker", data.tone),
       );
-      stickerIdx++;
     });
 
     (data.themes || []).forEach((item) => {
       if (!themeGrid) return;
       themeGrid.insertAdjacentHTML(
         "beforeend",
-        buildCard(slug, item, data.cover, "Theme", TONES[themeIdx % TONES.length]),
+        buildCard(slug, item, data.cover, "Theme", data.tone),
       );
-      themeIdx++;
     });
 
     (data.emoji || []).forEach((item) => {
       if (!emojiGrid) return;
       emojiGrid.insertAdjacentHTML(
         "beforeend",
-        buildCard(slug, item, data.cover, "Emoji", TONES[emojiIdx % TONES.length]),
+        buildCard(slug, item, data.cover, "Emoji", data.tone),
       );
-      emojiIdx++;
     });
   });
 })();
@@ -120,10 +109,10 @@
 (function initHeroSlideshow() {
   if (typeof window.characters === "undefined") return;
 
-  const container = document.getElementById("hero-slideshow");
-  const labelEl = document.getElementById("hero-slide-label");
-  const pillEl = document.getElementById("hero-slide-pill");
-  if (!container) return;
+  const img = document.getElementById("hero-preview-image");
+  const labelEl = document.getElementById("hero-card-label");
+  const titleEl = document.getElementById("hero-card-title");
+  if (!img) return;
 
   const slides = [];
   const collect = (arrKey, typeLabel) => {
@@ -140,29 +129,26 @@
 
   if (slides.length === 0) return;
 
-  slides.forEach((slide, i) => {
-    const img = document.createElement("img");
-    img.src = slide.img;
-    img.alt = slide.name;
-    img.className = "preview-slide" + (i === 0 ? " is-active" : "");
-    container.appendChild(img);
-  });
-
-  const slideEls = container.querySelectorAll(".preview-slide");
   let current = 0;
 
-  function updateLabel() {
-    if (labelEl) labelEl.textContent = `ตัวอย่างผลงาน: ${slides[current].name}`;
-    if (pillEl) pillEl.textContent = slides[current].type;
+  function render() {
+    const slide = slides[current];
+    const displayName = slide.name.replace(/\s*\[(TH|EN|JP)\]\s*$/, "");
+    img.src = slide.img;
+    img.alt = displayName;
+    if (labelEl) labelEl.textContent = slide.type;
+    if (titleEl) titleEl.textContent = displayName;
   }
-  updateLabel();
+  render();
 
   if (slides.length > 1) {
     setInterval(() => {
-      slideEls[current].classList.remove("is-active");
-      current = (current + 1) % slides.length;
-      slideEls[current].classList.add("is-active");
-      updateLabel();
+      img.classList.add("is-fading");
+      setTimeout(() => {
+        current = (current + 1) % slides.length;
+        render();
+        img.classList.remove("is-fading");
+      }, 300);
     }, 2800);
   }
 })();
@@ -236,41 +222,3 @@ const menuToggle = document.querySelector(".menu-toggle");
         );
         lottieEls.forEach((el) => lottieObserver.observe(el));
       }
-
-// ============================================================
-// คัดลอกอีเมลติดต่อ (แทนปุ่ม mailto: ที่กดแล้วอาจไม่มีอะไรเกิดขึ้น
-// ถ้าเครื่องไม่มี mail client ผูกไว้)
-// ============================================================
-(function initCopyEmail() {
-  const btn = document.getElementById("copy-email-btn");
-  const textEl = document.getElementById("copy-email-text");
-  if (!btn || !textEl) return;
-
-  const email = textEl.textContent.trim();
-  const originalText = email;
-
-  btn.addEventListener("click", async () => {
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(email);
-      } else {
-        // fallback สำหรับ browser เก่าที่ไม่มี Clipboard API
-        const tempInput = document.createElement("input");
-        tempInput.value = email;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand("copy");
-        document.body.removeChild(tempInput);
-      }
-      textEl.textContent = "คัดลอกแล้ว!";
-      btn.classList.add("is-copied");
-      setTimeout(() => {
-        textEl.textContent = originalText;
-        btn.classList.remove("is-copied");
-      }, 1800);
-    } catch (err) {
-      // ถ้า copy ไม่สำเร็จ อย่างน้อย user ยังเห็นอีเมลตรงๆ อยู่แล้ว ไม่ต้องทำอะไรเพิ่ม
-      console.warn("Copy to clipboard failed:", err);
-    }
-  });
-})();

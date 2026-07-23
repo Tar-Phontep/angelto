@@ -17,23 +17,41 @@
     <!-- Open Graph / Social share preview -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AngelTo" />
-    <meta property="og:title" content="AngelTo | Cute Sticker Creator" />
+    <meta property="og:title" content="AngelTo | Welcome to AngelTo's Land" />
     <meta
       property="og:description"
-      content="สติกเกอร์ ธีม และอีโมจิน่ารักๆ ที่จะเติมความสดใสให้แชท LINE ของคุณทุกวัน"
+      content="สติกเกอร์ ธีม และอีโมจิน่ารักๆ ที่จะเติมความสดใสให้คุณทุกวัน"
     />
-    <meta property="og:image" content="images/characters/_covers/main-moonuum.png" />
+    <meta
+      property="og:image"
+      content="images/characters/_covers/main-moonuum.png"
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="AngelTo | Cute Sticker Creator" />
     <meta
       name="twitter:description"
       content="สติกเกอร์ ธีม และอีโมจิน่ารักๆ ที่จะเติมความสดใสให้แชท LINE ของคุณทุกวัน"
     />
-    <meta name="twitter:image" content="images/characters/_covers/main-moonuum.png" />
+    <meta
+      name="twitter:image"
+      content="images/characters/_covers/main-moonuum.png"
+    />
 
-    <link rel="icon" type="image/png" href="images/logo/angelto-sign-ai-250.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/logo/angelto-sign-ai-250.png"
+    />
     <link rel="apple-touch-icon" href="images/logo/angelto-sign-ai-250.png" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/shared.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
@@ -41,7 +59,9 @@
     <header class="site-header">
       <nav class="navbar" aria-label="Main navigation">
         <a class="logo" href="#home" aria-label="AngelTo home">
-          <span class="logo-mark"><img src="images/logo/angelto-sign-ai-250.png" alt="AngelTo logo" /></span>
+          <span class="logo-mark"
+            ><img src="images/logo/angelto-sign-ai-250.png" alt="AngelTo logo"
+          /></span>
           <span>AngelTo</span>
         </a>
 
@@ -61,7 +81,7 @@
           <li><a href="#characters">Characters</a></li>
           <li><a href="#line">LINE</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Social Media</a></li>
         </ul>
       </nav>
     </header>
@@ -69,53 +89,86 @@
     <main>
       <section class="hero" id="home">
         <div class="hero-inner">
-          <div class="reveal">
-            <p class="eyebrow">Cute Sticker Creator</p>
-            <h1>AngelTo</h1>
-            <p class="hero-subtitle">
-              สติกเกอร์ ธีม และอีโมจิน่ารักๆ
-              ที่จะเติมความสดใสให้แชท LINE ของคุณทุกวัน
-            </p>
+          <div class="hero-col hero-col-copy">
+            <div class="reveal hero-copy">
+              <p class="eyebrow">Welcome to AngelTo's Land</p>
+              <h1>AngelTo</h1>
+              <p class="hero-subtitle">
+                สติกเกอร์ ธีม และอีโมจิน่ารักๆ ที่จะเติมความสดใสให้คุณทุกวัน
+              </p>
 
-            <ul class="hero-tags" aria-label="Creative categories">
-              <li>Cute Character</li>
-              <li>Sticker</li>
-              <li>Theme</li>
-              <li>Emoji</li>
-            </ul>
+              <p class="hero-category">
+                <img
+                  src="images/home/icon-angelP.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span>Cute Character</span>
+                <span aria-hidden="true">•</span>
+                <span>Sticker</span>
+                <span aria-hidden="true">•</span>
+                <span>Theme</span>
+                <span aria-hidden="true">•</span>
+                <span>Emoji</span>
+                <img
+                  src="images/home/icon-angelP.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </p>
 
-            <div class="hero-actions">
-              <a class="button" href="#characters">Explore Collection</a>
-              <a class="text-link" href="#line">View LINE Works</a>
+              <div class="hero-actions">
+                <a class="button" href="#characters">Main Character</a>
+                <a class="text-link" href="#line">LINE Creators</a>
+              </div>
             </div>
           </div>
 
-          <div
-            class="hero-visual reveal"
-            aria-label="AngelTo sticker, theme, and emoji preview slideshow"
-          >
-            <div class="character-preview">
-              <div class="preview-slideshow" id="hero-slideshow"></div>
-            </div>
-            <div class="floating-label">
-              <span id="hero-slide-label">ตัวอย่างผลงาน</span>
-              <span class="pill" id="hero-slide-pill">Sticker</span>
+          <div class="hero-col hero-col-visual">
+            <img
+              class="hero-wing"
+              src="images/home/bgWingCircle.png"
+              alt=""
+              aria-hidden="true"
+            />
+            <div
+              class="hero-visual reveal"
+              aria-label="AngelTo sticker, theme, and emoji preview slideshow"
+            >
+              <div class="hero-media">
+                <img
+                  class="hero-preview-bg"
+                  src="images/home/bgCircle.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img
+                  id="hero-preview-image"
+                  class="hero-preview-image"
+                  src="images/characters/nangel/sticker/angelN1.png"
+                  alt=""
+                />
+                <div class="hero-card">
+                  <p class="hero-card-label" id="hero-card-label">Theme</p>
+                  <p class="hero-card-title" id="hero-card-title">
+                    Nature's Angel - Rainbow Pastel
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="wave" aria-hidden="true"></div>
       </section>
 
       <section class="section alt" id="characters">
         <div class="container">
           <div class="section-heading reveal">
             <div>
-              <p class="eyebrow">Featured Characters</p>
               <h2>Character Collection</h2>
             </div>
             <p>
-              ทำความรู้จักตัวละครทั้งหมดของ AngelTo
-              กดเข้าไปดูสติกเกอร์ ธีม และอีโมจิของแต่ละตัวได้เลย
+              ทำความรู้จักตัวละครทั้งหมดของ AngelTo กดเข้าไปดูสติกเกอร์ ธีม
+              และอีโมจิของแต่ละตัวได้เลย
             </p>
           </div>
 
@@ -131,8 +184,8 @@
               <h2>Sticker, Theme, Emoji</h2>
             </div>
             <p>
-              รวมผลงานทั้งหมดไว้ที่นี่
-              กดเลือกดูเฉพาะ Sticker, Theme หรือ Emoji ก็ได้ตามใจ
+              รวมผลงานทั้งหมดไว้ที่นี่ กดเลือกดูเฉพาะ Sticker, Theme หรือ Emoji
+              ก็ได้ตามใจ
             </p>
           </div>
 
@@ -177,7 +230,7 @@
           <div class="section-heading reveal">
             <div>
               <p class="eyebrow">Other Works</p>
-              <h2>Portfolio Links</h2>
+              <h2>Lottie &amp; JSON Files</h2>
             </div>
             <p>
               ผลงาน Motion และ Icon ที่ฝากขายไว้บน LottieFiles กับ IconScout
@@ -185,63 +238,107 @@
             </p>
           </div>
 
-          <h3 style="margin: 0 0 16px; color: var(--dark-pink); font-size: 1.1rem;">LottieFiles</h3>
+          <a
+            class="portfolio-source-link"
+            href="https://lottiefiles.com/angelto"
+            target="_blank"
+            rel="noopener"
+          >
+            <h3>LottieFiles</h3>
+            <img src="images/icons/icon-next2.png" alt="" loading="lazy" />
+          </a>
           <div class="grid">
-            <a class="card work-card reveal" href="https://lottiefiles.com/marketplace/drinks-beverages-animation-pack_172856" target="_blank" rel="noopener">
-              <div class="lottie-player" data-lottie="images/lottiefiles/lottie-drinks.json"></div>
+            <a
+              class="card work-card reveal"
+              href="https://lottiefiles.com/marketplace/drinks-beverages-animation-pack_172856"
+              target="_blank"
+              rel="noopener"
+            >
+              <div
+                class="lottie-player"
+                data-lottie="images/lottiefiles/lottie-drinks.json"
+              ></div>
               <h3>Drinks &amp; Beverages</h3>
               <p>Lottie animation pack</p>
+              <span class="arrow"><img src="images/icons/icon-arrow.png" alt="" loading="lazy" /></span>
             </a>
-            <a class="card work-card reveal" href="https://lottiefiles.com/marketplace/valentine-animation-pack_171002" target="_blank" rel="noopener">
-              <div class="lottie-player" data-lottie="images/lottiefiles/lottie-valentine.json"></div>
+            <a
+              class="card work-card reveal"
+              href="https://lottiefiles.com/marketplace/valentine-animation-pack_171002"
+              target="_blank"
+              rel="noopener"
+            >
+              <div
+                class="lottie-player"
+                data-lottie="images/lottiefiles/lottie-valentine.json"
+              ></div>
               <h3>Valentine</h3>
               <p>Lottie animation pack</p>
             </a>
-            <a class="card work-card reveal" href="https://lottiefiles.com/86183-lock-sky-theme" target="_blank" rel="noopener">
-              <div class="lottie-player" data-lottie="images/lottiefiles/lottie-sign-sky.json"></div>
+            <a
+              class="card work-card reveal"
+              href="https://lottiefiles.com/86183-lock-sky-theme"
+              target="_blank"
+              rel="noopener"
+            >
+              <div
+                class="lottie-player"
+                data-lottie="images/lottiefiles/lottie-sign-sky.json"
+              ></div>
               <h3>Sign Sky</h3>
               <p>Lottie animation</p>
             </a>
           </div>
 
-          <h3 style="margin: 36px 0 16px; color: var(--dark-pink); font-size: 1.1rem;">IconScout</h3>
+          <a
+            class="portfolio-source-link"
+            href="https://iconscout.com/contributors/angelto"
+            target="_blank"
+            rel="noopener"
+            style="margin-top: 36px"
+          >
+            <h3>IconScout</h3>
+            <img src="images/icons/icon-next2.png" alt="" loading="lazy" />
+          </a>
           <div class="grid">
-            <a class="card work-card reveal" href="https://iconscout.com/lottie-animation-pack/valentine-animation-pack_405904" target="_blank" rel="noopener">
-              <div class="lottie-player" data-lottie="images/iconscout/iconscout-valentine.json"></div>
+            <a
+              class="card work-card reveal"
+              href="https://iconscout.com/lottie-animation-pack/valentine-animation-pack_405904"
+              target="_blank"
+              rel="noopener"
+            >
+              <div
+                class="lottie-player"
+                data-lottie="images/iconscout/iconscout-valentine.json"
+              ></div>
               <h3>Valentine Animation Pack</h3>
               <p>IconScout lottie pack</p>
             </a>
-            <a class="card work-card reveal" href="https://iconscout.com/lottie-animation-pack/xmas-sweet-drinks-beverages-animation-pack_390152" target="_blank" rel="noopener">
-              <div class="lottie-player" data-lottie="images/iconscout/iconscout-xmas-drinks.json"></div>
+            <a
+              class="card work-card reveal"
+              href="https://iconscout.com/lottie-animation-pack/xmas-sweet-drinks-beverages-animation-pack_390152"
+              target="_blank"
+              rel="noopener"
+            >
+              <div
+                class="lottie-player"
+                data-lottie="images/iconscout/iconscout-xmas-drinks.json"
+              ></div>
               <h3>X'Mas Sweet Drinks &amp; Beverages</h3>
               <p>IconScout lottie pack</p>
             </a>
-            <a class="card work-card reveal" href="https://iconscout.com/lottie-animation-pack/hot-drinks-beverages-animation-pack_203488" target="_blank" rel="noopener">
-              <div class="lottie-player" data-lottie="images/iconscout/iconscout-hot-drinks-2.json"></div>
+            <a
+              class="card work-card reveal"
+              href="https://iconscout.com/lottie-animation-pack/hot-drinks-beverages-animation-pack_203488"
+              target="_blank"
+              rel="noopener"
+            >
+              <div
+                class="lottie-player"
+                data-lottie="images/iconscout/iconscout-hot-drinks-2.json"
+              ></div>
               <h3>Hot Drinks &amp; Beverages Animation</h3>
               <p>IconScout lottie pack</p>
-            </a>
-          </div>
-
-          <h3 style="margin: 36px 0 16px; color: var(--dark-pink); font-size: 1.1rem;">Social</h3>
-          <div class="social-row reveal">
-            <a class="social-icon" href="https://www.facebook.com/angelto.design" target="_blank" rel="noopener" aria-label="Facebook">
-              <img src="images/icons/social/icon-facebook.png" alt="Facebook" loading="lazy" />
-            </a>
-            <a class="social-icon" href="https://www.instagram.com/angelto.design" target="_blank" rel="noopener" aria-label="Instagram">
-              <img src="images/icons/social/icon-ig.png" alt="Instagram" loading="lazy" />
-            </a>
-            <a class="social-icon" href="https://store.line.me/stickershop/author/25920/" target="_blank" rel="noopener" aria-label="LINE Store">
-              <img src="images/icons/social/icon-line.png" alt="LINE Store" loading="lazy" />
-            </a>
-            <a class="social-icon" href="https://lottiefiles.com/angelto" target="_blank" rel="noopener" aria-label="LottieFiles">
-              <img src="images/icons/social/icon-lottiefiles.png" alt="LottieFiles" loading="lazy" />
-            </a>
-            <a class="social-icon" href="https://www.lottieshop.com/animators/b949e087-1725-4988-a8d1-ae6d25a33388/" target="_blank" rel="noopener" aria-label="LottieShop">
-              <img src="images/icons/social/icon-lottieshop.png" alt="LottieShop" loading="lazy" />
-            </a>
-            <a class="social-icon" href="https://iconscout.com/contributors/angelto" target="_blank" rel="noopener" aria-label="IconScout">
-              <img src="images/icons/social/icon-IconScout.png" alt="IconScout" loading="lazy" />
             </a>
           </div>
         </div>
@@ -249,23 +346,94 @@
 
       <section class="section" id="contact">
         <div class="container">
-          <div class="contact-strip reveal">
+          <div class="section-heading reveal">
             <div>
-              <p class="eyebrow">Contact</p>
-              <h2>AngelTo Cute Character Design</h2>
-              <p>
-                อยากจ้างวาด Sticker, Theme หรือ Emoji
-                ทักมาได้เลยที่อีเมลด้านล่าง หรือตามช่องทาง Social ด้านบน
-              </p>
-              <button
-                class="email-pill"
-                type="button"
-                id="copy-email-btn"
-                aria-label="คัดลอกอีเมลติดต่อ"
+              <p class="eyebrow">Follow AngelTo</p>
+              <h2>Social Media</h2>
+            </div>
+            <p>ติดตามผลงานใหม่ๆ และทักทายกันได้ทุกช่องทางด้านล่าง</p>
+          </div>
+
+          <div class="social-card reveal">
+            <div class="social-row">
+              <a
+                class="social-icon"
+                href="https://www.facebook.com/angelto.design"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
               >
-                <span id="copy-email-text">angeltodesign@gmail.com</span>
-                <span class="email-pill-icon" aria-hidden="true">⧉</span>
-              </button>
+                <img
+                  src="images/icons/social/icon-facebook.png"
+                  alt="Facebook"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                class="social-icon"
+                href="https://www.instagram.com/angelto.design"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+              >
+                <img
+                  src="images/icons/social/icon-ig.png"
+                  alt="Instagram"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                class="social-icon"
+                href="https://store.line.me/stickershop/author/25920/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LINE Store"
+              >
+                <img
+                  src="images/icons/social/icon-line.png"
+                  alt="LINE Store"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                class="social-icon"
+                href="https://lottiefiles.com/angelto"
+                target="_blank"
+                rel="noopener"
+                aria-label="LottieFiles"
+              >
+                <img
+                  src="images/icons/social/icon-lottiefiles.png"
+                  alt="LottieFiles"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                class="social-icon"
+                href="https://www.lottieshop.com/animators/b949e087-1725-4988-a8d1-ae6d25a33388/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LottieShop"
+              >
+                <img
+                  src="images/icons/social/icon-lottieshop.png"
+                  alt="LottieShop"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                class="social-icon"
+                href="https://iconscout.com/contributors/angelto"
+                target="_blank"
+                rel="noopener"
+                aria-label="IconScout"
+              >
+                <img
+                  src="images/icons/social/icon-IconScout.png"
+                  alt="IconScout"
+                  loading="lazy"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -274,19 +442,23 @@
 
     <footer class="site-footer">
       <div class="footer-inner">
-        <div class="footer-brand" style="display:flex; align-items:center; gap:12px;">
-          <img src="images/logo/angelto-sign-ai-250.png" alt="AngelTo logo" loading="lazy" style="width:40px; height:40px; border-radius:50%;" />
-          <div>
-            <strong>AngelTo</strong>
-            <span>Cute Character Design</span>
-          </div>
+        <span class="footer-bar" aria-hidden="true"></span>
+        <div class="footer-bottom">
+          <img
+            class="footer-logo"
+            src="images/logo/angelto-sign-ai-250.png"
+            alt="AngelTo logo"
+            loading="lazy"
+          />
+          <span class="footer-copyright">© 2026 AngelTo</span>
         </div>
-        <div class="footer-links" aria-label="Footer links">
-          <a href="https://www.facebook.com/angelto.design" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://www.instagram.com/angelto.design" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://store.line.me/stickershop/author/25920/" target="_blank" rel="noopener">LINE Store</a>
-          <a href="https://lottiefiles.com/angelto" target="_blank" rel="noopener">LottieFiles</a>
-          <span>© 2026</span>
+        <div class="footer-banner-wrap">
+          <img
+            class="footer-banner"
+            src="images/icons/footer.png"
+            alt="AngelTo"
+            loading="lazy"
+          />
         </div>
       </div>
     </footer>

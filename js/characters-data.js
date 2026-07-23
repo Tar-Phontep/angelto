@@ -11,6 +11,7 @@ const characters = {
   moonuum: {
     name: "MooNuum",
     nameTH: "หมูนุ่ม",
+    tone: "tone-1",
     cover: "images/characters/_covers/main-moonuum.png",
     descEN: "I'm an Angel Pig. Please call me \"MooNuum\", a soft pig. I have wings like an angel and stars on my ears — maybe I can fly?",
     descTH: "น้องหมูนุ่ม เป็นหมูสายพันธุ์นางฟ้าที่ดูตัวขาวอมชมพูๆ นุ่มๆ มีปีกเล็กๆ ที่หูมีรูปดวงดาว ตาและหางเป็นหัวใจ บ่งบอกถึงการมอบความรักให้กับทุกคนที่มาเป็นเพื่อนของน้องหมู",
@@ -36,6 +37,7 @@ const characters = {
   moodaeng: {
     name: "MooDaeng",
     nameTH: "หมูเด้ง",
+    tone: "tone-2",
     cover: "images/characters/_covers/main-moodaeng.png",
     descEN: "I'm an Angel Pig. Please call me \"MooDaeng\", pig pops. I have wings like an angel and stars on my ears. My head is like a ball — I think I can fly, let's play with me.",
     descTH: "น้องหมูสายพันธุ์นางฟ้า เรียกผมว่าหมูเด้งนะครับ ผมมีปีกแบบนางฟ้าและหูเป็นดาว หัวเหมือนลูกบอลเด้งๆ ผมคิดว่าผมบินได้นะ มาเล่นกันเถอะ",
@@ -61,6 +63,7 @@ const characters = {
   rabbit: {
     name: "Rabbito & Rabbity",
     nameTH: "แรบบิทโต้&แรบบิทตี้",
+    tone: "tone-3",
     cover: "images/characters/_covers/main-rabbit.png",
     descEN: "Rabbit so cute. Angel Rabbit. Rabbito & Rabbity — rabbits are one of the cutest creatures. They're an angel-breed rabbit.",
     descTH: "กระต่ายคือสิ่งมีชีวิตที่น่ารักสุดๆ Rabbito & Rabbity กระต่ายสายพันธุ์นางฟ้า",
@@ -99,10 +102,11 @@ const characters = {
   carrot: {
     name: "Carrot Girl",
     nameTH: "เด็กแครอท",
+    tone: "tone-4",
     cover: "images/characters/_covers/main-carrot.png",
     descEN: "A little girl who loves carrot and rabbit. I am called \"Carrot Girl\". Let's enjoy time with me and have a good time.",
-    // ⚠️ หน้าเว็บจริงไม่มี bio ภาษาไทยให้ — เว้นว่างไว้ ไม่แต่งเอง รอเจ้าของงานเขียนเพิ่ม
-    descTH: "",
+    // ✅ อัปเดต: ดึง bio ไทยจริงจาก angelto.com (carrot.html) แล้ว — ก่อนหน้านี้เข้าใจผิดว่าเว็บเก่าไม่มี
+    descTH: "เด็กน้อยที่ชอบแครอทและกระต่าย ฉันชื่อว่า \"เด็กแครอท\" มาเล่นกับฉันกัน และมีช่วงเวลาที่ดีกันเถอะ",
     stickers: [
       {
         name: "Carrot Girl เด็กแครอท",
@@ -128,12 +132,16 @@ const characters = {
   // ✅ อัปเดต: ยืนยันชื่อจริงจาก menu list ที่ลูกค้าส่งมาแล้ว
   // Sticker 1 ชื่อจริงคือ "Nature's Angel" เฉยๆ — เว็บจริง (nangel.html) เขียนผิด
   // เป็น "Candy Kawaii Girl 1" ซึ่งเป็นบั๊ก copy-paste จากเว็บเก่า ไม่ใช่ชื่อจริง
+  // ✅ แก้บั๊ก copy-paste: descEN/descTH เดิมดันเป็น bio ของ Candy Girl ทั้งคู่
+  // (ไปลอกช่องคำอธิบายผิดจากเว็บเก่า) ดึง bio จริงของ Nature's Angel จาก
+  // angelto.com/nangel.html มาแทนแล้ว
   nangel: {
     name: "Nature's Angel",
     nameTH: "นางฟ้าแห่งธรรมชาติ",
+    tone: "tone-5",
     cover: "images/characters/_covers/main-nangel.png",
-    descEN: "Little cute girls — 5 angels that are kawaii like sweet candy.",
-    descTH: "กลุ่มเด็กน้อยน่ารัก มีสีสันสดใสราวกับลูกกวาดแสนหวาน มีนิสัยที่ชอบพูดซ้ำๆ แบบเด็กๆ",
+    descEN: "Pink is \"Angel's Flower\", cute girl. Green is \"Angel's Leaf\", funny girl. Purple is \"Angel's Fruit\", clever girl. Yellow is \"Angel's Light\", sweet girl.",
+    descTH: "นางฟ้าดอกไม้สีชมพูนิสัยน่ารัก นางฟ้าใบไม้สีเขียวนิสัยรื่นเริง นางฟ้าผลไม้สีม่วงเป็นคนฉลาด นางฟ้าแห่งแสงสีเหลืองเป็นสาวหวาน",
     stickers: [
       {
         name: "Nature's Angel",
@@ -220,6 +228,7 @@ const characters = {
   candy: {
     name: "Kawaii Candy Girl",
     nameTH: "เด็กลูกกวาด",
+    tone: "tone-6",
     cover: "images/characters/_covers/main-candyGirl.png",
     descEN: "Little cute girls — 5 girls that are kawaii like sweet candy.",
     descTH: "กลุ่มเด็กน้อยน่ารัก มีสีสันสดใสราวกับลูกกวาดแสนหวาน มีนิสัยที่ชอบพูดซ้ำๆ แบบเด็กๆ",
@@ -243,6 +252,7 @@ const characters = {
   fox: {
     name: "Fox Boy",
     nameTH: "เด็กจิ้งจอก",
+    tone: "tone-7",
     cover: "images/characters/_covers/main-foxboy.png",
     descEN: "He is a little boy, a little fat. He looks like a fox. He loves to play games.",
     descTH: "เด็กน้อยที่ลงพุงนิดๆ มองดูคล้ายๆหมาป่า เขาบ้าเกมมากๆเลย เด็กติดเกม เล่นได้ทั้งวันนั่นแหละ คุณลองมาเล่นเกมด้วยกันไหม",
@@ -260,6 +270,7 @@ const characters = {
   cloud: {
     name: "Angel Cloud",
     nameTH: "นางฟ้าเมฆ",
+    tone: "tone-8",
     cover: "images/characters/_covers/main-cloudy.png",
     descEN: "",
     descTH: "",
@@ -293,6 +304,7 @@ const characters = {
   pompom: {
     name: "Angel PomPom",
     nameTH: "นางฟ้าปอมปอม",
+    tone: "tone-9",
     cover: "images/characters/_covers/main-angelPom.png",
     descEN: "",
     descTH: "",
