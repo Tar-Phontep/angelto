@@ -46,7 +46,7 @@
   const emojiGrid = document.getElementById("emoji-grid");
 
   function buildCard(slug, item, fallbackCover, typeLabel, tone) {
-    // ใช้รูป cover เดี่ยวๆ (_covers) เป็นหลักสำหรับการ์ดในเมนู เพราะรูป sheet
+    // ใช้รูป cover เดี่ยวๆ (covers) เป็นหลักสำหรับการ์ดในเมนู เพราะรูป sheet
     // เป็นแผ่นรวมสติ๊กเกอร์ทั้งแพ็ค รกเกินไปสำหรับการ์ดขนาดเล็ก — ถ้าไม่มี cover
     // ค่อย fallback ไปใช้ sheet แทน กันการ์ดว่างเปล่า
     // ใช้รูปของแต่ละแพ็คเองก่อนเสมอ (item.sheet) เพราะแต่ละ sticker/theme

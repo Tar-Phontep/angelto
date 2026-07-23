@@ -12,7 +12,7 @@ const characters = {
     name: "MooNuum",
     nameTH: "หมูนุ่ม",
     tone: "tone-1",
-    cover: "images/characters/_covers/main-moonuum.png",
+    cover: "images/characters/covers/main-moonuum.png",
     descEN: "I'm an Angel Pig. Please call me \"MooNuum\", a soft pig. I have wings like an angel and stars on my ears — maybe I can fly?",
     descTH: "น้องหมูนุ่ม เป็นหมูสายพันธุ์นางฟ้าที่ดูตัวขาวอมชมพูๆ นุ่มๆ มีปีกเล็กๆ ที่หูมีรูปดวงดาว ตาและหางเป็นหัวใจ บ่งบอกถึงการมอบความรักให้กับทุกคนที่มาเป็นเพื่อนของน้องหมู",
     stickers: [
@@ -38,13 +38,13 @@ const characters = {
     name: "MooDaeng",
     nameTH: "หมูเด้ง",
     tone: "tone-2",
-    cover: "images/characters/_covers/main-moodaeng.png",
+    cover: "images/characters/covers/main-moodaeng.png",
     descEN: "I'm an Angel Pig. Please call me \"MooDaeng\", pig pops. I have wings like an angel and stars on my ears. My head is like a ball — I think I can fly, let's play with me.",
     descTH: "น้องหมูสายพันธุ์นางฟ้า เรียกผมว่าหมูเด้งนะครับ ผมมีปีกแบบนางฟ้าและหูเป็นดาว หัวเหมือนลูกบอลเด้งๆ ผมคิดว่าผมบินได้นะ มาเล่นกันเถอะ",
     stickers: [
       {
         name: "Moodaeng หมูเด้ง",
-        sheet: "images/characters/_covers/main-moodaeng.png",
+        sheet: "images/characters/covers/main-moodaeng.png",
         detailSheet: "images/characters/moodaeng/sticker/moodaeng1.png",
         link: "http://line.me/S/sticker/1122359",
       },
@@ -64,19 +64,19 @@ const characters = {
     name: "Rabbito & Rabbity",
     nameTH: "แรบบิทโต้&แรบบิทตี้",
     tone: "tone-3",
-    cover: "images/characters/_covers/main-rabbit.png",
+    cover: "images/characters/covers/main-rabbit.png",
     descEN: "Rabbit so cute. Angel Rabbit. Rabbito & Rabbity — rabbits are one of the cutest creatures. They're an angel-breed rabbit.",
     descTH: "กระต่ายคือสิ่งมีชีวิตที่น่ารักสุดๆ Rabbito & Rabbity กระต่ายสายพันธุ์นางฟ้า",
     stickers: [
       {
         name: "Rabbito & Rabbity [TH]",
-        sheet: "images/characters/_covers/main-rabbit.png",
+        sheet: "images/characters/covers/main-rabbit.png",
         detailSheet: "images/characters/rabbit/sticker/rabbit1.png",
         link: "http://line.me/S/sticker/1408572",
       },
       {
         name: "Rabbito & Rabbity [EN]",
-        sheet: "images/characters/_covers/main-rabbit.png",
+        sheet: "images/characters/covers/main-rabbit.png",
         detailSheet: "images/characters/rabbit/sticker/rabbit1.png",
         link: "http://line.me/S/sticker/1407680",
       },
@@ -103,7 +103,7 @@ const characters = {
     name: "Carrot Girl",
     nameTH: "เด็กแครอท",
     tone: "tone-4",
-    cover: "images/characters/_covers/main-carrot.png",
+    cover: "images/characters/covers/main-carrot.png",
     descEN: "A little girl who loves carrot and rabbit. I am called \"Carrot Girl\". Let's enjoy time with me and have a good time.",
     // ✅ อัปเดต: ดึง bio ไทยจริงจาก angelto.com (carrot.html) แล้ว — ก่อนหน้านี้เข้าใจผิดว่าเว็บเก่าไม่มี
     descTH: "เด็กน้อยที่ชอบแครอทและกระต่าย ฉันชื่อว่า \"เด็กแครอท\" มาเล่นกับฉันกัน และมีช่วงเวลาที่ดีกันเถอะ",
@@ -122,7 +122,7 @@ const characters = {
         // ⚠️ ไฟล์ "6carrot icon.png" จากต้นทางจริงๆ เป็นรูป mockup 2 แผง ไม่ใช่
         // icon สี่เหลี่ยมแบบธีมอื่น (ไฟล์ตั้งชื่อผิดตั้งแต่ต้นทาง) เลยใช้รูป
         // ตัวละคร Carrot Girl แทนไปก่อน
-        sheet: "images/characters/_covers/main-carrot.png",
+        sheet: "images/characters/covers/main-carrot.png",
         detailSheet: "images/themes/main-covers/carrot1theme.png",
         link: "https://line.me/S/shop/theme/detail?id=29120618-5885-4a74-99c1-139755915c53",
       },
@@ -139,7 +139,7 @@ const characters = {
     name: "Nature's Angel",
     nameTH: "นางฟ้าแห่งธรรมชาติ",
     tone: "tone-5",
-    cover: "images/characters/_covers/main-nangel.png",
+    cover: "images/characters/covers/main-nangel.png",
     descEN: "Pink is \"Angel's Flower\", cute girl. Green is \"Angel's Leaf\", funny girl. Purple is \"Angel's Fruit\", clever girl. Yellow is \"Angel's Light\", sweet girl.",
     descTH: "นางฟ้าดอกไม้สีชมพูนิสัยน่ารัก นางฟ้าใบไม้สีเขียวนิสัยรื่นเริง นางฟ้าผลไม้สีม่วงเป็นคนฉลาด นางฟ้าแห่งแสงสีเหลืองเป็นสาวหวาน",
     stickers: [
@@ -229,7 +229,7 @@ const characters = {
     name: "Kawaii Candy Girl",
     nameTH: "เด็กลูกกวาด",
     tone: "tone-6",
-    cover: "images/characters/_covers/main-candyGirl.png",
+    cover: "images/characters/covers/main-candyGirl.png",
     descEN: "Little cute girls — 5 girls that are kawaii like sweet candy.",
     descTH: "กลุ่มเด็กน้อยน่ารัก มีสีสันสดใสราวกับลูกกวาดแสนหวาน มีนิสัยที่ชอบพูดซ้ำๆ แบบเด็กๆ",
     stickers: [
@@ -253,7 +253,7 @@ const characters = {
     name: "Fox Boy",
     nameTH: "เด็กจิ้งจอก",
     tone: "tone-7",
-    cover: "images/characters/_covers/main-foxboy.png",
+    cover: "images/characters/covers/main-foxboy.png",
     descEN: "He is a little boy, a little fat. He looks like a fox. He loves to play games.",
     descTH: "เด็กน้อยที่ลงพุงนิดๆ มองดูคล้ายๆหมาป่า เขาบ้าเกมมากๆเลย เด็กติดเกม เล่นได้ทั้งวันนั่นแหละ คุณลองมาเล่นเกมด้วยกันไหม",
     stickers: [
@@ -271,7 +271,7 @@ const characters = {
     name: "Angel Cloud",
     nameTH: "นางฟ้าเมฆ",
     tone: "tone-8",
-    cover: "images/characters/_covers/main-cloudy.png",
+    cover: "images/characters/covers/main-cloudy.png",
     descEN: "",
     descTH: "",
     // ✅ อัปเดต: เว็บ angelto.com/AngelCloud.html เก่าไม่ update — เช็คจาก LINE Store
@@ -305,7 +305,7 @@ const characters = {
     name: "Angel PomPom",
     nameTH: "นางฟ้าปอมปอม",
     tone: "tone-9",
-    cover: "images/characters/_covers/main-angelPom.png",
+    cover: "images/characters/covers/main-angelPom.png",
     descEN: "",
     descTH: "",
     // ✅ อัปเดต: เว็บ angelto.com/AngelPomPom.html เก่าไม่ update — เช็คจาก LINE Store
