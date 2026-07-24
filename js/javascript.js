@@ -7,6 +7,7 @@
   if (typeof window.characters === "undefined") return;
   const grid = document.getElementById("featured-characters-grid");
   if (!grid) return;
+  grid.innerHTML = "";
 
   Object.keys(window.characters).forEach((slug) => {
     const data = window.characters[slug];
@@ -44,6 +45,9 @@
   const stickerGrid = document.getElementById("sticker-grid");
   const themeGrid = document.getElementById("theme-grid");
   const emojiGrid = document.getElementById("emoji-grid");
+  if (stickerGrid) stickerGrid.innerHTML = "";
+  if (themeGrid) themeGrid.innerHTML = "";
+  if (emojiGrid) emojiGrid.innerHTML = "";
 
   function buildCard(slug, item, fallbackCover, typeLabel, tone) {
     // ใช้รูป cover เดี่ยวๆ (covers) เป็นหลักสำหรับการ์ดในเมนู เพราะรูป sheet
@@ -152,6 +156,9 @@
     }, 2800);
   }
 })();
+
+const footerCopyright = document.getElementById("footer-copyright");
+if (footerCopyright) footerCopyright.textContent = `© ${new Date().getFullYear()} AngelTo`;
 
 const menuToggle = document.querySelector(".menu-toggle");
       const navLinks = document.querySelector(".nav-links");

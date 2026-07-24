@@ -253,7 +253,7 @@
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.02);
   border-color: rgba(229, 106, 156, 0.55);
   box-shadow: var(--shadow-hover);
 }

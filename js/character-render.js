@@ -68,6 +68,9 @@
   }
 
   function init() {
+    const footerCopyright = document.getElementById("footer-copyright");
+    if (footerCopyright) footerCopyright.textContent = `© ${new Date().getFullYear()} AngelTo`;
+
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("slug");
     const data = window.characters && slug ? window.characters[slug] : null;
