@@ -431,7 +431,10 @@ img {
     width: 100%;
   }
 
-  .footer-bar {
-    display: none;
+  /* กลับมาโชว์ color bar บนมือถือ (เคยซ่อนไว้) — ไม่ต้องตั้งตำแหน่งใหม่
+     เพราะ base rule มี left:71px อยู่แล้ว ซึ่งตรงกับขอบซ้ายของตัว ©
+     พอดีเหมือนที่ทำไว้บน desktop */
+  .footer-logo {
+    margin-top: 16px;
   }
 }
