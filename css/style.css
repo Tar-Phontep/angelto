@@ -39,7 +39,7 @@
 }
 
 .hero-col-visual {
-  background: linear-gradient(90deg, #fce8f2 0%, #f5aece 100%);
+  background: linear-gradient(90deg, #fdeef5 0%, #f5aece 100%);
   padding: clamp(32px, 6vh, 64px) clamp(20px, 5vw, 56px) 72px;
   align-items: flex-start;
 }
@@ -107,6 +107,13 @@
 .hero-category img {
   width: 16px;
   height: 16px;
+}
+
+.hero-category-tail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
 }
 
 .pill {
@@ -545,17 +552,110 @@
   }
 }
 
+/* ============ TABLET ONLY (iPad portrait ~768px – ช่วงก่อน desktop
+   กลับมาที่ 961px) แยกจาก @media max-width:720px ของมือถือโดยเจตนา
+   เพื่อไม่ให้กระทบ mobile ============ */
+@media (min-width: 721px) and (max-width: 960px) {
+  /* Hero ถูกเรียงเป็น 1 คอลัมน์ (ซ้อนบน-ล่าง) ในช่วงนี้ รอยต่อระหว่าง
+     hero-col-copy (สีพื้นเรียบ) กับ hero-col-visual (ไล่เฉดซ้าย-ขวา) เลย
+     กลายเป็นเส้นแนวนอน — gradient ซ้าย-ขวาเดิมจะชนกันสีตรงกันแค่ที่ขอบซ้าย
+     สุดเท่านั้น ฝั่งขวาของรอยต่อยังเห็นสีตัดกันอยู่ เปลี่ยนทิศ gradient เป็น
+     บน-ล่างเฉพาะช่วงนี้ ให้ขอบบนที่ชนกับ hero-col-copy เป็นสีเดียวกันตลอด
+     ทั้งแนว แล้วค่อยไล่เข้มลงด้านล่างแทน */
+  .hero-col-visual {
+    background: linear-gradient(180deg, #fdeef5 0%, #f5aece 100%);
+  }
+
+  /* .section-heading ถูกสลับเป็นแนวตั้ง (column) ในช่วงนี้แล้ว (จาก media
+     query ด้านบน) แต่ p ยังใช้ max-width: 470px ที่ตั้งไว้สำหรับตอนอยู่
+     แถวเดียวกับ h2 (จอ desktop) พอมาอยู่ใต้ h2 เต็มความกว้าง container
+     แล้ว 470px เลยแคบเกินจำเป็น ทำให้ตัดบรรทัดทั้งที่มีที่ว่างเหลือ */
+  .section-heading p {
+    max-width: 100%;
+  }
+
+  /* .hero-col-copy มี margin: auto (จาก base rule) ซึ่งทำให้มัน shrink
+     ไปตามความกว้างเนื้อหาแล้ว center ตัวเองแทนที่จะเต็มความกว้างคอลัมน์ —
+     วัดจริงที่ 768px กว้างแค่ 512px ทั้งที่คอลัมน์มีให้ 753px เหลือพื้นที่ว่าง
+     ~120px ทั้ง 2 ฝั่งโดยไม่จำเป็น ยกเลิก margin ให้เต็มความกว้างคอลัมน์แทน
+     แล้วให้ padding เดิมเป็นตัวกำหนดระยะขอบ */
+  .hero-col-copy {
+    margin: 0;
+  }
+
+  /* กล่องนอกเต็มคอลัมน์แล้ว (แก้ด้านบน) แต่ตัวเนื้อหาข้างใน .hero-copy ยังมี
+     max-width: 480px (ค่าตั้งไว้สำหรับ desktop ที่แบ่งพื้นที่ครึ่งจอ) เหลือ
+     พื้นที่ว่างด้านขวาราว 227px โดยไม่จำเป็น ขยายให้เต็ม padding ที่มีแทน */
+  .hero-copy {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* text-align:center จัดกลางได้แค่ตัวอักษร/inline — แถวที่เป็น flex
+     (category, ปุ่ม) กับ subtitle ที่มี max-width ของตัวเองต้องสั่ง center
+     แยกต่างหาก ไม่งั้นจะยังค้างชิดซ้ายอยู่ */
+  .hero-subtitle {
+    max-width: 100%;
+  }
+
+  .hero-category,
+  .hero-actions {
+    justify-content: center;
+  }
+
+  /* เหมือนที่ทำใน mobile: เลื่อนแค่ "ภาพ" ในนี้ไปทางซ้ายนิดนึง ไม่เลื่อนกล่อง
+     .hero-media เอง เพราะ .hero-card position ยึดกับกล่องนี้อยู่ ถ้าเลื่อน
+     กล่องจะเยื้องซ้ายตามไปด้วย ทั้งที่อยากให้ hero-card อยู่กึ่งกลางจริงๆ */
+  .hero-visual {
+    align-items: center;
+  }
+
+  .hero-media {
+    margin-left: 0;
+  }
+
+  /* ขอกลับมา center ทั้ง 3 ชั้น (bg วงกลม, รูปสติกเกอร์ preview, hero-card)
+     ให้อยู่จุดกึ่งกลางเดียวกันเป๊ะ เลยตัด transform เลื่อนซ้ายที่เคยใส่ไว้
+     ออก — .hero-media เองก็ center อยู่แล้ว (align-items:center ด้านบน)
+     ส่วน hero-card center อยู่แล้วโดยธรรมชาติเพราะ position ยึดกับกล่อง
+     hero-media ทำให้ตอนนี้ทั้ง 3 ชั้นซ้อนกันตรงจุดเดียวกันพอดี */
+  .hero-preview-bg,
+  .hero-preview-image {
+    transform: none;
+  }
+}
+
 @media (max-width: 720px) {
   .hero h1 {
     font-size: clamp(2.6rem, 13vw, 3.6rem);
   }
 
   .hero-wing {
-    width: 88%;
+    width: 108%;
   }
 
   .hero-col-visual {
     min-height: 460px;
+  }
+
+  .hero-visual {
+    align-items: center;
+  }
+
+  .hero-media {
+    /* ยกเลิก margin-left: 8% ของ desktop (ที่ออกแบบมาสำหรับ align-items:
+       flex-start) เพราะตอนนี้ mobile ใช้ align-items: center จัดกลางแทน
+       แล้ว ถ้าไม่รีเซ็ต จะโดนเลื่อนขวาซ้อนอีกที */
+    margin-left: 0;
+  }
+
+  /* เลื่อนแค่ "ภาพ" ในนี้ (วงกลมพื้นหลัง + สติกเกอร์ตัวอย่าง) ไปทางซ้ายนิดนึง
+     ไม่เลื่อนกล่อง .hero-media เอง เพราะ .hero-card เป็นลูกที่ position
+     ยึดกับกล่องนี้อยู่ — ถ้าเลื่อนกล่อง hero-card จะเยื้องซ้ายตามไปด้วย
+     ทั้งที่โจทย์อยากให้ hero-card อยู่กึ่งกลางจริงๆ แยกจากภาพ */
+  .hero-preview-bg,
+  .hero-preview-image {
+    transform: translateX(-6%);
   }
 
   .section {

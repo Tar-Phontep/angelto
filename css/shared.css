@@ -302,7 +302,7 @@ img {
 
 .footer-bar {
   position: absolute;
-  left: 58px;
+  left: 71px;
   right: 0;
   top: 64%;
   height: 17%;
@@ -346,9 +346,10 @@ img {
 }
 
 .footer-logo {
-  width: 32px;
-  height: 32px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
+  margin-top: 26px;
 }
 
 .footer-copyright {
@@ -430,17 +431,7 @@ img {
     width: 100%;
   }
 
-  .footer-inner {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
   .footer-bar {
     display: none;
-  }
-
-  .footer-banner-wrap {
-    order: 1;
-    justify-content: center;
   }
 }
