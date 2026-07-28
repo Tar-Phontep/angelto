@@ -634,8 +634,13 @@
     width: 108%;
   }
 
+  /* เหมือนที่แก้ไว้บน tablet: hero-inner ซ้อน 1 คอลัมน์ที่ breakpoint นี้
+     รอยต่อระหว่าง hero-col-copy (พื้นเรียบ) กับ hero-col-visual เลยเป็น
+     เส้นแนวนอน — gradient ซ้าย-ขวาเดิมชนสีกันพอดีแค่ขอบซ้ายสุด เปลี่ยนทิศ
+     เป็นบน-ล่างแทน ให้ขอบบนเป็นสีเดียวกันตลอดแนว เชื่อมกับพื้นด้านบนสนิท */
   .hero-col-visual {
     min-height: 460px;
+    background: linear-gradient(180deg, #fdeef5 0%, #f5aece 100%);
   }
 
   .hero-visual {
