@@ -32,8 +32,7 @@
 }
 
 .hero-col-copy {
-  background: #fdeef5;
-  margin: auto;
+  background: linear-gradient(90deg, #f8c3db 0%, #fdeef5 100%);
   padding: 112px clamp(20px, 2vw, 40px);
   justify-content: flex-start;
 }
@@ -60,7 +59,7 @@
   position: relative;
   max-width: 480px;
   width: 100%;
-  margin: 0;
+  margin: auto;
 }
 
 .hero-copy .eyebrow {
@@ -86,7 +85,7 @@
 }
 
 .hero-subtitle {
-  max-width: 420px;
+  max-width: 450px;
   margin: 0 0 32px;
   color: var(--text);
   font-size: 18px;
@@ -141,7 +140,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding-top: clamp(8px, 3vh, 28px);
 }
 
@@ -151,7 +150,6 @@
   aspect-ratio: 1;
   display: grid;
   place-items: center;
-  margin-left: 8%;
 }
 
 .hero-preview-bg {
@@ -171,8 +169,6 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14);
   transition: opacity 300ms ease;
 }
 
@@ -236,12 +232,21 @@
   max-width: 470px;
   margin: 12px 0 0;
   color: var(--muted);
+  text-wrap: balance;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px;
+}
+
+/* Portfolio (LottieFiles/IconScout) มีแค่ 3 การ์ดเสมอ ใช้ grid 4 คอลัมน์ของ
+   .grid ทั่วไปแล้วเหลือช่องว่างคอลัมน์ที่ 4 ดูไม่สมดุล ให้ใช้ 3 คอลัมน์แทน
+   เพื่อเติมเต็มแถวพอดี (breakpoint tablet/mobile ยังลดคอลัมน์ตาม .grid ปกติ
+   เพราะ media query ของ .grid มี specificity เท่ากันแต่มาทีหลังในไฟล์) */
+.portfolio-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .card {
@@ -336,6 +341,7 @@
   margin: 0;
   font-size: 1.05rem;
   line-height: 1.3;
+  text-wrap: balance;
 }
 
 .card-meta {
@@ -413,12 +419,20 @@
 .work-card {
   position: relative;
   padding: 24px;
+}
+
+/* มีแค่การ์ดเดียว (Drinks & Beverages) ที่มี .arrow จริง การ์ดอื่นไม่มี —
+   padding-right เดิมที่กันพื้นที่ให้ลูกศรถูกใส่ไว้กับ .work-card ทุกใบเลย
+   ดันพรีวิว lottie ของการ์ดที่ไม่มีลูกศรเยื้องซ้าย ไม่ centered เลยย้ายมา
+   ใส่เฉพาะการ์ดที่มีลูกศรจริงแทน */
+.work-card:has(.arrow) {
   padding-right: 64px;
 }
 
 .work-card h3 {
   margin: 0 0 8px;
   font-size: 1.15rem;
+  text-wrap: balance;
 }
 
 .work-card p {
@@ -495,7 +509,7 @@
 .social-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(135deg, #ffffff, #fff2f7);
+  background: var(--primary-pink);
   box-shadow: var(--shadow);
   padding: clamp(24px, 5vw, 40px);
 }
@@ -562,6 +576,10 @@
      สุดเท่านั้น ฝั่งขวาของรอยต่อยังเห็นสีตัดกันอยู่ เปลี่ยนทิศ gradient เป็น
      บน-ล่างเฉพาะช่วงนี้ ให้ขอบบนที่ชนกับ hero-col-copy เป็นสีเดียวกันตลอด
      ทั้งแนว แล้วค่อยไล่เข้มลงด้านล่างแทน */
+  .hero-col-copy {
+    background: linear-gradient(180deg, #f8c3db 0%, #fdeef5 100%);
+  }
+
   .hero-col-visual {
     background: linear-gradient(180deg, #fdeef5 0%, #f5aece 100%);
   }
@@ -574,16 +592,7 @@
     max-width: 100%;
   }
 
-  /* .hero-col-copy มี margin: auto (จาก base rule) ซึ่งทำให้มัน shrink
-     ไปตามความกว้างเนื้อหาแล้ว center ตัวเองแทนที่จะเต็มความกว้างคอลัมน์ —
-     วัดจริงที่ 768px กว้างแค่ 512px ทั้งที่คอลัมน์มีให้ 753px เหลือพื้นที่ว่าง
-     ~120px ทั้ง 2 ฝั่งโดยไม่จำเป็น ยกเลิก margin ให้เต็มความกว้างคอลัมน์แทน
-     แล้วให้ padding เดิมเป็นตัวกำหนดระยะขอบ */
-  .hero-col-copy {
-    margin: 0;
-  }
-
-  /* กล่องนอกเต็มคอลัมน์แล้ว (แก้ด้านบน) แต่ตัวเนื้อหาข้างใน .hero-copy ยังมี
+  /* กล่องนอกเต็มคอลัมน์แล้ว แต่ตัวเนื้อหาข้างใน .hero-copy ยังมี
      max-width: 480px (ค่าตั้งไว้สำหรับ desktop ที่แบ่งพื้นที่ครึ่งจอ) เหลือ
      พื้นที่ว่างด้านขวาราว 227px โดยไม่จำเป็น ขยายให้เต็ม padding ที่มีแทน */
   .hero-copy {
@@ -601,17 +610,6 @@
   .hero-category,
   .hero-actions {
     justify-content: center;
-  }
-
-  /* เหมือนที่ทำใน mobile: เลื่อนแค่ "ภาพ" ในนี้ไปทางซ้ายนิดนึง ไม่เลื่อนกล่อง
-     .hero-media เอง เพราะ .hero-card position ยึดกับกล่องนี้อยู่ ถ้าเลื่อน
-     กล่องจะเยื้องซ้ายตามไปด้วย ทั้งที่อยากให้ hero-card อยู่กึ่งกลางจริงๆ */
-  .hero-visual {
-    align-items: center;
-  }
-
-  .hero-media {
-    margin-left: 0;
   }
 
   /* ขอกลับมา center ทั้ง 3 ชั้น (bg วงกลม, รูปสติกเกอร์ preview, hero-card)
@@ -634,33 +632,23 @@
     width: 108%;
   }
 
-  /* เหมือนที่แก้ไว้บน tablet: hero-inner ซ้อน 1 คอลัมน์ที่ breakpoint นี้
-     รอยต่อระหว่าง hero-col-copy (พื้นเรียบ) กับ hero-col-visual เลยเป็น
-     เส้นแนวนอน — gradient ซ้าย-ขวาเดิมชนสีกันพอดีแค่ขอบซ้ายสุด เปลี่ยนทิศ
-     เป็นบน-ล่างแทน ให้ขอบบนเป็นสีเดียวกันตลอดแนว เชื่อมกับพื้นด้านบนสนิท */
+  .hero-col-copy {
+    background: linear-gradient(180deg, #f8c3db 0%, #fdeef5 100%);
+  }
+
   .hero-col-visual {
     min-height: 460px;
     background: linear-gradient(180deg, #fdeef5 0%, #f5aece 100%);
   }
 
-  .hero-visual {
-    align-items: center;
-  }
-
-  .hero-media {
-    /* ยกเลิก margin-left: 8% ของ desktop (ที่ออกแบบมาสำหรับ align-items:
-       flex-start) เพราะตอนนี้ mobile ใช้ align-items: center จัดกลางแทน
-       แล้ว ถ้าไม่รีเซ็ต จะโดนเลื่อนขวาซ้อนอีกที */
-    margin-left: 0;
-  }
-
-  /* เลื่อนแค่ "ภาพ" ในนี้ (วงกลมพื้นหลัง + สติกเกอร์ตัวอย่าง) ไปทางซ้ายนิดนึง
-     ไม่เลื่อนกล่อง .hero-media เอง เพราะ .hero-card เป็นลูกที่ position
-     ยึดกับกล่องนี้อยู่ — ถ้าเลื่อนกล่อง hero-card จะเยื้องซ้ายตามไปด้วย
-     ทั้งที่โจทย์อยากให้ hero-card อยู่กึ่งกลางจริงๆ แยกจากภาพ */
+  /* เดิมมี transform: translateX(-6%) เลื่อนวงกลมพื้นหลัง + สติกเกอร์
+     ตัวอย่างไปทางซ้าย ทำให้ไม่ตรงกึ่งกลางเดียวกับ hero-card ที่ยึด
+     position กับ .hero-media (ซึ่ง center อยู่แล้วจาก align-items:center
+     ด้านบน) — ตัดออกให้ทั้ง 3 ชั้นอยู่จุดกึ่งกลางเดียวกัน เหมือนที่แก้ไว้
+     แล้วในช่วง tablet (721–960px) */
   .hero-preview-bg,
   .hero-preview-image {
-    transform: translateX(-6%);
+    transform: none;
   }
 
   .section {
