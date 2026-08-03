@@ -47,10 +47,20 @@
   position: absolute;
   bottom: 0;
   right: 0;
+  /* ขนาดใหญ่ตามต้นฉบับเดิม ใช้เฉพาะจอ PC (>960px) เท่านั้น — ที่ขนาดนี้
+     wing จะทับซ้อนกับ .hero-preview-bg บ้าง (มี z-index ด้านล่างกันไม่ให้
+     บัง bubble) ส่วนจอเล็กกว่า (มือถือ/แท็บเล็ต) ลดขนาดลงใน media query
+     ด้านล่างแทน เพราะพื้นที่แคบกว่ามากจนไม่มีที่ให้ wing ใหญ่ขนาดนี้ได้โดย
+     ไม่ซ้อนกับ bubble เต็มๆ (ค่าที่ปรับให้เล็กลงนั้นวัดแล้วว่าเป็นขนาดใหญ่
+     ที่สุดเท่าที่ยังไม่ซ้อนกับ bubble ในช่วงจอนั้นๆ) */
   width: 120%;
   max-width: 640px;
   height: auto;
   pointer-events: none;
+  /* ต้องอยู่ต่ำกว่า .hero-visual (z-index:1 ด้านล่าง) เสมอทุก breakpoint —
+     ห้ามปรับค่านี้ขึ้นไปเท่ากับหรือมากกว่า 1 เด็ดขาด เพราะ .hero-preview-bg
+     (bubble พื้นหลังของ preview slide) อยู่ใต้ .hero-visual และต้องซ้อนทับ
+     อยู่บน .hero-wing เสมอ ไม่ให้ปีกมาบังลูกบอลพื้นหลังได้ */
   z-index: 0;
 }
 
@@ -135,6 +145,9 @@
 
 .hero-visual {
   position: relative;
+  /* z-index:1 นี้คือสิ่งที่ทำให้ .hero-preview-bg (bubble พื้นหลัง ลูกอยู่
+     ข้างใน) วาดทับอยู่บน .hero-wing (z-index:0) เสมอทุก breakpoint — ห้าม
+     ลบหรือลดค่านี้ต่ำกว่า .hero-wing เด็ดขาด ไม่งั้นปีกจะบัง bubble */
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -157,6 +170,10 @@
   inset: 0;
   width: 100%;
   height: 100%;
+  /* z-index:0 นี้เทียบกับพี่น้องใน .hero-media เท่านั้น (อยู่ล่างสุดในนั้น
+     ให้ hero-preview-image/hero-card วาดทับได้) — ไม่ได้แข่งกับ .hero-wing
+     โดยตรง เพราะทั้งกล่องนี้ถูกยกไปอยู่บน .hero-wing แล้วผ่าน .hero-visual
+     (z-index:1) ที่เป็นแม่ ดู comment ที่ .hero-wing / .hero-visual */
   z-index: 0;
   pointer-events: none;
 }
@@ -558,11 +575,6 @@
     padding: 40px clamp(20px, 5vw, 56px) 56px;
   }
 
-  .hero-wing {
-    width: 78%;
-    max-width: none;
-  }
-
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
@@ -577,6 +589,17 @@
    กลับมาที่ 961px) แยกจาก @media max-width:720px ของมือถือโดยเจตนา
    เพื่อไม่ให้กระทบ mobile ============ */
 @media (min-width: 721px) and (max-width: 960px) {
+  /* ลดขนาด wing ลงจากค่า PC (120%/640px) — วัดแบบละเอียดจากพิกเซลจริงของ
+     ภาพ (ไม่ใช่กะจาก bounding box ซึ่งอนุรักษ์นิยมเกินไป) แล้วพบว่าใหญ่ได้
+     ถึงขนาดนี้โดยยังไม่มีพิกเซลทึบของ wing แตะเข้าไปใน .hero-preview-bg
+     เลยตลอดช่วง 721–960px (จุดแคบสุดอยู่ที่ 721px เอง มีระยะกันชนเหลือ
+     ~10px ก่อนจะเริ่มซ้อนจริงที่ราว 570px) ห้ามขยายใหญ่กว่านี้โดยไม่ตรวจ
+     ระยะห่างจาก bubble ใหม่ด้วยวิธีเดียวกัน */
+  .hero-wing {
+    width: 110%;
+    max-width: 540px;
+  }
+
   /* Hero ถูกเรียงเป็น 1 คอลัมน์ (ซ้อนบน-ล่าง) ในช่วงนี้ รอยต่อระหว่าง
      hero-col-copy (สีพื้นเรียบ) กับ hero-col-visual (ไล่เฉดซ้าย-ขวา) เลย
      กลายเป็นเส้นแนวนอน — gradient ซ้าย-ขวาเดิมจะชนกันสีตรงกันแค่ที่ขอบซ้าย
@@ -631,12 +654,20 @@
 }
 
 @media (max-width: 720px) {
-  .hero h1 {
-    font-size: clamp(2.6rem, 13vw, 3.6rem);
+  /* ลดขนาด wing ลงจากค่า PC (120%/640px) — วัดแบบละเอียดจากพิกเซลจริงของ
+     ภาพ (ไม่ใช่กะจาก bounding box ซึ่งอนุรักษ์นิยมเกินไป) แล้วพบว่าใหญ่ได้
+     ถึงขนาดนี้โดยยังไม่มีพิกเซลทึบของ wing แตะเข้าไปใน .hero-preview-bg
+     เลยตลอดช่วง 320–720px (จุดแคบสุดอยู่แถว 500–550px เพราะรัศมี bubble
+     คงที่ 110px ตลอดช่วงนี้ มีระยะกันชนเหลือ ~25px ก่อนจะเริ่มซ้อนจริงที่
+     ราว 447px) ห้ามขยายใหญ่กว่านี้โดยไม่ตรวจระยะห่างจาก bubble ใหม่ทั้งช่วง
+     ด้วยวิธีเดียวกัน ไม่ใช่แค่บางจุด */
+  .hero-wing {
+    width: 84%;
+    max-width: 420px;
   }
 
-  .hero-wing {
-    width: 108%;
+  .hero h1 {
+    font-size: clamp(2.6rem, 13vw, 3.6rem);
   }
 
   .hero-col-copy {
