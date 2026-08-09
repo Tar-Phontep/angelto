@@ -46,7 +46,11 @@
 
 .char-hero-inner h1 {
   margin: 0 0 4px;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  /* ปรับใหญ่ขึ้นจาก clamp(1.8rem,4vw,2.6rem) เดิม (28.8-41.6px) ตามรีวิว UX
+     2026-08-09 — hero ของหน้าตัวละครเบาไปเมื่อเทียบกับ hero หน้าแรก
+     (76.8px) ปรับให้ใกล้เคียงระดับ section h2 ของหน้าแรก (สูงสุด 51.2px)
+     แทน ไม่แตะ layout/grid เดิม (220px 1fr) แค่ขยับขนาดตัวอักษร */
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
   line-height: 1.15;
   color: var(--text);
 }
@@ -67,6 +71,15 @@
 
 .char-hero-inner p.bio + p.bio {
   margin-top: 10px;
+}
+
+/* Candy pilot: name pink, EN bio black — per-character via tone class, not global */
+.char-hero-inner.tone-6 h1 {
+  color: var(--dark-pink);
+}
+
+.char-hero-inner.tone-6 #char-bio-en {
+  color: #000000;
 }
 
 @media (max-width: 720px) {
@@ -94,25 +107,76 @@
   color: var(--text);
 }
 
-/* ============ DETAIL CARD (Sticker / Theme) ============ */
+/* ============ DETAIL CARD (Sticker / Theme) ============
+   โครงใหม่ 2 กล่องในการ์ดเดียว: ซ้าย = รูปชีทรวมสติ๊กเกอร์ทั้งแพ็ค,
+   ขวา = ไอคอน+หัวข้อ+คำอธิบาย (EN แล้ว TH) + แถวไอคอนตัวอย่าง 4 รูป + ปุ่ม
+   ไปต่อ พื้นหลังไล่สีอ่อน-เข้มพาดเต็มความกว้างการ์ด (โทนสีต่อตัวละคร ผ่าน
+   tone-N) ให้ความรู้สึกเป็น "2 กล่องใหญ่" แต่ไม่มีเส้นแบ่งแข็งๆ ระหว่างกัน */
+
+/* คอนเทนเนอร์ที่ห่อการ์ดแต่ละใบ (#sticker-container/#theme-container/
+   #emoji-container) เดิมไม่มี gap เลย การ์ดเลยชนกันเป็นแผ่นเดียว —
+   ใส่ระยะห่างแนวตั้งให้แต่ละใบแยกจากกันชัดเจน */
+#sticker-container,
+#theme-container,
+#emoji-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .detail-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--card);
+  background: linear-gradient(90deg, #fff0f6 0%, #ffffff 100%);
   box-shadow: 0 12px 34px rgba(229, 106, 156, 0.08);
   overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(0, 320px) 1fr;
+  grid-template-columns: minmax(0, 420px) 1fr;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
     border-color 180ms ease;
 }
 
+.detail-card.tone-1 { background: linear-gradient(90deg, var(--tone-1) 0%, #ffffff 100%); }
+.detail-card.tone-2 { background: linear-gradient(90deg, var(--tone-2) 0%, #ffffff 100%); }
+.detail-card.tone-3 { background: linear-gradient(90deg, var(--tone-3) 0%, #ffffff 100%); }
+.detail-card.tone-4 { background: linear-gradient(90deg, var(--tone-4) 0%, #ffffff 100%); }
+.detail-card.tone-5 { background: linear-gradient(90deg, var(--tone-5) 0%, #ffffff 100%); }
+.detail-card.tone-6 { background: linear-gradient(90deg, var(--tone-6) 0%, #ffffff 100%); }
+.detail-card.tone-7 { background: linear-gradient(90deg, var(--tone-7) 0%, #ffffff 100%); }
+.detail-card.tone-8 { background: linear-gradient(90deg, var(--tone-8) 0%, #ffffff 100%); }
+.detail-card.tone-9 { background: linear-gradient(90deg, var(--tone-9) 0%, #ffffff 100%); }
+
+/* การ์ด sticker ที่ติดกันของตัวละครเดียวกันสลับเข้ม/อ่อน (1=เข้ม, 2=อ่อน,
+   3=เข้ม, ...) ไม่ให้ทั้งชุดดูแบนเป็นสีเดียวซ้ำๆ — ใช้ .tone-alt-light คู่กับ
+   tone-N เดิม (ไม่กระทบ theme card ที่มีระบบสีของตัวเองแยกต่างหากแล้ว) */
+.detail-card.tone-1.tone-alt-light { background: linear-gradient(90deg, var(--tone-1-light) 0%, #ffffff 100%); }
+.detail-card.tone-2.tone-alt-light { background: linear-gradient(90deg, var(--tone-2-light) 0%, #ffffff 100%); }
+.detail-card.tone-3.tone-alt-light { background: linear-gradient(90deg, var(--tone-3-light) 0%, #ffffff 100%); }
+.detail-card.tone-4.tone-alt-light { background: linear-gradient(90deg, var(--tone-4-light) 0%, #ffffff 100%); }
+.detail-card.tone-5.tone-alt-light { background: linear-gradient(90deg, var(--tone-5-light) 0%, #ffffff 100%); }
+.detail-card.tone-6.tone-alt-light { background: linear-gradient(90deg, var(--tone-6-light) 0%, #ffffff 100%); }
+.detail-card.tone-7.tone-alt-light { background: linear-gradient(90deg, var(--tone-7-light) 0%, #ffffff 100%); }
+.detail-card.tone-8.tone-alt-light { background: linear-gradient(90deg, var(--tone-8-light) 0%, #ffffff 100%); }
+.detail-card.tone-9.tone-alt-light { background: linear-gradient(90deg, var(--tone-9-light) 0%, #ffffff 100%); }
+
 .detail-card:hover {
   transform: translateY(-6px) scale(1.02);
   border-color: rgba(229, 106, 156, 0.55);
   box-shadow: var(--shadow-hover);
+}
+
+/* ขยายคอลัมน์รูปจาก 420px ฐาน เป็น 460px เฉพาะจอกว้างจริงๆ (≥961px) ตามรีวิว
+   UX 2026-08-09 — ให้รูปสติ๊กเกอร์ (สินค้าจริงที่ขาย) มีน้ำหนักสายตามากขึ้น
+   เทียบกับฝั่งข้อความ ทดสอบแล้วว่าถ้าใช้ 460px ตั้งแต่ 721px (ช่วง tablet ที่
+   การ์ดยังเป็น 2 คอลัมน์แต่ container แคบกว่า) จะบีบข้อความจนเหลือกว้างแค่
+   ~75px ตัวหนังสือพับทีละ 1-2 คำต่อบรรทัด อ่านไม่ได้จริง — เลยจำกัดผลของ
+   การปรับนี้ไว้แค่จอกว้างที่มีที่ว่างพอ ไม่กระทบ tablet/มือถือเลย */
+@media (min-width: 961px) {
+  .detail-card {
+    grid-template-columns: minmax(0, 460px) 1fr;
+  }
 }
 
 /* การ์ดที่ถูกลิงก์เจาะจงมาจากหน้าเมนู (?item=...) — ไฮไลต์ให้เห็นชัด */
@@ -128,23 +192,158 @@
 }
 
 .detail-media {
-  background: linear-gradient(135deg, #fff2f7, #ffffff);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 24px;
+  min-width: 0;
 }
 
-.detail-media.tone-1 { background: linear-gradient(135deg, var(--tone-1), #ffffff); }
-.detail-media.tone-2 { background: linear-gradient(135deg, var(--tone-2), #ffffff); }
-.detail-media.tone-3 { background: linear-gradient(135deg, var(--tone-3), #ffffff); }
-.detail-media.tone-4 { background: linear-gradient(135deg, var(--tone-4), #ffffff); }
-.detail-media.tone-5 { background: linear-gradient(135deg, var(--tone-5), #ffffff); }
-.detail-media.tone-6 { background: linear-gradient(135deg, var(--tone-6), #ffffff); }
-.detail-media.tone-7 { background: linear-gradient(135deg, var(--tone-7), #ffffff); }
-.detail-media.tone-8 { background: linear-gradient(135deg, var(--tone-8), #ffffff); }
-.detail-media.tone-9 { background: linear-gradient(135deg, var(--tone-9), #ffffff); }
+/* Theme ที่มีชุดภาพตัวอย่างจริงครบ 4 รูป — การ์ดคนละแบบกับ sticker เลย
+   (ไม่ใช้ grid 2 คอลัมน์ของ .detail-card) แค่ชื่อด้านบน + รูปตัวอย่าง 4 รูป
+   เรียงซ้ายไปขวาล้วนๆ ไม่มี desc/cover-icon/รูปใหญ่ซ้อน */
+.detail-card.theme-card-simple {
+  display: block;
+  padding: 28px;
+  /* พื้นหลังการ์ดปกติเป็นขาวเสมอ ไม่ว่าโทนสีตัวละคร/ธีมจะเป็นอะไร — สีของธีม
+     อยู่แค่ในถาดรูป (.theme-preview-row) เท่านั้น กันปัญหาตัวอักษรกลืนพื้น
+     ยกเว้นการ์ดที่ติด .container-tinted (ตั้ง containerColor:true ใน data)
+     ซึ่งตั้งใจให้สีธีมลงพื้นทั้งใบแทน ดู override ด้านล่างสำหรับสีตัวอักษร */
+  background: #ffffff;
+}
+
+/* การ์ดที่ให้สีธีมลงพื้นทั้งใบ (containerColor:true) — สีพื้นหลังมาจาก
+   inline style ที่ character-render.js ใส่ให้ (ชนะกฎ background ด้านบน
+   อัตโนมัติเพราะ inline style มี specificity สูงกว่า class เสมอ) ที่เหลือ
+   แค่บังคับสีตัวอักษรที่ปกติใช้สีชมพู/เทาอ่อน (--dark-pink, --muted) ให้
+   เปลี่ยนมาใช้ --text (เทาเข้ม อ่านง่ายบนพื้นสีอ่อนทุกสี) กันปัญหาเดียวกับ
+   ที่เจอตอน Devil Black Night contrast 1.0:1 — วัดแล้วบนพื้นม่วงอ่อนของ
+   Candy (#d7cfe0) สีชมพู/เทาอ่อนเดิมจะได้ contrast แค่ ~2:1 และ ~3.2:1
+   (ต่ำกว่ามาตรฐาน WCAG AA 4.5:1 ของตัวหนังสือขนาดปกติ) */
+.theme-card-simple.container-tinted .detail-label,
+.theme-card-simple.container-tinted .theme-card-header p.desc {
+  color: var(--text);
+}
+
+/* รูปประดับ "theme bg fly.png" (วงกลมชมพู+ปีกขนนก+ฟองสบู่ ธีมเดียวกับ
+   ลวดลายใน hero) ปักไว้มุมซ้ายบนของการ์ด ด้านหลังเนื้อหา (background
+   ไม่บังคับ z-index เพราะ background วาดหลัง content เสมออยู่แล้ว) สีพื้น
+   มาจาก --theme-bg-color (ตั้งค่าผ่าน inline style ใน character-render.js)
+   ขนาด/padding-left คำนวณจากการสแกนสี pixel จริงของรูป (composite กับ
+   --theme-bg-color ตาม alpha) เทียบ contrast กับตัวหนังสือ --text ทุกแถว
+   ในโซนหัวข้อ — ใช้ค่าที่ยังผ่าน WCAG AA (>=4.5:1) มากที่สุดเท่าที่วัดได้
+   จริง ไม่ใช่ค่ากะเอาแบบเดา (ดู [[project_angelto_brand_state]] สำหรับ
+   ตัวเลขที่วัดได้ในแต่ละขนาด) */
+/* พื้นหลังไล่สีอ่อน(ซ้าย)→เข้ม(ขวา) — ลองแบบ "เหมือนการ์ด sticker" (ไล่ไปขาว)
+   ไปรอบนึงแล้ว แต่ user ไม่เอา ขอกลับมาเป็นชมพูอ่อน(ซ้าย)→ชมพูเข้ม(ขวา) แบบ
+   ไม่ผ่านขาวเลย ปัญหาเดิมคือถ้าไล่ไปสุดที่ --dark-pink จะเข้มเกินจนตัวหนังสือ
+   ที่ยาวเกือบเต็มขอบขวาการ์ด (วัดจริง 97.5% desktop, 91% มือถือ) อ่านไม่ออก
+   — แก้ด้วยการให้ตัวหนังสือหัวข้อ/คำอธิบาย (h3, p.desc) มี max-width เว้น
+   โซนขวาสุดที่ไม่มีตัวหนังสือเลยไว้ (calc(100% - Npx)) แล้วให้ไล่สีเข้มเต็มที่
+   เฉพาะในโซนนั้น — ใช้ค่า N เดียวกันทั้ง max-width กับจุดเริ่มไล่เข้มใน
+   gradient กันหลุดไม่ตรงกัน ค่า N ต่างกันตาม breakpoint (200px desktop, 80px
+   มือถือ) เพราะการ์ดมือถือแคบกว่ามาก
+   สีปรับมาแล้วหลายรอบตามฟีดแบ็กให้อ่อนลงเรื่อยๆ: --dark-pink เต็มๆ (#e56a9c)
+   → #ee89b0 (กึ่งกลาง primary-pink/dark-pink) → #facbdc→primary-pink (สลับ
+   "เข้มสุด" เป็นสีที่เคยเป็น "อ่อนสุด" รอบก่อน) → #ffffff→#facbdc (แบบมี
+   plateau ราบเป็นสีขาวล้วนถึง calc(100%-Npx) ค่อยไล่ในโซนสุดท้าย) → ล่าสุด
+   "อยากได้ให้มันมีความ gradient" มากกว่านี้ (2026-08-09) — ตัด plateau ออก
+   เหลือแค่ไล่สี 2 จุดตรงๆ #ffffff (0%) → #facbdc (100%) ตลอดทั้งเส้น ไม่มี
+   ช่วงราบแล้ว ทำให้เห็นการไล่สีทั่วทั้งการ์ดจริงๆ
+   ยกเลิกกลไก max-width safe-zone ไม่ได้เพราะยังจำเป็นอยู่ (ดูเหตุผลด้านล่าง
+   ในกฎ max-width) แต่ไม่ต้องกังวลเรื่อง contrast เพิ่มแล้ว เพราะ #facbdc เอง
+   วัดแล้วให้ contrast 6.79:1 กับ --text (ปลอดภัยเกินมาตรฐาน 4.5:1 มาก) ไม่ว่า
+   ตัวหนังสือจะไปโดนสีตรงไหนระหว่างทางจาก white→facbdc ก็ยังปลอดภัยเสมอ เพราะ
+   จุดที่ "เข้มที่สุด" เท่าที่ตัวหนังสือจะไปแตะได้ (ขอบเขต max-width) ยังเป็นสี
+   ที่ใกล้ facbdc ไม่ใช่ตัว facbdc เป๊ะ (อ่อนกว่าเล็กน้อยด้วยซ้ำ) verified
+   จริงด้วย Range.getClientRects() ที่ทั้งสองขนาดจอ */
+.theme-card-simple.container-tinted {
+  background-image:
+    url("../ver11 Pic/ThemeLine Pic/theme bg fly.png"),
+    linear-gradient(90deg, #ffffff 0%, #facbdc 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left top, left top;
+  background-size: 460px auto, 100% 100%;
+  padding-left: 268px;
+}
+
+.theme-card-simple.container-tinted .theme-card-header h3,
+.theme-card-simple.container-tinted .theme-card-header p.desc {
+  max-width: calc(100% - 200px);
+}
+
+@media (max-width: 640px) {
+  /* จอแคบ รูปประดับใหญ่เกินไปจะบังข้อความหมด — ย่อและลด indent ตาม */
+  .theme-card-simple.container-tinted {
+    background-image:
+      url("../ver11 Pic/ThemeLine Pic/theme bg fly.png"),
+      linear-gradient(90deg, #ffffff 0%, #facbdc 100%);
+    background-size: 190px auto, 100% 100%;
+    padding-left: 112px;
+  }
+  .theme-card-simple.container-tinted .theme-card-header h3,
+  .theme-card-simple.container-tinted .theme-card-header p.desc {
+    max-width: calc(100% - 80px);
+  }
+}
+
+/* ปุ่มลิงก์ (moreLink/icon-next3.png) ย้ายมาอยู่ขนานกับข้อความหัวข้อ/
+   คำอธิบายแทนที่จะอยู่ท้ายแถวรูปตัวอย่างด้านล่างเหมือนเดิม — ชิดขวา จัดกึ่ง
+   กลางแนวตั้งเทียบกับบล็อกข้อความทั้งก้อน (align-items:center) ตัวปุ่มเองมี
+   margin-left:auto อยู่แล้วเลยไม่ต้องพึ่ง justify-content เพิ่ม
+   padding-right ขยับปุ่มเข้ามาจากขอบขวาการ์ด (ปรับตามฟีดแบ็ก "ขยับเข้าไป
+   ซ้ายกว่านี้" 2026-08-09 — เดิมชิดขอบขวาเป๊ะ ~28px จาก padding การ์ดฐาน) */
+.theme-card-header-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-right: 48px;
+}
+
+.theme-card-header {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.theme-card-header h3 {
+  margin: 0 0 4px;
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.theme-card-header p.desc {
+  /* ขยายจาก 1.05rem เดิม ตามรีวิว UX 2026-08-09 (คู่กับ .detail-body p.desc
+     ด้านบน ให้ desc ของการ์ด sticker/theme ขนาดตรงกัน) */
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.theme-card-header h3 + p.desc {
+  margin-bottom: 14px;
+}
+
+.theme-preview-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 16px;
+  border-radius: var(--radius);
+}
+
+.theme-preview-row-img {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  max-width: 200px;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(229, 106, 156, 0.14);
+}
 
 /* placeholder รูปแผ่นยาว รวมสติ๊กเกอร์ทั้งชุดไว้ในไฟล์เดียว */
 .sticker-sheet {
@@ -177,11 +376,15 @@
 
 .detail-body {
   padding: 28px;
-  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .detail-label {
-  font-size: 0.78rem;
+  /* ขยายจาก 0.78rem (~12.5px) เดิม ตามรีวิว UX 2026-08-09 — ป้ายเล็กเกินไป
+     เมื่อเทียบกับข้อความอื่นในการ์ด */
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -189,9 +392,74 @@
   margin-bottom: 8px;
 }
 
+/* กลุ่ม: cover-icon (ขยายใหญ่) ซ้าย + หัวข้อ/คำอธิบาย EN,TH ขนานกันขวา
+   flex:1 ให้กลุ่มนี้ขยายกินพื้นที่ที่เหลือทั้งหมดใน .detail-body (หลังหัก
+   label กับแถวไอคอนตัวอย่าง 25% แล้ว) แทนที่จะปล่อยว่างเป็นช่องว่างเปล่าๆ
+   เหมือนตอนที่ cover-icon fix ขนาดตายตัว */
+.detail-lang-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+}
+
+.detail-lang-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.detail-lang-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.detail-cover-icon {
+  height: 100%;
+  width: auto;
+  /* เคยขยายเป็น 240/140px รอบก่อน (ดู memory) แล้วโดนฟีดแบ็กว่าใหญ่ไปเบียด
+     ข้อความจนอ่านยาก 2026-08-09 — ลดลงมาที่ 190/110px แทน (ต่ำกว่าค่าดั้งเดิม
+     220px ด้วยซ้ำ ให้ข้อความมีพื้นที่หายใจมากขึ้นชัดเจน) ตรรกะ
+     max-width/max-height แยกกันยังจำเป็นอยู่เหมือนเดิม เพราะ height:100%
+     ของแถวที่สูงตามเนื้อหาไม่มีเพดานความกว้างในตัวเอง ต้อง cap ไว้กันไม่ให้
+     ไปแย่งพื้นที่ข้อความ (พังจริงมาแล้วรอบก่อนที่ tablet) */
+  max-width: 110px;
+  max-height: 190px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* ช่วง tablet (721-960px) การ์ดยังเป็น 2 คอลัมน์แต่ container แคบกว่า desktop
+   มาก — วัดจริงแล้วแม้จำกัด cover-icon ไว้ที่ 140px ก็ยังเหลือที่ให้ตัวหนังสือ
+   แค่ ~87px (8 บรรทัด พับทีละคำ) ตัดปัญหาที่ต้นตอแทนไล่ลดขนาด icon ไปเรื่อยๆ:
+   ซ่อน cover-icon เฉพาะช่วงนี้ (เป็นแค่รูปสติ๊กเกอร์เดี่ยวประกอบ ไม่ใช่ข้อมูล
+   หลัก — ชื่อ/คำอธิบายยังอยู่ครบ) ให้ .detail-lang-stack ได้พื้นที่เต็มแทน
+   มือถือ (≤720px) ไม่กระทบ เพราะการ์ดซ้อนคอลัมน์เดียวอยู่แล้วไม่มีการแย่งพื้นที่
+   แบบนี้ — วางกฎ 2 บล็อกนี้ "หลัง" กฎฐานด้านบนเสมอ (specificity เท่ากัน ลำดับ
+   ไฟล์เป็นตัวตัดสิน ถ้าย้ายไปไว้ก่อนกฎฐานจะโดนกฎฐานทับ ไม่มีผลอะไรเลย — เคย
+   พลาดจุดนี้มาก่อนตอนพัฒนา) */
+@media (min-width: 721px) and (max-width: 960px) {
+  .detail-cover-icon {
+    display: none;
+  }
+}
+
+/* คลาย max-width ของ cover-icon ให้เท่ากับ max-height (190px) เฉพาะจอกว้าง
+   ที่ .detail-body มีที่ว่างพอ */
+@media (min-width: 961px) {
+  .detail-cover-icon {
+    max-width: 190px;
+  }
+}
+
 .detail-body h3 {
   margin: 0 0 4px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--text);
 }
 
@@ -209,24 +477,100 @@
   vertical-align: middle;
 }
 
-.detail-name-en {
-  font-size: 0.9rem;
+.detail-body p.desc {
+  /* เคยขยับเป็น 1.1rem รอบก่อน (ดู memory) แล้วโดนฟีดแบ็กว่าตัวหนังสือใน
+     การ์ด sticker ใหญ่ไปด้วยเหมือนกัน 2026-08-09 — กลับมาที่ 1.05rem เดิม
+     (ไม่กระทบ .theme-card-header p.desc ของการ์ดธีม ยังคง 1.1rem อยู่ —
+     รอบนี้ user ระบุขอบเขตแค่ "Sticker Set") */
+  font-size: 1.05rem;
   color: var(--muted);
-  margin-bottom: 12px;
+  margin: 0;
 }
 
-.detail-body p.desc {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin: 0 0 18px;
+/* แถวไอคอนตัวอย่างสติ๊กเกอร์ 4 รูป (ครอปจากชีทรวม ไม่มีพื้นหลัง) + ปุ่มไปต่อ
+   เดิมเคยลองอิงความสูง 25% ของ .detail-body (ผ่าน grid stretch) แต่เจอบั๊ก
+   จริงที่ความกว้าง viewport บางค่า (เช่น 800px — tablet landscape) ที่
+   .detail-body ไม่ได้ความสูงแน่นอนจาก stretch ตามที่คาด ทำให้ไอคอนพองเป็น
+   275px ล้นการ์ดไปเงียบๆ (วัดซ้ำยืนยันแล้วว่าเกิดจริง ไม่ใช่บั๊กเครื่องมือ
+   ทดสอบ) เปลี่ยนมาอิงความกว้างแทนแบบเดียวกับ .theme-preview-row-img ซึ่ง
+   เสถียรกว่าเพราะความกว้างไหลทางเดียวจากคอลัมน์ grid ไม่มีย้อนกลับ */
+.detail-preview-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(229, 106, 156, 0.14);
+}
+
+.detail-preview-icon {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  /* วนกลับมาที่ 25% เดิม 2026-08-09 (เคยลองลดเป็น 15% แล้ว 20% ระหว่างทาง
+     สุดท้าย user ขอกลับมา 25% ตามเดิม) — อิงความกว้างเหมือนเดิม ไม่สลับไปอิง
+     ความสูงแบบ % ของ parent เพราะเคยเจอบั๊กจริงมาแล้ว (ดู comment ด้านบนเรื่อง
+     ไอคอนพองที่ viewport 800px) */
+  max-width: calc(25% - 20px);
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.detail-preview-more {
+  /* ขยายจาก 40px เดิม ตามฟีดแบ็กว่าเล็กไป 2026-08-09 */
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  /* margin-left:auto กันไว้เผื่อเป็นสมาชิกตัวเดียวในแถว (เช่น theme ที่โชว์
+     กริด 4 รูปไปแล้วด้านบน เหลือแค่ปุ่มนี้ตัวเดียว) — ไม่กระทบตอนมี icon
+     ร่วมแถวด้วยเพราะ space-between ดันไปขวาสุดอยู่แล้ว */
+  margin-left: auto;
+  transition: transform 180ms ease;
+}
+
+.detail-preview-more img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* hover เฉพาะตัว icon-next3.png เอง (ไม่ใช่ทั้งการ์ด) — สโคปแค่ตอนเป็น <a>
+   จริง (ลิงก์ใช้งานได้) ไม่รวม <span> disabled ที่ opacity ต่ำ/cursor
+   not-allowed อยู่แล้ว กัน hover ทำให้เข้าใจผิดว่ากดได้ */
+a.detail-preview-more:hover {
+  transform: translateX(3px) scale(1.12);
+}
+
+@media (max-width: 480px) {
+  /* จอแคบมาก 4 รูปแนวตั้งเรียงแถวเดียวจะเหลือแค่ ~49px กว้าง มองรายละเอียด
+     ไม่ออก — ห่อเป็น 2x2 แทนที่จะบีบให้อยู่แถวเดียวต่อไป */
+  .theme-preview-row {
+    flex-wrap: wrap;
+  }
+  .theme-preview-row-img {
+    flex: 1 1 calc(50% - 6px);
+    max-width: calc(50% - 6px);
+  }
 }
 
 @media (max-width: 720px) {
   .detail-card {
     grid-template-columns: 1fr;
   }
-  .detail-body {
-    border-left: none;
-    border-top: 1px solid var(--border);
+  .detail-lang-row {
+    text-align: left;
+  }
+  /* ที่ความกว้างนี้ .detail-card เป็นคอลัมน์เดียว (media ซ้อนบน body แทน
+     อยู่ข้างกัน) .detail-body เลยไม่มีความสูงแน่นอนจาก grid stretch ให้
+     height:25% ของแถวไอคอนอ้างอิงได้ (จะพองเป็นขนาดจริงของรูปแทน ล้นการ์ด
+     แบบเงียบๆ) กำหนดความสูงคงที่ไว้ตรงนี้แทน */
+  .detail-preview-row {
+    height: 70px;
+  }
+  /* cover-icon 220px (ขนาด desktop) บีบพื้นที่ข้อความจนแคบเกินไปบนการ์ดแคบ
+     กว่านี้ ย่อลงให้เหลือพื้นที่ให้ข้อความพอสมควร */
+  .detail-cover-icon {
+    max-height: 100px;
   }
 }

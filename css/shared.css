@@ -59,16 +59,31 @@
   --radius: 8px;
   --container: 1180px;
 
-  /* Character brand tones — one unique, non-yellow/green color per character */
+  /* Character brand tones — one unique color per character.
+     No yellow/green/brown ever. Blue only allowed as สีฟ้า (light/sky
+     blue like --tone-8); a darker น้ำเงิน navy blue must be mixed with
+     another hue, not left as a flat navy. */
   --tone-1: #f2bbcb;
   --tone-2: #ee9cb0;
   --tone-3: #fcd8d1;
   --tone-4: #f4c9ab;
   --tone-5: #ceb2ea;
   --tone-6: #f4c3d2;
-  --tone-7: #c9a877;
+  --tone-7: #f0ab8f;
   --tone-8: #bce0e8;
   --tone-9: #f7a8c4;
+
+  /* เวอร์ชันอ่อนของแต่ละโทน (ผสมขาว 50%) ใช้สลับเข้ม/อ่อนระหว่างการ์ด
+     sticker ที่ติดกันของตัวละครเดียวกัน กันดูซ้ำซากเป็นสีเดียวแบนๆ ทั้งชุด */
+  --tone-1-light: #f8dde5;
+  --tone-2-light: #f6cdd7;
+  --tone-3-light: #fdebe8;
+  --tone-4-light: #f9e4d5;
+  --tone-5-light: #e6d8f4;
+  --tone-6-light: #f9e1e8;
+  --tone-7-light: #f7d5c7;
+  --tone-8-light: #ddeff3;
+  --tone-9-light: #fbd3e1;
 }
 
 * {

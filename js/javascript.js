@@ -27,7 +27,7 @@
             <h3 class="card-title">${data.name}</h3>
             <p class="card-meta">${label}</p>
           </div>
-          <span class="arrow"><img src="images/icons/icon-arrow.png" alt="" loading="lazy" /></span>
+          <span class="arrow"><img src="ver11 Pic/icons/icon-arrow.png" alt="" loading="lazy" /></span>
         </div>
       </a>`,
     );
@@ -70,7 +70,7 @@
             <h3 class="card-title">${displayName}</h3>
             <p class="card-meta">${typeLabel}</p>
           </div>
-          <span class="arrow"><img src="images/icons/icon-arrow.png" alt="" loading="lazy" /></span>
+          <span class="arrow"><img src="ver11 Pic/icons/icon-arrow.png" alt="" loading="lazy" /></span>
         </div>
       </a>`;
   }
