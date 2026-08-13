@@ -257,15 +257,51 @@ img {
   color: var(--dark-pink);
   font-weight: 700;
   font-size: 0.95rem;
-  border: 1px solid var(--border);
-  transition:
-    background 180ms ease,
-    border-color 180ms ease;
+  transition: background 180ms ease;
 }
 
 .back-link:hover {
   background: #fff2f7;
-  border-color: var(--dark-pink);
+}
+
+/* ไอคอน icon-next3.png (ลูกศรชี้ขวา ปกติใช้เป็นปุ่ม "ไปต่อ") กลับด้านด้วย
+   scaleX(-1) แทนการทำไฟล์แยก ใช้แทนตัวอักษร "←" เดิมของลิงก์ "กลับหน้า Line
+   Creators" — .back-link มี gap:6px อยู่แล้วเลยไม่ต้องเพิ่ม margin, ส่วน
+   .button (ใช้ในหน้า not-found) ไม่มี gap เลยเพิ่ม margin-right ให้แยกสโคป
+   hover animation: สโคปตาม .detail-preview-more:hover ที่ใช้ icon-next3.png
+   ตัวเดียวกันในหน้า character (translateX + scale) แต่ทิศตรงข้ามเพราะลูกศรนี้
+   กลับด้านชี้ซ้าย (แสดงทิศ "กลับ") ต้อง list transform: scaleX(-1) ไว้ก่อน
+   translateX เสมอ เพราะ transform ต่อกันเป็นลำดับ ตัวที่ตามหลัง scaleX(-1)
+   จะทำงานในแกนที่ถูกกลับด้านไปแล้ว ทำให้ translateX(6px) จริงๆ เลื่อนภาพไปทาง
+   ซ้ายบนจอ (ทิศเดียวกับที่ลูกศรชี้) ไม่ใช่ขวา */
+.back-link-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transform: scaleX(-1);
+  transition: transform 180ms ease;
+}
+
+.back-link:hover .back-link-icon,
+.button:hover .back-link-icon {
+  transform: scaleX(-1) translateX(6px) scale(1.12);
+}
+
+/* ข้อความ "Line Creators" เลื่อนตามไอคอนไปทางซ้ายเล็กน้อยตอน hover ให้ทั้ง
+   ปุ่มดูเหมือนขยับไปทาง "กลับ" พร้อมกันเป็นชิ้นเดียว (เลื่อนน้อยกว่าไอคอน
+   ตั้งใจ ไอคอนคือตัวนำ ข้อความตามหลังแบบ subtle) */
+.back-link-text {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+.back-link:hover .back-link-text,
+.button:hover .back-link-text {
+  transform: translateX(-3px);
+}
+
+.button .back-link-icon {
+  margin-right: 8px;
 }
 
 /* ============ SHARED TEXT / BUTTONS ============ */

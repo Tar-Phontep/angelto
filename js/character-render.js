@@ -16,7 +16,7 @@
     const langBadge = langMatch
       ? `<span class="lang-badge">${langMatch[1]}</span>`
       : "";
-    const thTitle = item.nameTH ? `${displayName} - ${item.nameTH}` : displayName;
+    const thTitle = item.nameTH || displayName;
 
     // ลิงก์ที่ยังไม่มีจริง จะถูกเก็บเป็นข้อความในวงเล็บเหลี่ยม เช่น
     // "[ยังไม่เปิดขายบน LINE Store]" — เช็คแบบนี้แทนเทียบ string ตรงๆ
@@ -61,18 +61,20 @@
       const cardClass = useContainerColor ? " container-tinted" : "";
       return `
         <div class="detail-card theme-card-simple reveal ${tone}${cardClass}"${cardStyle} data-item-name="${item.name.replace(/"/g, "&quot;")}">
-          <div class="theme-card-header-row">
-            <div class="theme-card-header">
-              <div class="detail-label">${labelPrefix} ${index + 1}</div>
-              <h3>${displayName}${langBadge}</h3>
-              <p class="desc">${item.descEN || ""}</p>
-              <h3>${item.nameTH || displayName}</h3>
-              <p class="desc">${item.descTH || ""}</p>
+          <div class="detail-card-inner">
+            <div class="theme-card-header-row">
+              <div class="theme-card-header">
+                <div class="detail-label">${labelPrefix} ${index + 1}</div>
+                <h3>${displayName}${langBadge}</h3>
+                <p class="desc">${item.descEN || ""}</p>
+                <h3>${item.nameTH || displayName}</h3>
+                <p class="desc">${item.descTH || ""}</p>
+              </div>
+              ${moreLink}
             </div>
-            ${moreLink}
-          </div>
-          <div class="theme-preview-row"${rowStyle}>
-            ${row}
+            <div class="theme-preview-row"${rowStyle}>
+              ${row}
+            </div>
           </div>
         </div>`;
     }
@@ -106,8 +108,7 @@
     // (Theme มีระบบสีของตัวเองแล้ว, Emoji ไม่แตะ)
     const altLightClass = labelPrefix === "Sticker" && index % 2 === 1 ? " tone-alt-light" : "";
 
-    return `
-      <div class="detail-card reveal ${tone}${altLightClass}" data-item-name="${item.name.replace(/"/g, "&quot;")}">
+    const cardBody = `
         <div class="detail-media">${media}</div>
         <div class="detail-body">
           <div class="detail-label">${labelPrefix} ${index + 1}</div>
@@ -129,7 +130,17 @@
             </div>
           </div>
           ${previewRow}
-        </div>
+        </div>`;
+
+    // การ์ดยืด BG เต็มความกว้าง viewport (ดู #sticker-container/#theme-container/
+    // #emoji-container .detail-card ใน character.css — เดิมทำแค่ Sticker Set,
+    // ขยายมาใช้กับ Theme (ที่ fallback มาใช้เทมเพลตนี้ ไม่มี icons) และ Emoji
+    // ด้วยตามคำขอ 2026-08-11) เนื้อหาจริงเลยต้องห่อด้วย .detail-card-inner
+    // แยกต่างหาก จำกัดความกว้างไว้เท่า --container เดิม (1180px) แล้ว center เอง
+    const innerHtml = `<div class="detail-card-inner">${cardBody}</div>`;
+
+    return `
+      <div class="detail-card reveal ${tone}${altLightClass}" data-item-name="${item.name.replace(/"/g, "&quot;")}">${innerHtml}
       </div>`;
   }
 
@@ -196,7 +207,7 @@
 
     const avatar = document.getElementById("char-avatar");
     if (data.cover) {
-      avatar.innerHTML = `<img src="${data.cover}" alt="${data.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:2;" />`;
+      avatar.innerHTML = `<img src="${data.cover}" alt="${data.name}" style="max-width:56%;max-height:56%;width:auto;height:auto;object-fit:contain;position:relative;z-index:2;" />`;
     }
 
     renderSection("sticker-section", "sticker-container", data.stickers, "Sticker", data.tone);

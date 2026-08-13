@@ -10,32 +10,21 @@
 
 .char-hero-inner {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: clamp(220px, 34vw, 320px) 1fr;
   gap: 44px;
   align-items: center;
 }
 
 .char-avatar {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  width: clamp(220px, 34vw, 320px);
+  aspect-ratio: 1;
+  background-image: url("../ver11 Pic/home/bgCircle.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   display: grid;
   place-items: center;
   position: relative;
-  overflow: hidden;
-}
-
-.char-avatar::before {
-  content: "";
-  position: absolute;
-  width: 60%;
-  height: 60%;
-  border-radius: 50%;
-  background: linear-gradient(160deg, #ffe2ed, var(--primary-pink));
-  opacity: 0.85;
 }
 
 .char-avatar span {
@@ -138,6 +127,47 @@
     border-color 180ms ease;
 }
 
+/* Sticker/Theme/Emoji: ให้พื้นหลังการ์ดยืดเต็มความกว้างจอจริง (viewport)
+   ไม่ใช่แค่เต็ม .container (1180px) ตามที่ขอ 2026-08-09 (เดิมทำแค่ Sticker
+   Set, ขยายมาใช้กับ Theme/Emoji ด้วยตามคำขอ 2026-08-11) วิธี "breakout":
+   กาง .detail-card ให้กว้าง 100vw แล้วดึงกลับด้วย margin ลบครึ่งหนึ่งของ
+   (100vw - 100%) ผ่าน left:50%/margin-left:-50vw (สูตรมาตรฐานสำหรับดันลูก
+   ให้หลุดกรอบ .container พ่อแม่ที่จำกัดความกว้าง/จัดกึ่งกลางอยู่) —
+   .detail-card เปลี่ยนจาก grid container เป็นกล่องเปล่าๆ แทน (แค่พื้น
+   หลัง+ขอบ+เงา) เนื้อหาจริงย้ายไปอยู่ .detail-card-inner ซึ่งจำกัดความกว้าง
+   เท่า --container เดิม (1180px) แล้ว center ตัวเอง (สูตรเดียวกับ .container
+   จริงๆ: min(100% - 32px, var(--container)) กันไม่ให้ตัวหนังสือกว้างเกินไป
+   บนจอใหญ่ทั้งที่ BG ยืดเต็มจอ)
+   .theme-card-simple (Theme ที่มีชุดไอคอนครบ) ใช้ .detail-card-inner เดียวกัน
+   แค่ห่อ width-cap เฉยๆ ไม่ใส่ grid-template-columns ให้ เพราะโครงข้างในเป็น
+   block (header-row + preview-row) อยู่แล้ว ไม่ใช่ media/body 2 คอลัมน์แบบ
+   sticker — แยกด้วย :not(.theme-card-simple) กันชนกัน */
+#sticker-container .detail-card,
+#theme-container .detail-card,
+#emoji-container .detail-card {
+  display: block;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+#sticker-container .detail-card-inner,
+#theme-container .detail-card-inner,
+#emoji-container .detail-card-inner {
+  width: min(100% - 32px, var(--container));
+  margin: 0 auto;
+}
+
+#sticker-container .detail-card-inner,
+#emoji-container .detail-card-inner,
+#theme-container .detail-card:not(.theme-card-simple) .detail-card-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) 1fr;
+}
+
 .detail-card.tone-1 { background: linear-gradient(90deg, var(--tone-1) 0%, #ffffff 100%); }
 .detail-card.tone-2 { background: linear-gradient(90deg, var(--tone-2) 0%, #ffffff 100%); }
 .detail-card.tone-3 { background: linear-gradient(90deg, var(--tone-3) 0%, #ffffff 100%); }
@@ -177,6 +207,11 @@
   .detail-card {
     grid-template-columns: minmax(0, 460px) 1fr;
   }
+  #sticker-container .detail-card-inner,
+  #emoji-container .detail-card-inner,
+  #theme-container .detail-card:not(.theme-card-simple) .detail-card-inner {
+    grid-template-columns: minmax(0, 460px) 1fr;
+  }
 }
 
 /* การ์ดที่ถูกลิงก์เจาะจงมาจากหน้าเมนู (?item=...) — ไฮไลต์ให้เห็นชัด */
@@ -205,12 +240,21 @@
    เรียงซ้ายไปขวาล้วนๆ ไม่มี desc/cover-icon/รูปใหญ่ซ้อน */
 .detail-card.theme-card-simple {
   display: block;
-  padding: 28px;
   /* พื้นหลังการ์ดปกติเป็นขาวเสมอ ไม่ว่าโทนสีตัวละคร/ธีมจะเป็นอะไร — สีของธีม
      อยู่แค่ในถาดรูป (.theme-preview-row) เท่านั้น กันปัญหาตัวอักษรกลืนพื้น
      ยกเว้นการ์ดที่ติด .container-tinted (ตั้ง containerColor:true ใน data)
      ซึ่งตั้งใจให้สีธีมลงพื้นทั้งใบแทน ดู override ด้านล่างสำหรับสีตัวอักษร */
   background: #ffffff;
+}
+
+/* padding เดิมเคยอยู่บน .detail-card.theme-card-simple ตรงๆ — ย้ายมาไว้ที่
+   .detail-card-inner แทน เพราะ .detail-card ตอนนี้ยืดเต็ม 100vw (breakout)
+   แล้ว ถ้า padding ยังอยู่ชั้นนอก สูตรความกว้างของ .detail-card-inner
+   (min(100% - 32px, var(--container))) จะอ้างอิงผิดกล่อง (คำนวณจาก 100vw -
+   56px แทนที่จะเป็น 100vw ตรงๆ) ทำให้ inset ทั้งสองชั้นบวกกันเพี้ยนไปจาก
+   sticker/emoji ที่ไม่มี padding ชั้นนอกแบบนี้ */
+.theme-card-simple .detail-card-inner {
+  padding: 28px;
 }
 
 /* การ์ดที่ให้สีธีมลงพื้นทั้งใบ (containerColor:true) — สีพื้นหลังมาจาก
@@ -262,34 +306,30 @@
    จุดที่ "เข้มที่สุด" เท่าที่ตัวหนังสือจะไปแตะได้ (ขอบเขต max-width) ยังเป็นสี
    ที่ใกล้ facbdc ไม่ใช่ตัว facbdc เป๊ะ (อ่อนกว่าเล็กน้อยด้วยซ้ำ) verified
    จริงด้วย Range.getClientRects() ที่ทั้งสองขนาดจอ */
+/* รูปประดับ theme-bg-fly.png ติดขอบซ้าย "จริง" ของจอ (ไม่ใช่ขอบซ้ายของ
+   เนื้อหา) — ย้ายไปอยู่บน .detail-card (กล่องนอกที่ยืดเต็ม 100vw) รวมเป็น
+   background layer เดียวกับไล่สี ปลอดภัยเพราะ .detail-card ไม่มี padding เอง
+   (การเซนเตอร์ของ .detail-card-inner เลยไม่ถูกรบกวน)
+   2026-08-11: ตามคำขอ "content ต้อง center ไม่ต้องสน wing" — เลิกกัน
+   overlap ด้วย padding-left แล้ว (เคยลอง 268→320→370→340px วนหลายรอบ ทุกครั้ง
+   ที่กันรูปประดับ เนื้อหาจะเบี้ยวไปทางขวาเสมอ แก้ไม่จบสักที) ปล่อยให้
+   .detail-card-inner ใช้แค่ padding:28px ฐาน (เท่ากันทั้งซ้าย-ขวา จาก
+   .theme-card-simple .detail-card-inner) เนื้อหาเลย center จริงตามความกว้าง
+   การ์ด — ผลคือข้อความ/แถวรูปตัวอย่างจะทับรูปประดับบางส่วนที่โซนซ้ายบนของ
+   การ์ด (ยอมรับแล้วตามคำขอ ไม่ต้องแก้อีกจนกว่าจะมีฟีดแบ็กใหม่) */
+/* ขนาดรูปประดับเดิมสลับ hard cutoff เดียวที่ 640px (600px จอกว้าง ↔ 250px
+   จอแคบ) ทำให้จอช่วง 641-900px ได้ขนาด "desktop" (600px) ทั้งที่การ์ดตัวเอง
+   แคบกว่านั้นมาก ดูใหญ่เกินสัดส่วนไปเลย — เปลี่ยนเป็น clamp() fluid scale ตาม
+   สูตรเดียวกับ .char-avatar/.hero-media ในไฟล์นี้/style.css (responsive แบบ
+   หน้าหลัก) ไล่ระดับต่อเนื่องตามความกว้างจอแทน ไม่มี cutoff แข็งๆ อีกแล้ว
+   2026-08-11 ตามคำขอ "responsive คร่าวๆ เรฟคือหน้าหลัก" */
 .theme-card-simple.container-tinted {
   background-image:
     url("../ver11 Pic/ThemeLine Pic/theme bg fly.png"),
     linear-gradient(90deg, #ffffff 0%, #facbdc 100%);
   background-repeat: no-repeat, no-repeat;
   background-position: left top, left top;
-  background-size: 460px auto, 100% 100%;
-  padding-left: 268px;
-}
-
-.theme-card-simple.container-tinted .theme-card-header h3,
-.theme-card-simple.container-tinted .theme-card-header p.desc {
-  max-width: calc(100% - 200px);
-}
-
-@media (max-width: 640px) {
-  /* จอแคบ รูปประดับใหญ่เกินไปจะบังข้อความหมด — ย่อและลด indent ตาม */
-  .theme-card-simple.container-tinted {
-    background-image:
-      url("../ver11 Pic/ThemeLine Pic/theme bg fly.png"),
-      linear-gradient(90deg, #ffffff 0%, #facbdc 100%);
-    background-size: 190px auto, 100% 100%;
-    padding-left: 112px;
-  }
-  .theme-card-simple.container-tinted .theme-card-header h3,
-  .theme-card-simple.container-tinted .theme-card-header p.desc {
-    max-width: calc(100% - 80px);
-  }
+  background-size: clamp(190px, 45vw, 600px) auto, 100% 100%;
 }
 
 /* ปุ่มลิงก์ (moreLink/icon-next3.png) ย้ายมาอยู่ขนานกับข้อความหัวข้อ/
@@ -331,17 +371,30 @@
 
 .theme-preview-row {
   display: flex;
-  gap: 12px;
+  justify-content: space-between;
+  /* gap เพิ่มอีกรอบจาก 36px เป็น 48px ตามคำขอ "ห่างเพิ่มอีก" 2026-08-11
+     padding-left ตัดออก (0) ตามคำขอ "รูปซ้ายขนานกับ text" ในรอบเดียวกัน —
+     ก่อนหน้านี้ใส่ padding 16px 20px ไว้ทั้งสองฝั่งเพื่อเว้นระยะจากขอบการ์ด
+     แต่ทำให้รูปแรกเริ่มขวาจากขอบข้อความ 20px ไม่ขนานกันอีกแล้ว ตัดเฉพาะซ้าย
+     ออก เหลือขวาไว้ (ไม่ได้ถูกขอให้แก้) */
+  gap: 48px;
   align-items: center;
-  padding: 16px;
+  padding: 16px 20px 16px 0;
   border-radius: var(--radius);
 }
 
+/* max-width ปรับมาแล้วหลายรอบ: 320px (ตอนแถวยังใช้ justify-content:center
+   ต้องพึ่งรูปโตเต็มพื้นที่กันไม่ให้ "ไม่ขนาน" กับข้อความ) → 220px (ตอนเปลี่ยน
+   แถวมาใช้ space-between แล้ว ไม่ต้องพึ่งรูปโตเต็มพื้นที่อีกต่อไป แต่ 220px
+   ทำให้ gap ระหว่างรูปห่างถึง ~68px หรือ ~31% ของขนาดรูป ดูเป็นรูปลอยห่างกัน
+   เกินไป ไม่เป็นกลุ่มเดียวกัน) → 250px รอบนี้ ให้ gap แคบลงเหลือ ~11% ของขนาด
+   รูป (ราว 28px) ดูเป็นกลุ่มเดียวกันมากขึ้น ยังเบากว่า 320px เดิม (465px สูง)
+   อยู่บ้าง 2026-08-11 */
 .theme-preview-row-img {
   flex: 1 1 0;
   width: auto;
   min-width: 0;
-  max-width: 200px;
+  max-width: 250px;
   aspect-ratio: 9 / 16;
   object-fit: contain;
   border-radius: var(--radius);
@@ -548,18 +601,27 @@ a.detail-preview-more:hover {
 
 @media (max-width: 480px) {
   /* จอแคบมาก 4 รูปแนวตั้งเรียงแถวเดียวจะเหลือแค่ ~49px กว้าง มองรายละเอียด
-     ไม่ออก — ห่อเป็น 2x2 แทนที่จะบีบให้อยู่แถวเดียวต่อไป */
+     ไม่ออก — ห่อเป็น 2x2 แทนที่จะบีบให้อยู่แถวเดียวต่อไป
+     สูตร "50% - Npx" ต้อง N = gap/2 เสมอ (2 รูปต่อแถว + gap 1 ช่องระหว่างรูป
+     ต้องรวมกันได้ 100% เป๊ะ) — gap ปัจจุบัน 48px เลยใช้ N = 24 (48/2) อัปเดต
+     คู่กับ .theme-preview-row ทุกครั้งที่เปลี่ยน gap ไม่งั้นจะพังแบบเดิม (เคย
+     เจอมาแล้ว 2026-08-11 ตอน gap เปลี่ยนจาก 12→36 แล้วลืมอัปเดตตรงนี้) */
   .theme-preview-row {
     flex-wrap: wrap;
   }
   .theme-preview-row-img {
-    flex: 1 1 calc(50% - 6px);
-    max-width: calc(50% - 6px);
+    flex: 1 1 calc(50% - 24px);
+    max-width: calc(50% - 24px);
   }
 }
 
 @media (max-width: 720px) {
   .detail-card {
+    grid-template-columns: 1fr;
+  }
+  #sticker-container .detail-card-inner,
+  #emoji-container .detail-card-inner,
+  #theme-container .detail-card:not(.theme-card-simple) .detail-card-inner {
     grid-template-columns: 1fr;
   }
   .detail-lang-row {
