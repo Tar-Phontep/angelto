@@ -149,6 +149,14 @@ const characters = {
           "ver11 Pic/themes/rabbit/icons/soft-icon3.png",
           "ver11 Pic/themes/rabbit/icons/soft-icon4.png",
         ],
+        // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
+        // ver11 Pic/Design Character Page/ 2026-08-19
+        bannerIcons: [
+          "ver11 Pic/Design Character Page/theme rabbit icon1.png",
+          "ver11 Pic/Design Character Page/theme rabbit icon2.png",
+          "ver11 Pic/Design Character Page/theme rabbit icon3.png",
+          "ver11 Pic/Design Character Page/theme rabbit icon4.png",
+        ],
       },
       {
         name: "Rabbito & Rabbity - Sweet Dessert",
@@ -220,6 +228,14 @@ const characters = {
           "ver11 Pic/themes/carrot/icons/theme-icon2.png",
           "ver11 Pic/themes/carrot/icons/theme-icon3.png",
           "ver11 Pic/themes/carrot/icons/theme-icon4.png",
+        ],
+        // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
+        // ver11 Pic/Design Character Page/ 2026-08-19
+        bannerIcons: [
+          "ver11 Pic/Design Character Page/theme carrot icon1.png",
+          "ver11 Pic/Design Character Page/theme carrot icon2.png",
+          "ver11 Pic/Design Character Page/theme carrot icon3.png",
+          "ver11 Pic/Design Character Page/theme carrot icon4.png",
         ],
       },
     ],
@@ -315,6 +331,16 @@ const characters = {
           "ver11 Pic/themes/nangel/icons/slowlife-icon2.png",
           "ver11 Pic/themes/nangel/icons/slowlife-icon3.png",
           "ver11 Pic/themes/nangel/icons/slowlife-icon4.png",
+        ],
+        // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
+        // ver11 Pic/Design Character Page/ 2026-08-19 (ชุดเดียว ไม่ผูกกับธีม
+        // ใดธีมหนึ่งโดยเฉพาะ ใส่ไว้ที่ธีมแรกที่มี icons ครบ เพราะ render
+        // logic แค่หา field นี้จาก item ไหนก็ได้ในอาเรย์)
+        bannerIcons: [
+          "ver11 Pic/Design Character Page/theme nAngel icon1.png",
+          "ver11 Pic/Design Character Page/theme nAngel icon2.png",
+          "ver11 Pic/Design Character Page/theme nAngel icon3.png",
+          "ver11 Pic/Design Character Page/theme nAngel icon4.png",
         ],
       },
       {
@@ -532,6 +558,17 @@ const characters = {
           "ver11 Pic/themes/candy/icons/theme-icon2.png",
           "ver11 Pic/themes/candy/icons/theme-icon3.png",
           "ver11 Pic/themes/candy/icons/theme-icon4.png",
+        ],
+        // bannerIcons: รูปพรีวิววงกลม 4 วงเฉพาะแถบ .topic-banner (Theme Set)
+        // เท่านั้น — คนละชุดกับ icons ด้านบน (ใช้ในถาดรูปตัวอย่างของการ์ด
+        // เอง) ไฟล์ใหม่จาก ver11 Pic/Design Character Page/ มีกรอบวงกลม
+        // ประดับ (เส้นประม่วง) ปั้นมาให้พร้อมใช้เลย 154x154px ไม่ต้องพึ่ง
+        // bg whCircle.png + border-radius ครอบอีกชั้นแบบวงอื่น 2026-08-12
+        bannerIcons: [
+          "ver11 Pic/Design Character Page/theme candy icon1.png",
+          "ver11 Pic/Design Character Page/theme candy icon2.png",
+          "ver11 Pic/Design Character Page/theme candy icon3.png",
+          "ver11 Pic/Design Character Page/theme candy icon4.png",
         ] },
     ],
   },
@@ -637,6 +674,14 @@ const characters = {
           "ver11 Pic/themes/cloud/icons/sky-icon2.png",
           "ver11 Pic/themes/cloud/icons/sky-icon3.png",
           "ver11 Pic/themes/cloud/icons/sky-icon4.png",
+        ],
+        // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
+        // ver11 Pic/Design Character Page/ 2026-08-19
+        bannerIcons: [
+          "ver11 Pic/Design Character Page/theme cloud icon1.png",
+          "ver11 Pic/Design Character Page/theme cloud icon2.png",
+          "ver11 Pic/Design Character Page/theme cloud icon3.png",
+          "ver11 Pic/Design Character Page/theme cloud icon4.png",
         ] },
     ],
     emoji: [
@@ -701,6 +746,14 @@ const characters = {
           "ver11 Pic/themes/pompom/icons/theme-icon2.png",
           "ver11 Pic/themes/pompom/icons/theme-icon3.png",
           "ver11 Pic/themes/pompom/icons/theme-icon4.png",
+        ],
+        // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
+        // ver11 Pic/Design Character Page/ 2026-08-19
+        bannerIcons: [
+          "ver11 Pic/Design Character Page/theme pom icon1.png",
+          "ver11 Pic/Design Character Page/theme pom icon2.png",
+          "ver11 Pic/Design Character Page/theme pom icon3.png",
+          "ver11 Pic/Design Character Page/theme pom icon4.png",
         ] },
     ],
     emoji: [

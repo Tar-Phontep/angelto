@@ -155,6 +155,56 @@
     container.innerHTML = items
       .map((item, i) => buildDetailCard(item, i, labelPrefix, tone))
       .join("");
+
+    // วงกลมพรีวิว 4 วงใน .topic-banner ของ section นี้
+    const thumbsEl = document.getElementById(`${labelPrefix.toLowerCase()}-topic-thumbs`);
+    if (thumbsEl) {
+      // bannerIcons: ไฟล์วงกลมสำเร็จรูป (มีกรอบประดับในตัวอยู่แล้ว) เจาะจง
+      // สำหรับแถบ .topic-banner โดยเฉพาะ ถ้า item ไหนมีระบุไว้ ใช้ทั้ง 4 รูป
+      // ของ item นั้นตรงๆ เลย ไม่ผสมกับ item อื่น (ตอนนี้มีแค่ Candy Theme)
+      // 2026-08-12 ตามคำขอ "ใช้รูป theme candy icon1-2-3-4" — ต่างจาก icons
+      // ปกติที่ไม่มีกรอบ ต้องพึ่ง .topic-banner-thumb (bg whCircle.png +
+      // border-radius) ครอบให้ ไฟล์ bannerIcons ไม่ต้องพึ่งครอบซ้ำ (ดู class
+      // topic-banner-thumb--composed ใน character.css)
+      const itemWithBannerIcons = items.find((item) => item.bannerIcons && item.bannerIcons.length);
+      if (itemWithBannerIcons) {
+        thumbsEl.innerHTML = itemWithBannerIcons.bannerIcons
+          .slice(0, 4)
+          .map(
+            (src) =>
+              `<div class="topic-banner-thumb topic-banner-thumb--composed"><img src="${src}" alt="" loading="lazy" /></div>`,
+          )
+          .join("");
+        return;
+      }
+
+      // ปกติใช้ไอคอนแรกของแต่ละแพ็ค สูงสุด 4 แพ็ค (ตาม ver11 Pic/Design
+      // Character Page/Candy page design3.png) แต่ถ้ามีแพ็คน้อยกว่า 4 ให้ไล่
+      // หยิบไอคอนถัดไปของแพ็คเดิม (icon2, icon3, icon4...) มาเติมจนครบ 4 วง
+      // แทนที่จะเหลือแค่วงเดียว ถ้ารวมทุกไอคอนของทุกแพ็คแล้วยังไม่ครบ 4 ก็โชว์
+      // เท่าที่มีจริง ไม่ปั้นข้อมูลเทียม
+      // fallback เป็น item.sheet เมื่อไม่มี icons เลย (รายการ emoji ไม่มี
+      // icons array แบบ sticker/theme มีแค่ sheet เดี่ยว — เจอบั๊กจริง
+      // 2026-08-12 ตอนเช็ค Cloud/PomPom แล้ววงพรีวิว Emoji Set ว่างเปล่า)
+      const thumbIcons = [];
+      items.forEach((item) => {
+        if (item.icons && item.icons.length) thumbIcons.push(item.icons[0]);
+        else if (item.sheet) thumbIcons.push(item.sheet);
+      });
+      let extraIndex = 1;
+      while (thumbIcons.length < 4) {
+        const itemsWithMoreIcons = items.filter((item) => item.icons && item.icons.length > extraIndex);
+        if (itemsWithMoreIcons.length === 0) break;
+        itemsWithMoreIcons.forEach((item) => {
+          if (thumbIcons.length < 4) thumbIcons.push(item.icons[extraIndex]);
+        });
+        extraIndex += 1;
+      }
+      thumbsEl.innerHTML = thumbIcons
+        .slice(0, 4)
+        .map((src) => `<div class="topic-banner-thumb"><img src="${src}" alt="" loading="lazy" /></div>`)
+        .join("");
+    }
   }
 
   function showNotFound() {
@@ -207,7 +257,7 @@
 
     const avatar = document.getElementById("char-avatar");
     if (data.cover) {
-      avatar.innerHTML = `<img src="${data.cover}" alt="${data.name}" style="max-width:56%;max-height:56%;width:auto;height:auto;object-fit:contain;position:relative;z-index:2;" />`;
+      avatar.innerHTML = `<img src="${data.cover}" alt="${data.name}" style="max-width:154px;max-height:154px;width:auto;height:auto;object-fit:contain;position:relative;z-index:2;" />`;
     }
 
     renderSection("sticker-section", "sticker-container", data.stickers, "Sticker", data.tone);

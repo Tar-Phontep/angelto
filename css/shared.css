@@ -90,17 +90,6 @@
   box-sizing: border-box;
 }
 
-/* กันเลือก/copy ข้อความแบบเบื้องต้น คู่กับ protect.js (กันคลิกขวา/ลากรูป) —
-   ไม่ใช่การป้องกันแบบสมบูรณ์ เป็นแค่ด่านกันคนทั่วไปเท่านั้น */
-body {
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-img {
-  -webkit-user-drag: none;
-}
-
 html {
   scroll-behavior: smooth;
 }

@@ -10,14 +10,29 @@
 
 .char-hero-inner {
   display: grid;
-  grid-template-columns: clamp(220px, 34vw, 320px) 1fr;
+  grid-template-columns: 280px 1fr;
   gap: 44px;
   align-items: center;
 }
 
+/* บับเบิล (bgCircle.png) ต้องเป็นวงกลมเต็มใบตามไฟล์ source เสมอ — background-
+   image ถูก clip ตามกรอบของ element ตัวเองเสมอไม่ว่า overflow จะเป็นอะไรก็
+   ตาม (overflow ควบคุมแค่ "เนื้อหา" ไม่เกี่ยวกับ background เลย) รอบก่อนเคย
+   ลองตั้ง .char-avatar ไว้แค่ 192px แล้วขยาย background-size เป็น 240px หวัง
+   ให้ล้นออกนอกกรอบ แต่จริงๆ โดน clip ที่ขอบกรอบ 192px มองเห็นแค่วงกลมส่วนกลาง
+   ที่ยังไม่โค้งเป็นขอบวงกลม เลยดูเป็นสี่เหลี่ยมตันๆ แทน (บั๊กที่ผู้ใช้เจอ) —
+   แก้ที่ต้นตอ: ขยายกรอบ .char-avatar ทั้งกล่องเป็น 240px ให้เท่ากับ background
+   -size เป๊ะ (background-size:contain เลยพอดีกรอบ ไม่โดน clip เป็นวงกลมเต็ม
+   ใบจริง) — รูปตัวละครด้านในยังคง 154px เท่าเดิม อยู่กึ่งกลางกรอบใหญ่แทน ทำให้
+   บับเบิลดูใหญ่กว่ารูปตัวละครชัดเจน (เอฟเฟกต์เดียวกับที่ต้องการ) ต้องขยับ
+   grid-template-columns ของ .char-hero-inner จาก 192px เป็น 240px คู่กันด้วย
+   ไม่งั้นกรอบจะไปเบียดคอลัมน์ข้อความ 2026-08-12
+   ขยายอีกครั้งจาก 240→280px ตามความเห็นเรื่องความสวย — halo รอบรูปตัวละคร
+   (154px คงเดิม) ขยับจาก ~43px เป็น ~63px ต่อข้าง เห็นทรงกลมไล่สีเด่นขึ้น
+   ดูเป็นบับเบิลลอยจริงมากกว่ากรอบพอดีตัว */
 .char-avatar {
-  width: clamp(220px, 34vw, 320px);
-  aspect-ratio: 1;
+  width: 280px;
+  height: 280px;
   background-image: url("../ver11 Pic/home/bgCircle.png");
   background-size: contain;
   background-position: center;
@@ -87,13 +102,169 @@
   background: #ffffff;
 }
 
-.section-heading {
-  margin-bottom: 28px;
+/* Sticker/Theme/Emoji Set ใช้ .topic-banner แทน .section padding เดิมแล้ว
+   (ดูด้านล่าง) — เอา padding บน/ล่างของ .section ออกให้ .topic-banner เป็นคน
+   คุมระยะเองทั้งหมด กันไม่ให้บวกซ้อนกัน 2 ชั้น */
+#sticker-section,
+#theme-section,
+#emoji-section {
+  padding: 0;
 }
-.section-heading h2 {
+
+/* ============ TOPIC BANNER (Sticker/Theme/Emoji Set หัวข้อ) ============
+   ตามเรฟ ver11 Pic/Design Character Page/Candy page design3.png — พื้นหลัง
+   คลื่นชมพู+ปีก+ฟองสบู่ (bgTopic.png ไฟล์เดียว รวมทุกเลเยอร์มาแล้ว) ยืดเต็ม
+   100vw แบบเดียวกับ breakout ของ detail card, ใน .topic-banner-inner (ใช้
+   .container เดิมจำกัดความกว้างเท่าเนื้อหาอื่นในเว็บ) มีหัวข้อ + แถววงกลม
+   พรีวิว 4 วง
+   ระยะห่างตามสเปกในภาพ: 64px ก่อน banner (จากกล่องขาวก่อนหน้า) / 32px หลัง
+   banner (ก่อนการ์ดใบแรก) — ใส่เป็น margin-top/margin-bottom ตรงๆ 2026-08-12
+   รูปพื้นหลัง: เดิมใช้ background-size:cover ทำให้รูปถูกครอป แก้เป็น
+   background-size:100% auto + background-position:top (กว้างเต็ม 100% เสมอ
+   สูงไล่ตามสัดส่วนจริง 1920×466 ไม่มีครอปเลย) ไม่มี background-color สำรอง
+   แล้ว (เคยเติมสีชมพูกลบพื้นที่เกินไว้ตอนกล่องสูงกว่ารูป แต่โดนขอ "ตัดส่วนเกิน
+   ที่ไม่ใช่รูป bgTopic ออก" 2026-08-12) — .topic-banner เลยล็อกความสูงด้วย
+   aspect-ratio:1920/466 ตรงๆ พร้อม overflow:hidden กันไม่ให้กล่องโตเกินรูป
+   จริงได้อีกต่อไป (เดิมปล่อยให้เนื้อหาดันกล่องโตได้ถ้าจำเป็น ตอนนี้ไม่ได้แล้ว)
+   ผลคือ .topic-banner-inner (หัวข้อ+วงกลมพรีวิว) ต้องใช้ position:absolute
+   แทน flow ปกติ เพื่อไม่ให้ไปดันความสูงกล่อง (ถ้ายังอยู่ใน flow แล้วเนื้อหา
+   ใหญ่กว่าที่ aspect-ratio ให้ กล่องจะโดน overflow:hidden ตัดเนื้อหาทิ้งแทน) —
+   วางไว้ต่ำใกล้ขอบล่างของ banner (bottom:6%) เพราะครึ่งบนของรูปเป็นลาย
+   คลื่น/ปีก ครึ่งล่างเป็นพื้นชมพูล้วนกว้างพอให้ข้อความ/วงกลมวางทับได้จริง */
+.topic-banner {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 64px;
+  margin-bottom: 32px;
+  aspect-ratio: 1920 / 466;
+  overflow: hidden;
+  background-image: url("../ver11 Pic/Design Character Page/bgTopic.png");
+  background-size: 100% auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/* หัวข้อ+วงพรีวิว กลับมาอยู่แถวเดียวกัน (align-items:center) ตามเรฟที่ส่งมา
+   ล่าสุด 2026-08-12 (เคยแยก position อิสระคนละจุดไปสองรอบ แต่เรฟจริงๆ ให้
+   วงอยู่ระดับเดียวกับข้อความ ไม่ใช่วงแยกไปอยู่ใต้สุด) — ตำแหน่งอิงกับ
+   .topic-banner (กล่อง 100vw) ตรงๆ ด้วย left/right เป็น % แทนการใช้ class
+   .container (ซึ่งจำกัดกว้างสุด 1180px แล้วเซนเตอร์ตัวเอง ทำให้เหลื่อมกับปีก
+   มากขึ้นเรื่อยๆ ตามจอกว้าง — บั๊กที่เจอจริงตอนลองใช้ .container รอบก่อน)
+   left:5.5%/top:51% มาจากการสแกน pixel ข้อความจริงในไฟล์ Candy page
+   design3.png เทียบกับกรอบ banner (ตรงตำแหน่งปีกพอดี ปีกอยู่ y 12%-95%
+   จุดกึ่งกลาง 54%) */
+/* top กลับมา 51% เหมือนเดิม (ตามคำขอ "เอา Text ไว้ที่เดิมก่อน" 2026-08-12 —
+   เคยลองขยับทั้งแถวลงมาที่ 65% เพื่อเผื่อที่ให้วงพรีวิวใหญ่ขึ้น แต่ทำให้
+   หัวข้อเลื่อนตามไปด้วย ไม่ทับปีกตรงจุดเดิมแล้ว) หัวข้อเลยอยู่ตำแหน่งเดิม
+   ส่วนวงพรีวิวขยับลงเป็นอิสระด้วย margin-top บน .topic-banner-thumbs แทน (ดู
+   ด้านล่าง) ไม่กระทบตำแหน่งหัวข้อเลย เพราะ margin-top ของ item หนึ่งใน flex
+   row ไม่ดันตัวอื่นที่ align-items:center อยู่ */
+.topic-banner-inner {
+  position: absolute;
+  left: 5.5%;
+  right: 4%;
+  top: 51%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px 24px;
+}
+
+.topic-banner-inner h2 {
   margin: 0;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  color: var(--text);
+  font-size: clamp(1rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* justify-content: center (ไม่ใช่ flex-end) — ตอนตัวละครมีข้อมูลน้อยกว่า 4
+   (เช่น Candy มีธีมเดียว วงพรีวิวเลยมีวงเดียว) flex-end จะดันวงเดียวนั้นไป
+   สุดขอบขวาของ banner ดูเหมือนหลุด/ลอยผิดที่ — center ให้กลุ่มวง (ไม่ว่าจะมี
+   1-4 วง) ไปรวมกันอยู่กลางพื้นที่ที่เหลือหลังหัวข้อแทนเสมอ ตามคำขอ
+   ตำแหน่งลง/ขวา: ใช้ position:relative + top (ไม่ใช่ margin-top) เพราะ
+   margin-top บน flex item ที่อยู่ใน row ที่ align-items:center จะไปดันความ
+   สูงทั้งแถวให้โตขึ้น แล้วแถวเองก็ถูก re-center ด้วย translateY(-50%) ตาม
+   ความสูงใหม่ ผลคือลงจริงแค่ครึ่งเดียวของค่าที่ใส่ (บั๊กที่เจอจริง 2026-08-12
+   ตอนขยับแล้วแทบไม่ลง) — position:relative;top ขยับหลัง layout คำนวณเสร็จ
+   แล้ว ไม่กระทบความสูงแถว/จุดกึ่งกลางเลย ขยับเท่าไหร่ได้เท่านั้นเป๊ะ
+   margin-left ยังใช้ได้ปกติ (ไม่มีปัญหาเดียวกัน เพราะเป็นแกนหลัก/main-axis
+   ของ row ไม่ใช่แกน cross-axis ที่ align-items:center ควบคุม) */
+.topic-banner-thumbs {
+  display: flex;
+  gap: clamp(13px, 3.73vw, 40px);
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  position: relative;
+  top: clamp(18px, 6.1vw, 93px);
+  margin-left: clamp(7px, 5.33vw, 71px);
+}
+
+/* Desktop only (≥961px, breakpoint ตรงกับที่ไฟล์นี้ใช้อยู่แล้ว) ขยับวงลง
+   เพิ่มอีก 5px คงที่ (ไม่ใช้ vw เพราะ margin ที่เหลือจริงๆ อยู่ที่ 961px ซึ่ง
+   เป็นจุดแคบสุดของช่วง desktop — วัดสดแล้วเหลือ margin ~7.4px ที่ 961px,
+   +5px ยังเหลือ ~2.4px ไม่โดนตัด (เท่าที่ mobile ใช้อยู่แล้วในรอบก่อนหน้า)
+   จอกว้างกว่านั้น margin จะเหลือเยอะขึ้นเรื่อยๆ ไม่ใช่ปัญหา — Mobile/Tablet
+   (<961px) ไม่แตะเลย เพราะ margin ที่ 375px แคบมากอยู่แล้ว (~2.9px) 2026-08-19 */
+@media (min-width: 961px) {
+  .topic-banner-thumbs {
+    top: calc(clamp(18px, 6.1vw, 93px) + 6px);
+    /* ขยับกลุ่มวงไปขวาเพิ่มเฉพาะ Desktop (ตามคำขอ "ปรับแค่ Desktop" — ก่อนหน้า
+       เคยขยับแบบ global แล้วรู้สึกว่า "ดูไม่เหมือนขยับเลย" ที่ margin-left
+       base clamp เดิมไม่ได้แก้ไว้ จึงย้อน base กลับไปที่เดิม (ไม่กระทบ
+       Mobile/Tablet) แล้วเพิ่ม offset ก้อนใหญ่ที่นี่แทน — วัดสดที่ 961px
+       (จุดแคบสุดของช่วง Desktop) แล้ว: +100px ยังเหลือ margin ขวา ~16px
+       ปลอดภัย ไม่ชนขอบ 2026-08-20 */
+    margin-left: calc(clamp(7px, 5.33vw, 71px) + 115px);
+  }
+}
+
+/* วงกลมพรีวิว: ใช้ bg whCircle.png เป็นพื้นหลังวงกลม (แทนวงกลม CSS ธรรมดา +
+   เส้นประที่ทำเองก่อนหน้านี้) ใช้ clamp อิง vw ให้เข้ากับความสูง banner ที่
+   ผูกกับ vw เหมือนกัน (banner สูง = width × 466/1920 ก็คือ ~24.3vw)
+   ขยายสัมประสิทธิ์ vw จาก 7vw เป็น 10vw (ceiling 150px) ตามคำขอ "ขยายวงพรีวิว"
+   2026-08-12 — 7vw เดิมที่ 1280px ได้แค่ ~90px (เท่าของเดิมก่อนขอขยาย เพราะ
+   ceiling ไม่มีผลจนกว่าจอจะกว้างเกิน 2142px) ขยับเป็น 10vw ได้ ~128px ที่
+   1280px ใหญ่ขึ้นชัดเจน */
+.topic-banner-thumb {
+  width: clamp(30px, 10.05vw, 154px);
+  aspect-ratio: 1;
+  background-image: url("../ver11 Pic/Design Character Page/bg whCircle.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.topic-banner-thumb img {
+  width: 78%;
+  height: 78%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* --composed: ใช้กับไฟล์ bannerIcons ที่มีกรอบวงกลมประดับ (เส้นประ) ปั้นมา
+   ให้พร้อมในตัวรูปเองแล้ว (เช่น "theme candy icon1-4.png") — ใช้
+   bg whCircle.png เป็นพื้นหลังเหมือนวงปกติ ไม่ต้องพึ่ง object-fit:cover +
+   border-radius ครอบรูปซ้ำ (วงกลมมาจากตัวไฟล์เองอยู่แล้ว ครอบซ้ำไม่มีผลอะไร
+   เพิ่ม) 2026-08-12
+   แก้ 2026-08-20: เดิม width/height 100% ทำให้รูปเต็มกล่องพอดี บัง
+   bg whCircle ไว้ทั้งหมด (ไม่เห็นเลยทั้งที่ประกาศไว้ในโค้ด) ต่างจากวงปกติที่
+   ใช้ 78% แล้วเห็นขอบขาวรอบๆ ชัดเจน — ลดเหลือ 78% ให้เท่ากับวงปกติ ให้เห็น
+   bg whCircle รอบทุกวงเหมือนกันหมดตามที่ขอ ("ใช้ bg whCircle ทุกอัน") */
+.topic-banner-thumb--composed img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  border-radius: 0;
 }
 
 /* ============ DETAIL CARD (Sticker / Theme) ============
@@ -104,13 +275,14 @@
 
 /* คอนเทนเนอร์ที่ห่อการ์ดแต่ละใบ (#sticker-container/#theme-container/
    #emoji-container) เดิมไม่มี gap เลย การ์ดเลยชนกันเป็นแผ่นเดียว —
-   ใส่ระยะห่างแนวตั้งให้แต่ละใบแยกจากกันชัดเจน */
+   ใส่ระยะห่างแนวตั้งให้แต่ละใบแยกจากกันชัดเจน (32px ตามสเปกใน Candy page
+   design3.png "ระหว่างกล่องพื้นขาว...32px" 2026-08-12) */
 #sticker-container,
 #theme-container,
 #emoji-container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 .detail-card {
@@ -168,28 +340,64 @@
   grid-template-columns: minmax(0, 420px) 1fr;
 }
 
-.detail-card.tone-1 { background: linear-gradient(90deg, var(--tone-1) 0%, #ffffff 100%); }
-.detail-card.tone-2 { background: linear-gradient(90deg, var(--tone-2) 0%, #ffffff 100%); }
-.detail-card.tone-3 { background: linear-gradient(90deg, var(--tone-3) 0%, #ffffff 100%); }
-.detail-card.tone-4 { background: linear-gradient(90deg, var(--tone-4) 0%, #ffffff 100%); }
-.detail-card.tone-5 { background: linear-gradient(90deg, var(--tone-5) 0%, #ffffff 100%); }
-.detail-card.tone-6 { background: linear-gradient(90deg, var(--tone-6) 0%, #ffffff 100%); }
-.detail-card.tone-7 { background: linear-gradient(90deg, var(--tone-7) 0%, #ffffff 100%); }
-.detail-card.tone-8 { background: linear-gradient(90deg, var(--tone-8) 0%, #ffffff 100%); }
-.detail-card.tone-9 { background: linear-gradient(90deg, var(--tone-9) 0%, #ffffff 100%); }
+.detail-card.tone-1 {
+  background: linear-gradient(90deg, var(--tone-1) 0%, #ffffff 100%);
+}
+.detail-card.tone-2 {
+  background: linear-gradient(90deg, var(--tone-2) 0%, #ffffff 100%);
+}
+.detail-card.tone-3 {
+  background: linear-gradient(90deg, var(--tone-3) 0%, #ffffff 100%);
+}
+.detail-card.tone-4 {
+  background: linear-gradient(90deg, var(--tone-4) 0%, #ffffff 100%);
+}
+.detail-card.tone-5 {
+  background: linear-gradient(90deg, var(--tone-5) 0%, #ffffff 100%);
+}
+.detail-card.tone-6 {
+  background: linear-gradient(90deg, var(--tone-6) 0%, #ffffff 100%);
+}
+.detail-card.tone-7 {
+  background: linear-gradient(90deg, var(--tone-7) 0%, #ffffff 100%);
+}
+.detail-card.tone-8 {
+  background: linear-gradient(90deg, var(--tone-8) 0%, #ffffff 100%);
+}
+.detail-card.tone-9 {
+  background: linear-gradient(90deg, var(--tone-9) 0%, #ffffff 100%);
+}
 
 /* การ์ด sticker ที่ติดกันของตัวละครเดียวกันสลับเข้ม/อ่อน (1=เข้ม, 2=อ่อน,
    3=เข้ม, ...) ไม่ให้ทั้งชุดดูแบนเป็นสีเดียวซ้ำๆ — ใช้ .tone-alt-light คู่กับ
    tone-N เดิม (ไม่กระทบ theme card ที่มีระบบสีของตัวเองแยกต่างหากแล้ว) */
-.detail-card.tone-1.tone-alt-light { background: linear-gradient(90deg, var(--tone-1-light) 0%, #ffffff 100%); }
-.detail-card.tone-2.tone-alt-light { background: linear-gradient(90deg, var(--tone-2-light) 0%, #ffffff 100%); }
-.detail-card.tone-3.tone-alt-light { background: linear-gradient(90deg, var(--tone-3-light) 0%, #ffffff 100%); }
-.detail-card.tone-4.tone-alt-light { background: linear-gradient(90deg, var(--tone-4-light) 0%, #ffffff 100%); }
-.detail-card.tone-5.tone-alt-light { background: linear-gradient(90deg, var(--tone-5-light) 0%, #ffffff 100%); }
-.detail-card.tone-6.tone-alt-light { background: linear-gradient(90deg, var(--tone-6-light) 0%, #ffffff 100%); }
-.detail-card.tone-7.tone-alt-light { background: linear-gradient(90deg, var(--tone-7-light) 0%, #ffffff 100%); }
-.detail-card.tone-8.tone-alt-light { background: linear-gradient(90deg, var(--tone-8-light) 0%, #ffffff 100%); }
-.detail-card.tone-9.tone-alt-light { background: linear-gradient(90deg, var(--tone-9-light) 0%, #ffffff 100%); }
+.detail-card.tone-1.tone-alt-light {
+  background: linear-gradient(90deg, var(--tone-1-light) 0%, #ffffff 100%);
+}
+.detail-card.tone-2.tone-alt-light {
+  background: linear-gradient(90deg, var(--tone-2-light) 0%, #ffffff 100%);
+}
+.detail-card.tone-3.tone-alt-light {
+  background: linear-gradient(90deg, var(--tone-3-light) 0%, #ffffff 100%);
+}
+.detail-card.tone-4.tone-alt-light {
+  background: linear-gradient(90deg, var(--tone-4-light) 0%, #ffffff 100%);
+}
+.detail-card.tone-5.tone-alt-light {
+  background: linear-gradient(90deg, var(--tone-5-light) 0%, #ffffff 100%);
+}
+.detail-card.tone-6.tone-alt-light {
+  background: linear-gradient(90deg, var(--tone-6-light) 0%, #ffffff 100%);
+}
+.detail-card.tone-7.tone-alt-light {
+  background: linear-gradient(90deg, var(--tone-7-light) 0%, #ffffff 100%);
+}
+.detail-card.tone-8.tone-alt-light {
+  background: linear-gradient(90deg, var(--tone-8-light) 0%, #ffffff 100%);
+}
+.detail-card.tone-9.tone-alt-light {
+  background: linear-gradient(90deg, var(--tone-9-light) 0%, #ffffff 100%);
+}
 
 .detail-card:hover {
   transform: translateY(-6px) scale(1.02);
@@ -217,13 +425,24 @@
 /* การ์ดที่ถูกลิงก์เจาะจงมาจากหน้าเมนู (?item=...) — ไฮไลต์ให้เห็นชัด */
 .detail-card.is-target {
   border-color: var(--dark-pink);
-  box-shadow: 0 0 0 4px rgba(229, 106, 156, 0.18), var(--shadow-hover);
+  box-shadow:
+    0 0 0 4px rgba(229, 106, 156, 0.18),
+    var(--shadow-hover);
   animation: target-pulse 1.6s ease-in-out 2;
 }
 
 @keyframes target-pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(229, 106, 156, 0.18), var(--shadow-hover); }
-  50% { box-shadow: 0 0 0 8px rgba(229, 106, 156, 0.28), var(--shadow-hover); }
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px rgba(229, 106, 156, 0.18),
+      var(--shadow-hover);
+  }
+  50% {
+    box-shadow:
+      0 0 0 8px rgba(229, 106, 156, 0.28),
+      var(--shadow-hover);
+  }
 }
 
 .detail-media {
@@ -328,8 +547,12 @@
     url("../ver11 Pic/ThemeLine Pic/theme bg fly.png"),
     linear-gradient(90deg, #ffffff 0%, #facbdc 100%);
   background-repeat: no-repeat, no-repeat;
-  background-position: left top, left top;
-  background-size: clamp(190px, 45vw, 600px) auto, 100% 100%;
+  background-position:
+    left top,
+    left top;
+  background-size:
+    clamp(190px, 45vw, 600px) auto,
+    100% 100%;
 }
 
 /* ปุ่มลิงก์ (moreLink/icon-next3.png) ย้ายมาอยู่ขนานกับข้อความหัวข้อ/
