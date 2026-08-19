@@ -119,6 +119,13 @@
    พรีวิว 4 วง
    ระยะห่างตามสเปกในภาพ: 64px ก่อน banner (จากกล่องขาวก่อนหน้า) / 32px หลัง
    banner (ก่อนการ์ดใบแรก) — ใส่เป็น margin-top/margin-bottom ตรงๆ 2026-08-12
+   แก้ 2026-08-20 (ลองครั้งแรก): เคยแยก margin-top ให้ Sticker Set (banner
+   แรกสุด) ได้ 64px ส่วน Theme/Emoji Set ลดเหลือ 32px — ผิด ย้อนกลับแล้ว
+   ตามคำแก้ไข "นับแค่ Section หัวข้อ Sticker, Theme, Emoji ข้างบน Section
+   หัวข้อพวกนี้ จะเว้นข้างบน 64px ที่เหลือ 32px หมดเลย" คือทั้ง 3 banner
+   (Sticker/Theme/Emoji) ได้ margin-top 64px เท่ากันหมด (ไม่แยกตามตำแหน่ง)
+   ส่วน margin-bottom (ก่อนการ์ดใบแรกของแต่ละ section) คงที่ 32px เท่ากันหมด
+   เหมือนเดิมอยู่แล้ว ไม่เคยเปลี่ยน
    รูปพื้นหลัง: เดิมใช้ background-size:cover ทำให้รูปถูกครอป แก้เป็น
    background-size:100% auto + background-position:top (กว้างเต็ม 100% เสมอ
    สูงไล่ตามสัดส่วนจริง 1920×466 ไม่มีครอปเลย) ไม่มี background-color สำรอง
