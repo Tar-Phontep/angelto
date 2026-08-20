@@ -47,7 +47,6 @@
 }
 
 :root {
-  --background: #fff8fb;
   --primary-pink: #f7a8c4;
   --dark-pink: #e56a9c;
   --text: #444444;
@@ -94,7 +93,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* กันเลือก/copy ข้อความ + ลากรูปแบบเบื้องต้น คู่กับ js/protect.js (กัน
+   คลิกขวา/ลากรูป) — ไม่ใช่การป้องกันแบบสมบูรณ์ เป็นแค่ด่านกันคนทั่วไปเท่านั้น
+   2026-08-20 (rebuild — เคยมีแล้วลบไปตอน 2026-08-12 ตามคำขอตอนนั้น) */
 body {
+  -webkit-user-select: none;
+  user-select: none;
   margin: 0;
   background:
     radial-gradient(
@@ -130,6 +134,7 @@ a {
 img {
   display: block;
   max-width: 100%;
+  -webkit-user-drag: none;
 }
 
 .container {

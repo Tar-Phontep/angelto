@@ -688,7 +688,8 @@ const characters = {
       {
         name: "Angel Cloud",
         nameTH: "นางฟ้าเมฆ",
-        desc: "Angel Cloud emotion. Funny and happy time with Cloud. อีโมจินางฟ้าเมฆ คุณเมฆผู้ที่สนุกสนาน อารมณ์ดีและมีความสุขเสมอ",
+        descEN: "Angel Cloud emotion. Funny and happy time with Cloud.",
+        descTH: "อีโมจินางฟ้าเมฆ คุณเมฆผู้ที่สนุกสนาน อารมณ์ดีและมีความสุขเสมอ",
         sheet: "ver11 Pic/emoji/AngelCould-icon.png",
         detailSheet: "ver11 Pic/emoji/AngelCloud.png",
         link: "https://line.me/S/emoji/?id=5c6f7187100cc3130bd1f01b",
@@ -760,7 +761,8 @@ const characters = {
       {
         name: "Angel PomPom",
         nameTH: "นางฟ้าปอมปอม",
-        desc: "PomPom is Angel. PomPom so cute. นางฟ้าปอมปอม ปอมปอมที่เป็นนางฟ้า กลมๆ น่ารักๆ ดุ๊กดิ๊ก อารมณ์ดีและมีความสุขเสมอ",
+        descEN: "PomPom is Angel. PomPom so cute.",
+        descTH: "นางฟ้าปอมปอม ปอมปอมที่เป็นนางฟ้า กลมๆ น่ารักๆ ดุ๊กดิ๊ก อารมณ์ดีและมีความสุขเสมอ",
         sheet: "ver11 Pic/emoji/AngelPomPom-icon.png",
         detailSheet: "ver11 Pic/emoji/AngelPomPom.png",
         link: "https://line.me/S/emoji/?id=5c725d50040ab1dfabdbdd48",

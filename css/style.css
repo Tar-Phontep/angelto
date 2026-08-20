@@ -125,16 +125,6 @@
   white-space: nowrap;
 }
 
-.pill {
-  border-radius: 999px;
-  background: #ffffff;
-  color: var(--dark-pink);
-  padding: 6px 14px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  width: fit-content;
-}
-
 .hero-actions {
   display: flex;
   flex-wrap: wrap;

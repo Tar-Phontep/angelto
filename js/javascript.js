@@ -161,71 +161,71 @@ const footerCopyright = document.getElementById("footer-copyright");
 if (footerCopyright) footerCopyright.textContent = `© ${new Date().getFullYear()} AngelTo`;
 
 const menuToggle = document.querySelector(".menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
-      const filterButtons = document.querySelectorAll(".filter-button");
-      const lineGroups = document.querySelectorAll(".line-group");
-      const revealItems = document.querySelectorAll(".reveal");
+const navLinks = document.querySelector(".nav-links");
+const filterButtons = document.querySelectorAll(".filter-button");
+const lineGroups = document.querySelectorAll(".line-group");
+const revealItems = document.querySelectorAll(".reveal");
 
-      menuToggle.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("is-open");
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
-      });
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("is-open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
 
-      navLinks.addEventListener("click", (event) => {
-        if (event.target.matches("a")) {
-          navLinks.classList.remove("is-open");
-          menuToggle.setAttribute("aria-expanded", "false");
+navLinks.addEventListener("click", (event) => {
+  if (event.target.matches("a")) {
+    navLinks.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
+});
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+
+    filterButtons.forEach((item) => item.classList.remove("is-active"));
+    button.classList.add("is-active");
+
+    lineGroups.forEach((group) => {
+      group.hidden = filter !== "all" && group.dataset.group !== filter;
+    });
+  });
+});
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 },
+);
+
+revealItems.forEach((item) => observer.observe(item));
+
+// ============ LOTTIE PLAYERS (LottieFiles / IconScout ให้ขยับได้จริง) ============
+// โหลดแบบ lazy: เล่นแอนิเมชันเมื่อ scroll เข้ามาในจอเท่านั้น (ประหยัด performance)
+if (typeof lottie !== "undefined") {
+  const lottieEls = document.querySelectorAll("[data-lottie]");
+  const lottieObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          lottie.loadAnimation({
+            container: el,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: el.dataset.lottie,
+          });
+          lottieObserver.unobserve(el);
         }
       });
-
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const filter = button.dataset.filter;
-
-          filterButtons.forEach((item) => item.classList.remove("is-active"));
-          button.classList.add("is-active");
-
-          lineGroups.forEach((group) => {
-            group.hidden = filter !== "all" && group.dataset.group !== filter;
-          });
-        });
-      });
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12 },
-      );
-
-      revealItems.forEach((item) => observer.observe(item));
-
-      // ============ LOTTIE PLAYERS (LottieFiles / IconScout ให้ขยับได้จริง) ============
-      // โหลดแบบ lazy: เล่นแอนิเมชันเมื่อ scroll เข้ามาในจอเท่านั้น (ประหยัด performance)
-      if (typeof lottie !== "undefined") {
-        const lottieEls = document.querySelectorAll("[data-lottie]");
-        const lottieObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const el = entry.target;
-                lottie.loadAnimation({
-                  container: el,
-                  renderer: "svg",
-                  loop: true,
-                  autoplay: true,
-                  path: el.dataset.lottie,
-                });
-                lottieObserver.unobserve(el);
-              }
-            });
-          },
-          { threshold: 0.2 },
-        );
-        lottieEls.forEach((el) => lottieObserver.observe(el));
-      }
+    },
+    { threshold: 0.2 },
+  );
+  lottieEls.forEach((el) => lottieObserver.observe(el));
+}

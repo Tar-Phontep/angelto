@@ -213,6 +213,17 @@
   margin-left: clamp(7px, 5.33vw, 71px);
 }
 
+/* Mobile only (≤720px) ขยับวงขึ้นนิดเดียว (ไม่ถึงครึ่งเหมือนที่เคยลองแล้ว
+   ขอย้อนกลับ) — ลด coefficient จาก 6.1vw เหลือ 5vw ที่ 375px ขยับขึ้นแค่
+   ~4px เท่านั้น ไม่แตะ gap/margin-left/ขนาดวง — Desktop/Tablet ไม่แตะ
+   2026-08-20 (แก้เพิ่ม: "ลงมา 2px" — บวก +2px คงที่ทับสูตรเดิมด้วย calc()
+   ให้ขยับลงตรง 2px ทุกความกว้างในช่วง mobile ไม่ใช่แค่ที่ 375px) */
+@media (max-width: 720px) {
+  .topic-banner-thumbs {
+    top: calc(clamp(16px, 5vw, 40px) + 2px);
+  }
+}
+
 /* Desktop only (≥961px, breakpoint ตรงกับที่ไฟล์นี้ใช้อยู่แล้ว) ขยับวงลง
    เพิ่มอีก 5px คงที่ (ไม่ใช้ vw เพราะ margin ที่เหลือจริงๆ อยู่ที่ 961px ซึ่ง
    เป็นจุดแคบสุดของช่วง desktop — วัดสดแล้วเหลือ margin ~7.4px ที่ 961px,
@@ -226,19 +237,20 @@
        เคยขยับแบบ global แล้วรู้สึกว่า "ดูไม่เหมือนขยับเลย" ที่ margin-left
        base clamp เดิมไม่ได้แก้ไว้ จึงย้อน base กลับไปที่เดิม (ไม่กระทบ
        Mobile/Tablet) แล้วเพิ่ม offset ก้อนใหญ่ที่นี่แทน — วัดสดที่ 961px
-       (จุดแคบสุดของช่วง Desktop) แล้ว: +100px ยังเหลือ margin ขวา ~16px
-       ปลอดภัย ไม่ชนขอบ 2026-08-20 */
-    margin-left: calc(clamp(7px, 5.33vw, 71px) + 115px);
+       (จุดแคบสุดของช่วง Desktop) หลายรอบตามคำขอ "ขยับขวาอีก" ต่อเนื่อง
+       (+100px → +115px → +125px ปัจจุบัน) เหลือ margin ขวา ~6.8px ที่ 961px
+       (จุดแคบสุด) ปลอดภัยแต่ใกล้หมดพื้นที่แล้ว 2026-08-20 */
+    margin-left: calc(clamp(7px, 5.33vw, 71px) + 125px);
   }
 }
 
 /* วงกลมพรีวิว: ใช้ bg whCircle.png เป็นพื้นหลังวงกลม (แทนวงกลม CSS ธรรมดา +
    เส้นประที่ทำเองก่อนหน้านี้) ใช้ clamp อิง vw ให้เข้ากับความสูง banner ที่
    ผูกกับ vw เหมือนกัน (banner สูง = width × 466/1920 ก็คือ ~24.3vw)
-   ขยายสัมประสิทธิ์ vw จาก 7vw เป็น 10vw (ceiling 150px) ตามคำขอ "ขยายวงพรีวิว"
-   2026-08-12 — 7vw เดิมที่ 1280px ได้แค่ ~90px (เท่าของเดิมก่อนขอขยาย เพราะ
-   ceiling ไม่มีผลจนกว่าจอจะกว้างเกิน 2142px) ขยับเป็น 10vw ได้ ~128px ที่
-   1280px ใหญ่ขึ้นชัดเจน */
+   ค่าปัจจุบัน (10.05vw, ceiling 154px) มาจากการสแกน pixel จริงในไฟล์ดีไซน์
+   ต้นฉบับ (Candy page design3.png, 1920×6181) — วงในเรฟมีเส้นผ่านศูนย์กลาง
+   ~193px จากความสูง banner เต็ม 466px = ~10.05% ของความกว้างจอ (แม่นกว่า
+   ค่ากะคร่าวๆ ที่เคยใช้ก่อนหน้า) 2026-08-20 */
 .topic-banner-thumb {
   width: clamp(30px, 10.05vw, 154px);
   aspect-ratio: 1;
@@ -576,6 +588,19 @@
   padding-right: 48px;
 }
 
+/* Responsive mobile (≤720px): Theme Set ลูกศร icon-next3.png เดิมอยู่ห่าง
+   จากขอบขวามากกว่า Sticker Set ถึง 48px (93px vs 45px) เพราะ
+   .theme-card-header-row มี padding-right:48px เพิ่มมา (ใส่ไว้แต่เดิมเพื่อ
+   Desktop โดยเฉพาะ ตามฟีดแบ็ก "ขยับเข้าไปซ้ายกว่านี้" 2026-08-09) —
+   ที่ Responsive mobile ตัด padding-right นี้ออก ให้ลูกศรอยู่ระดับ/แนวขวา
+   เดียวกับ Sticker Set (วัดสดแล้ว 45px เท่ากันทั้งคู่) Desktop ไม่กระทบ
+   2026-08-20 */
+@media (max-width: 720px) {
+  .theme-card-header-row {
+    padding-right: 0;
+  }
+}
+
 .theme-card-header {
   flex: 1 1 0;
   min-width: 0;
@@ -842,6 +867,20 @@ a.detail-preview-more:hover {
   .theme-preview-row-img {
     flex: 1 1 calc(50% - 24px);
     max-width: calc(50% - 24px);
+  }
+}
+
+/* Responsive mobile (≤720px): .theme-preview-row padding เดิม (16px 20px
+   16px 0 — ไม่มี left) ทำให้แถวรูปเยื้องซ้าย ไม่ centered เมื่อเทียบกับการ์ด
+   (วัดสดที่ 375px: ห่างขอบซ้าย 45px, ขอบขวา 65px ต่างกัน 20px เป๊ะตาม
+   padding-right เดิม) — เฉลี่ย padding ซ้าย-ขวาให้เท่ากัน (10px ทั้งคู่ รวม
+   ยังคง 20px เท่าเดิม ไม่กระทบความกว้างเนื้อหา) ขยับแถวไปขวา 10px ให้ห่างขอบ
+   ซ้าย-ขวาเท่ากัน (55px ทั้งคู่) ดู centered จริง — Desktop/Tablet
+   (padding-left ตั้งใจเป็น 0 ให้รูปซ้ายขนานกับ text ด้านบน) ไม่แตะ 2026-08-20 */
+@media (max-width: 720px) {
+  .theme-preview-row {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
