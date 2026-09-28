@@ -22,7 +22,10 @@
     // "[ยังไม่เปิดขายบน LINE Store]" — เช็คแบบนี้แทนเทียบ string ตรงๆ
     // กันพลาดกรณีมีข้อความสถานะแบบอื่นเพิ่มในอนาคต
     const isRealLink = item.link && !item.link.startsWith("[");
-    const statusText = !isRealLink && item.link ? item.link.replace(/^\[|\]$/g, "") : "ยังไม่มีลิงก์";
+    const statusText =
+      !isRealLink && item.link
+        ? item.link.replace(/^\[|\]$/g, "")
+        : "ยังไม่มีลิงก์";
     const moreIcon = `<img src="ver11 Pic/icons/icon-next3.png" alt="" loading="lazy" />`;
     const moreLink = isRealLink
       ? `<a class="detail-preview-more" href="${item.link}" target="_blank" rel="noopener" aria-label="ดูใน LINE Store">${moreIcon}</a>`
@@ -34,11 +37,15 @@
     // เรียงซ้ายไปขวา + ปุ่มไปต่อขนาน (center) กับแถวรูป ไม่ใช่มุมล่างขวา
     // ธีมที่ยังไม่มีชุดรูป (MooNuum Sweets, Nangel Pink Love, Cloud ธีมปกติ)
     // ยัง fallback ไปใช้การ์ดแบบ sticker เดิม
-    const isThemeWithFullSet = labelPrefix === "Theme" && item.icons && item.icons.length;
+    const isThemeWithFullSet =
+      labelPrefix === "Theme" && item.icons && item.icons.length;
 
     if (isThemeWithFullSet) {
       const row = item.icons
-        .map((src) => `<img class="theme-preview-row-img" src="${src}" alt="${displayName}" loading="lazy" />`)
+        .map(
+          (src) =>
+            `<img class="theme-preview-row-img" src="${src}" alt="${displayName}" loading="lazy" />`,
+        )
         .join("");
       // สีเฉลี่ยจริงจากรูปตัวอย่างของแต่ละธีม (item.themeColor ถ้ามี ปรับตาม
       // กฎห้ามเหลือง/เขียว/น้ำตาลแล้ว — ดู comment ใน characters-data.js) ใส่
@@ -49,15 +56,17 @@
       // ปกติสีธีมลงแค่ถาดรูป (rowStyle) — แต่ธีมที่ตั้ง containerColor:true
       // ไว้ใน data (เช่น Candy) ให้สีลงพื้นการ์ดทั้งใบแทน ถาดรูปเป็นโปร่งใส
       const useContainerColor = !!item.containerColor;
-      const rowStyle = item.themeColor && !useContainerColor
-        ? ` style="background: ${item.themeColor};"`
-        : "";
+      const rowStyle =
+        item.themeColor && !useContainerColor
+          ? ` style="background: ${item.themeColor};"`
+          : "";
       // ใช้ CSS variable แทน background shorthand ตรงๆ เพราะ shorthand จะ
       // reset background-image (รูปประดับ theme-bg-fly ที่ตั้งใน CSS class)
       // ให้เป็น none ไปด้วยทุกครั้ง — ต้องแยกสีพื้นออกจากรูปประดับ
-      const cardStyle = useContainerColor && item.themeColor
-        ? ` style="--theme-bg-color: ${item.themeColor};"`
-        : "";
+      const cardStyle =
+        useContainerColor && item.themeColor
+          ? ` style="--theme-bg-color: ${item.themeColor};"`
+          : "";
       const cardClass = useContainerColor ? " container-tinted" : "";
       return `
         <div class="detail-card theme-card-simple reveal ${tone}${cardClass}"${cardStyle} data-item-name="${item.name.replace(/"/g, "&quot;")}">
@@ -86,7 +95,10 @@
     // (เช่น Cloud 2 แพ็คแรก, MooNuum/Nangel Pink Love/Cloud ธีมปกติที่ไม่มี
     // ชุดไอคอน) กดลิงก์ไม่ได้เลยทั้งที่ข้อมูลมีลิงก์ถูกต้อง — บั๊กที่เจอ 2026-08-09
     const previewIcons = (item.icons || [])
-      .map((src) => `<img class="detail-preview-icon" src="${src}" alt="" loading="lazy" />`)
+      .map(
+        (src) =>
+          `<img class="detail-preview-icon" src="${src}" alt="" loading="lazy" />`,
+      )
       .join("");
     const previewRow = `<div class="detail-preview-row">${previewIcons}${moreLink}</div>`;
 
@@ -106,7 +118,8 @@
     // การ์ด Sticker ที่ติดกันของตัวละครเดียวกันสลับเข้ม/อ่อน (1=เข้ม, 2=อ่อน,
     // 3=เข้ม, ...) กันดูซ้ำเป็นสีเดียวแบนๆ ทั้งชุด — เฉพาะ Sticker เท่านั้น
     // (Theme มีระบบสีของตัวเองแล้ว, Emoji ไม่แตะ)
-    const altLightClass = labelPrefix === "Sticker" && index % 2 === 1 ? " tone-alt-light" : "";
+    const altLightClass =
+      labelPrefix === "Sticker" && index % 2 === 1 ? " tone-alt-light" : "";
 
     const cardBody = `
         <div class="detail-media">${media}</div>
@@ -144,7 +157,14 @@
       </div>`;
   }
 
-  function renderSection(sectionId, containerId, items, labelPrefix, tone, themeBgColor) {
+  function renderSection(
+    sectionId,
+    containerId,
+    items,
+    labelPrefix,
+    tone,
+    themeBgColor,
+  ) {
     const section = document.getElementById(sectionId);
     const container = document.getElementById(containerId);
     if (!items || items.length === 0) {
@@ -155,18 +175,24 @@
     container.innerHTML = items
       .map((item, i) => buildDetailCard(item, i, labelPrefix, tone))
       .join("");
-    // #theme-container เท่านั้นที่ต้องมี wing (theme bg fly.png) + พื้นหลังไล่สี
-    // ตามสีของ "ธีม" ตัวเอง (data.themeBgColor ต่อตัวละคร ดู characters-data.js)
-    // ไม่ใช้ tone-N ของ sticker อีกต่อไป เพราะ tone-N บางตัวไม่ตรงกับสีจริงของ
-    // ธีม (เช่น MooDaeng tone-2 เป็นชมพู แต่ธีมจริงต้องฟ้า) — ตั้งผ่าน CSS
-    // custom property แทน ไม่กระทบ sticker/emoji container เพราะเช็ค
-    // labelPrefix ก่อน 2026-09-22
+    // Sticker/Theme container ต้องใช้สีตามตัวละครจริง — Sticker ใช้ tone-N ของ
+    // ตัวละครแต่ละคน, Theme ใช้ themeBgColor (มีค่าเฉลี่ยจริงจากธีม) ถ้าไม่มี
+    // ให้ fallback เป็น tone-N แทน เพื่อให้แพ็คสติ๊กเกอร์/ธีมทั้งชุดมีสีที่ต่อเนื่อง
+    // กับ hero/character card และไม่เหลือพื้นขาวนวลแบบ neutral
+    if (labelPrefix === "Sticker") {
+      container.style.setProperty("--sticker-container-tint", `var(${tone})`);
+    }
     if (labelPrefix === "Theme") {
-      container.style.setProperty("--theme-container-tint", themeBgColor || `var(${tone})`);
+      container.style.setProperty(
+        "--theme-container-tint",
+        themeBgColor || `var(${tone})`,
+      );
     }
 
     // วงกลมพรีวิว 4 วงใน .topic-banner ของ section นี้
-    const thumbsEl = document.getElementById(`${labelPrefix.toLowerCase()}-topic-thumbs`);
+    const thumbsEl = document.getElementById(
+      `${labelPrefix.toLowerCase()}-topic-thumbs`,
+    );
     if (thumbsEl) {
       // bannerIcons: ไฟล์วงกลมสำเร็จรูป (มีกรอบประดับในตัวอยู่แล้ว) เจาะจง
       // สำหรับแถบ .topic-banner โดยเฉพาะ ถ้า item ไหนมีระบุไว้ ใช้ทั้ง 4 รูป
@@ -175,7 +201,9 @@
       // ปกติที่ไม่มีกรอบ ต้องพึ่ง .topic-banner-thumb (bg whCircle.png +
       // border-radius) ครอบให้ ไฟล์ bannerIcons ไม่ต้องพึ่งครอบซ้ำ (ดู class
       // topic-banner-thumb--composed ใน character.css)
-      const itemWithBannerIcons = items.find((item) => item.bannerIcons && item.bannerIcons.length);
+      const itemWithBannerIcons = items.find(
+        (item) => item.bannerIcons && item.bannerIcons.length,
+      );
       if (itemWithBannerIcons) {
         thumbsEl.innerHTML = itemWithBannerIcons.bannerIcons
           .slice(0, 4)
@@ -202,7 +230,9 @@
       });
       let extraIndex = 1;
       while (thumbIcons.length < 4) {
-        const itemsWithMoreIcons = items.filter((item) => item.icons && item.icons.length > extraIndex);
+        const itemsWithMoreIcons = items.filter(
+          (item) => item.icons && item.icons.length > extraIndex,
+        );
         if (itemsWithMoreIcons.length === 0) break;
         itemsWithMoreIcons.forEach((item) => {
           if (thumbIcons.length < 4) thumbIcons.push(item.icons[extraIndex]);
@@ -211,7 +241,10 @@
       }
       thumbsEl.innerHTML = thumbIcons
         .slice(0, 4)
-        .map((src) => `<div class="topic-banner-thumb"><img src="${src}" alt="" loading="lazy" /></div>`)
+        .map(
+          (src) =>
+            `<div class="topic-banner-thumb"><img src="${src}" alt="" loading="lazy" /></div>`,
+        )
         .join("");
     }
   }
@@ -226,7 +259,8 @@
 
   function init() {
     const footerCopyright = document.getElementById("footer-copyright");
-    if (footerCopyright) footerCopyright.textContent = `© ${new Date().getFullYear()} AngelTo`;
+    if (footerCopyright)
+      footerCopyright.textContent = `© ${new Date().getFullYear()} AngelTo`;
 
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("slug");
@@ -237,20 +271,28 @@
       return;
     }
 
-    document.getElementById("page-title").textContent = `${data.name} — AngelTo`;
+    document.getElementById("page-title").textContent =
+      `${data.name} — AngelTo`;
 
     // อัปเดต Open Graph tags ให้ตรงกับตัวละครนี้ (สำหรับตอนแชร์ลิงก์หน้านี้)
     const ogTitle = document.getElementById("og-title");
     const ogDesc = document.getElementById("og-description");
     const ogImage = document.getElementById("og-image");
     if (ogTitle) ogTitle.setAttribute("content", `${data.name} — AngelTo`);
-    if (ogDesc) ogDesc.setAttribute("content", data.descTH || data.descEN || `สติกเกอร์และธีมของ ${data.name} จาก AngelTo`);
+    if (ogDesc)
+      ogDesc.setAttribute(
+        "content",
+        data.descTH ||
+          data.descEN ||
+          `สติกเกอร์และธีมของ ${data.name} จาก AngelTo`,
+      );
     if (ogImage && data.cover) ogImage.setAttribute("content", data.cover);
     // eyebrow เปลี่ยนจากหมวด (Sticker/Theme/Emoji) เป็นวันวางขาย — ใส่
     // data.releaseDate ต่อตัวละครใน characters-data.js เมื่อมีวันจริง ถ้ายัง
     // ไม่ระบุ ให้ fallback เป็น placeholder "00/00/20xx" ไปก่อน
     const eyebrowEl = document.getElementById("char-eyebrow");
-    if (eyebrowEl) eyebrowEl.textContent = `Release date: ${data.releaseDate || "00/00/20xx"}`;
+    if (eyebrowEl)
+      eyebrowEl.textContent = `Release date: ${data.releaseDate || "00/00/20xx"}`;
 
     // ใส่ tone class ให้ hero เพื่อสไตล์เฉพาะตัวละคร (ตอนนี้ใช้กับ candy อย่างเดียว)
     const heroInner = document.querySelector(".char-hero-inner");
@@ -266,18 +308,37 @@
       avatar.innerHTML = `<img src="${data.cover}" alt="${data.name}" style="max-width:154px;max-height:154px;width:auto;height:auto;object-fit:contain;position:relative;z-index:2;" />`;
     }
 
-    renderSection("sticker-section", "sticker-container", data.stickers, "Sticker", data.tone);
-    renderSection("theme-section", "theme-container", data.themes, "Theme", data.tone, data.themeBgColor);
-    renderSection("emoji-section", "emoji-container", data.emoji, "Emoji", data.tone);
+    renderSection(
+      "sticker-section",
+      "sticker-container",
+      data.stickers,
+      "Sticker",
+      data.tone,
+    );
+    renderSection(
+      "theme-section",
+      "theme-container",
+      data.themes,
+      "Theme",
+      data.tone,
+      data.themeBgColor,
+    );
+    renderSection(
+      "emoji-section",
+      "emoji-container",
+      data.emoji,
+      "Emoji",
+      data.tone,
+    );
 
     // ============ SCROLL-TO + HIGHLIGHT รายการที่กดมาจากหน้าเมนู ============
     // กันปัญหา "กดสติ๊กเกอร์ตัวหนึ่ง แต่หน้าที่เปิดขึ้นโชว์ทุกแพ็คปนกัน ไม่รู้ว่า
     // อันไหนคืออันที่กด" — เจาะจงไปที่การ์ดนั้นเลยพร้อมไฮไลต์กรอบชมพู
     const targetItem = params.get("item");
     if (targetItem) {
-      const targetCard = Array.from(document.querySelectorAll("[data-item-name]")).find(
-        (el) => el.dataset.itemName === targetItem,
-      );
+      const targetCard = Array.from(
+        document.querySelectorAll("[data-item-name]"),
+      ).find((el) => el.dataset.itemName === targetItem);
       if (targetCard) {
         targetCard.classList.add("is-target");
         setTimeout(() => {

@@ -216,37 +216,6 @@
   margin-left: clamp(7px, 5.33vw, 71px);
 }
 
-/* Mobile only (≤720px) ขยับวงขึ้นนิดเดียว (ไม่ถึงครึ่งเหมือนที่เคยลองแล้ว
-   ขอย้อนกลับ) — ลด coefficient จาก 6.1vw เหลือ 5vw ที่ 375px ขยับขึ้นแค่
-   ~4px เท่านั้น ไม่แตะ gap/margin-left/ขนาดวง — Desktop/Tablet ไม่แตะ
-   2026-08-20 (แก้เพิ่ม: "ลงมา 2px" — บวก +2px คงที่ทับสูตรเดิมด้วย calc()
-   ให้ขยับลงตรง 2px ทุกความกว้างในช่วง mobile ไม่ใช่แค่ที่ 375px) */
-@media (max-width: 1024px) {
-  .topic-banner-thumbs {
-    top: calc(clamp(16px, 5vw, 40px) + 2px);
-  }
-}
-
-/* Desktop only (≥961px, breakpoint ตรงกับที่ไฟล์นี้ใช้อยู่แล้ว) ขยับวงลง
-   เพิ่มอีก 5px คงที่ (ไม่ใช้ vw เพราะ margin ที่เหลือจริงๆ อยู่ที่ 961px ซึ่ง
-   เป็นจุดแคบสุดของช่วง desktop — วัดสดแล้วเหลือ margin ~7.4px ที่ 961px,
-   +5px ยังเหลือ ~2.4px ไม่โดนตัด (เท่าที่ mobile ใช้อยู่แล้วในรอบก่อนหน้า)
-   จอกว้างกว่านั้น margin จะเหลือเยอะขึ้นเรื่อยๆ ไม่ใช่ปัญหา — Mobile/Tablet
-   (<961px) ไม่แตะเลย เพราะ margin ที่ 375px แคบมากอยู่แล้ว (~2.9px) 2026-08-19 */
-@media (min-width: 1025px) {
-  .topic-banner-thumbs {
-    top: calc(clamp(18px, 6.1vw, 93px) + 6px);
-    /* ขยับกลุ่มวงไปขวาเพิ่มเฉพาะ Desktop (ตามคำขอ "ปรับแค่ Desktop" — ก่อนหน้า
-       เคยขยับแบบ global แล้วรู้สึกว่า "ดูไม่เหมือนขยับเลย" ที่ margin-left
-       base clamp เดิมไม่ได้แก้ไว้ จึงย้อน base กลับไปที่เดิม (ไม่กระทบ
-       Mobile/Tablet) แล้วเพิ่ม offset ก้อนใหญ่ที่นี่แทน — วัดสดที่ 961px
-       (จุดแคบสุดของช่วง Desktop) หลายรอบตามคำขอ "ขยับขวาอีก" ต่อเนื่อง
-       (+100px → +115px → +125px ปัจจุบัน) เหลือ margin ขวา ~6.8px ที่ 961px
-       (จุดแคบสุด) ปลอดภัยแต่ใกล้หมดพื้นที่แล้ว 2026-08-20 */
-    margin-left: calc(clamp(7px, 5.33vw, 71px) + 125px);
-  }
-}
-
 /* วงกลมพรีวิว: ใช้ bg whCircle.png เป็นพื้นหลังวงกลม (แทนวงกลม CSS ธรรมดา +
    เส้นประที่ทำเองก่อนหน้านี้) ใช้ clamp อิง vw ให้เข้ากับความสูง banner ที่
    ผูกกับ vw เหมือนกัน (banner สูง = width × 466/1920 ก็คือ ~24.3vw)
@@ -305,6 +274,17 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  background: transparent;
+}
+
+/* Sticker section ใช้สีโทนของตัวละครจริง เพื่อให้ container ของสติ๊กเกอร์แต่ละ
+   ตัวมีความต่อเนื่องกับ Hero/cover และไม่ดูเป็นพื้นขาว neutral — Theme section
+   ใช้ themeBgColor ของแต่ละ character เช่นเดียวกัน แต่ยังคง wing decoration
+   ของธีมไว้ด้านหลัง การ์ด */
+#sticker-container {
+  --sticker-container-tint: var(--tone-1);
+  background: transparent;
+  border-radius: var(--radius);
 }
 
 /* #theme-container: wing (theme bg fly.png เวอร์ชันขาวโปร่งแสง — ไม่ใช่ไฟล์
@@ -319,22 +299,7 @@
    fallback เป็น --tone-1 เผื่อกรณีไม่มีค่าส่งมา (ไม่ควรเกิดขึ้นจริง) 2026-09-22 */
 #theme-container {
   --theme-container-tint: var(--tone-1);
-  background-image:
-    url("../ver11 Pic/Design Character Page/theme bg fly.png"),
-    linear-gradient(
-      90deg,
-      var(--theme-container-tint, #facbdc) 0%,
-      var(--theme-container-tint, #facbdc) 40%,
-      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 70%,
-      #ffffff 100%
-    );
-  background-repeat: no-repeat, no-repeat;
-  background-position:
-    left 62%,
-    left top;
-  background-size:
-    clamp(300px, 50vh, 720px) auto,
-    100% 100%;
+  background: transparent;
   border-radius: var(--radius);
 }
 
@@ -605,22 +570,11 @@
 .theme-card-simple.container-tinted {
   /* fallback เผื่อการ์ดไม่มี tone-N class ติดมา (ไม่ควรเกิดในทางปฏิบัติ เพราะ
      ${tone} ใส่มาจาก character-render.js เสมอ) */
-  background-image:
-    url("../ver11 Pic/Design Character Page/theme bg fly.png"),
-    linear-gradient(
-      90deg,
-      var(--theme-container-tint, #facbdc) 0%,
-      var(--theme-container-tint, #facbdc) 40%,
-      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 70%,
-      #ffffff 100%
-    );
-  background-repeat: no-repeat, no-repeat;
-  background-position:
-    left 70%,
-    left top;
-  background-size:
-    clamp(280px, 52vw, 680px) auto,
-    100% 100%;
+  background-color: var(--theme-container-tint, #facbdc);
+  background-image: url("../ver11 Pic/Design Character Page/theme bg fly.png");
+  background-repeat: no-repeat;
+  background-position: left 70%;
+  background-size: clamp(280px, 52vw, 680px) auto;
 }
 
 /* สีไล่ของการ์ด Theme (container-tinted) — ใช้ var(--theme-container-tint)
@@ -638,8 +592,7 @@
     linear-gradient(
       90deg,
       var(--theme-container-tint, #facbdc) 0%,
-      var(--theme-container-tint, #facbdc) 40%,
-      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 70%,
+      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 55%,
       #ffffff 100%
     );
 }
@@ -659,19 +612,19 @@
    left top/left bottom เดิม ลดขนาดลงเล็กน้อยด้วยเพราะตำแหน่งกลางเสี่ยงทับ
    เนื้อหาการ์ดมากกว่าตำแหน่งมุมเดิม */
 #theme-container .detail-card {
+  background-color: var(--theme-container-tint, #facbdc);
   background-image:
     url("../ver11 Pic/Design Character Page/theme bg fly.png"),
     linear-gradient(
       90deg,
       var(--theme-container-tint, #facbdc) 0%,
-      var(--theme-container-tint, #facbdc) 40%,
-      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 70%,
+      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 55%,
       #ffffff 100%
     );
-  background-repeat: no-repeat, no-repeat;
+  background-repeat: no-repeat;
   background-position:
     left 68%,
-    left top;
+    center;
   background-size:
     clamp(280px, 50vw, 620px) auto,
     100% 100%;
@@ -900,24 +853,22 @@
 .detail-preview-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 12px 14px;
   padding-top: 18px;
   border-top: 1px solid rgba(229, 106, 156, 0.14);
+  width: 100%;
 }
 
 .detail-preview-icon {
-  flex: 1 1 0;
-  width: auto;
-  min-width: 0;
-  /* วนกลับมาที่ 25% เดิม 2026-08-09 (เคยลองลดเป็น 15% แล้ว 20% ระหว่างทาง
-     สุดท้าย user ขอกลับมา 25% ตามเดิม) — อิงความกว้างเหมือนเดิม ไม่สลับไปอิง
-     ความสูงแบบ % ของ parent เพราะเคยเจอบั๊กจริงมาแล้ว (ดู comment ด้านบนเรื่อง
-     ไอคอนพองที่ viewport 800px) */
-  max-width: calc(25% - 20px);
+  flex: 1 1 64px;
+  width: 64px;
+  min-width: 52px;
+  max-width: 88px;
   aspect-ratio: 1 / 1;
   object-fit: contain;
+  display: block;
 }
 
 .detail-preview-more {
@@ -925,10 +876,7 @@
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  /* margin-left:auto กันไว้เผื่อเป็นสมาชิกตัวเดียวในแถว (เช่น theme ที่โชว์
-     กริด 4 รูปไปแล้วด้านบน เหลือแค่ปุ่มนี้ตัวเดียว) — ไม่กระทบตอนมี icon
-     ร่วมแถวด้วยเพราะ space-between ดันไปขวาสุดอยู่แล้ว */
-  margin-left: auto;
+  margin-left: 0;
   transition: transform 180ms ease;
 }
 
@@ -973,11 +921,57 @@ a.detail-preview-more:hover {
     padding-left: 10px;
     padding-right: 10px;
   }
+
+  .detail-preview-row {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .detail-preview-icon {
+    flex: 0 0 52px;
+    width: 52px;
+    max-width: 52px;
+    min-width: 52px;
+  }
+
+  .detail-preview-more {
+    width: 36px;
+    height: 36px;
+    margin-left: 0;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-preview-icon {
+    flex: 0 0 44px;
+    width: 44px;
+    max-width: 44px;
+    min-width: 44px;
+  }
 }
 
 @media (max-width: 1024px) {
+  .topic-banner {
+    overflow: visible;
+  }
+
+  #sticker-container .detail-card,
+  #theme-container .detail-card,
+  #emoji-container .detail-card {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    overflow: visible;
+  }
+
   .detail-card {
     grid-template-columns: 1fr;
+    overflow: visible;
   }
   #sticker-container .detail-card-inner,
   #emoji-container .detail-card-inner,
