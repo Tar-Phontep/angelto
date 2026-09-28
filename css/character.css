@@ -86,7 +86,10 @@
   color: #000000;
 }
 
-@media (max-width: 720px) {
+/* ขยายจาก 720px เดิมเป็น 1024px — ครอบคลุม iPad portrait ทุกรุ่น (744-1032px
+   ตามข้อมูล viewport จริงของ Apple) ให้ได้ layout แบบ Responsive Mobile
+   เหมือนกัน แทนที่จะตกไปอยู่ช่วง tablet/desktop เดิม 2026-09-22 */
+@media (max-width: 1024px) {
   .char-hero-inner {
     grid-template-columns: 1fr;
     text-align: center;
@@ -218,7 +221,7 @@
    ~4px เท่านั้น ไม่แตะ gap/margin-left/ขนาดวง — Desktop/Tablet ไม่แตะ
    2026-08-20 (แก้เพิ่ม: "ลงมา 2px" — บวก +2px คงที่ทับสูตรเดิมด้วย calc()
    ให้ขยับลงตรง 2px ทุกความกว้างในช่วง mobile ไม่ใช่แค่ที่ 375px) */
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   .topic-banner-thumbs {
     top: calc(clamp(16px, 5vw, 40px) + 2px);
   }
@@ -230,7 +233,7 @@
    +5px ยังเหลือ ~2.4px ไม่โดนตัด (เท่าที่ mobile ใช้อยู่แล้วในรอบก่อนหน้า)
    จอกว้างกว่านั้น margin จะเหลือเยอะขึ้นเรื่อยๆ ไม่ใช่ปัญหา — Mobile/Tablet
    (<961px) ไม่แตะเลย เพราะ margin ที่ 375px แคบมากอยู่แล้ว (~2.9px) 2026-08-19 */
-@media (min-width: 961px) {
+@media (min-width: 1025px) {
   .topic-banner-thumbs {
     top: calc(clamp(18px, 6.1vw, 93px) + 6px);
     /* ขยับกลุ่มวงไปขวาเพิ่มเฉพาะ Desktop (ตามคำขอ "ปรับแค่ Desktop" — ก่อนหน้า
@@ -304,6 +307,37 @@
   gap: 32px;
 }
 
+/* #theme-container: wing (theme bg fly.png เวอร์ชันขาวโปร่งแสง — ไม่ใช่ไฟล์
+   วงกลมชมพูทึบตายตัวแบบเดิม) + พื้นหลังไล่สีตาม "สีของธีม" จริงของตัวละคร
+   หน้านี้ (ไม่ใช่ tone-N ของ sticker อีกต่อไป เพราะ tone-N บางตัวไม่ตรงกับสี
+   จริงของธีม — เช่น MooDaeng tone-2 เป็นชมพู แต่ธีมจริงต้องฟ้า) อยู่หลัง
+   การ์ดทั้งชุด โผล่ให้เห็นเฉพาะช่อง gap 32px ระหว่างการ์ดกับขอบ container
+   เพราะการ์ดแต่ละใบทึบอยู่แล้ว — ค่าสีมาจาก CSS custom property
+   --theme-container-tint ที่ set ผ่าน renderSection() ใน character-render.js
+   (data.themeBgColor ต่อตัวละคร ดู characters-data.js) เช็คเฉพาะ
+   labelPrefix === "Theme" ไม่กระทบ sticker-container/emoji-container
+   fallback เป็น --tone-1 เผื่อกรณีไม่มีค่าส่งมา (ไม่ควรเกิดขึ้นจริง) 2026-09-22 */
+#theme-container {
+  --theme-container-tint: var(--tone-1);
+  background-image:
+    url("../ver11 Pic/Design Character Page/theme bg fly.png"),
+    linear-gradient(
+      90deg,
+      var(--theme-container-tint, #facbdc) 0%,
+      var(--theme-container-tint, #facbdc) 40%,
+      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 70%,
+      #ffffff 100%
+    );
+  background-repeat: no-repeat, no-repeat;
+  background-position:
+    left 62%,
+    left top;
+  background-size:
+    clamp(300px, 50vh, 720px) auto,
+    100% 100%;
+  border-radius: var(--radius);
+}
+
 .detail-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -352,11 +386,19 @@
   margin: 0 auto;
 }
 
+#theme-container .detail-card-inner {
+  padding-inline: 36px;
+}
+
 #sticker-container .detail-card-inner,
 #emoji-container .detail-card-inner,
 #theme-container .detail-card:not(.theme-card-simple) .detail-card-inner {
   display: grid;
   grid-template-columns: minmax(0, 420px) 1fr;
+}
+
+#theme-container .detail-card.theme-card-simple .detail-card-inner {
+  padding: 32px 52px;
 }
 
 .detail-card.tone-1 {
@@ -421,7 +463,6 @@
 .detail-card:hover {
   transform: translateY(-6px) scale(1.02);
   border-color: rgba(229, 106, 156, 0.55);
-  box-shadow: var(--shadow-hover);
 }
 
 /* ขยายคอลัมน์รูปจาก 420px ฐาน เป็น 460px เฉพาะจอกว้างจริงๆ (≥961px) ตามรีวิว
@@ -430,7 +471,7 @@
    การ์ดยังเป็น 2 คอลัมน์แต่ container แคบกว่า) จะบีบข้อความจนเหลือกว้างแค่
    ~75px ตัวหนังสือพับทีละ 1-2 คำต่อบรรทัด อ่านไม่ได้จริง — เลยจำกัดผลของ
    การปรับนี้ไว้แค่จอกว้างที่มีที่ว่างพอ ไม่กระทบ tablet/มือถือเลย */
-@media (min-width: 961px) {
+@media (min-width: 1025px) {
   .detail-card {
     grid-template-columns: minmax(0, 460px) 1fr;
   }
@@ -492,7 +533,7 @@
    56px แทนที่จะเป็น 100vw ตรงๆ) ทำให้ inset ทั้งสองชั้นบวกกันเพี้ยนไปจาก
    sticker/emoji ที่ไม่มี padding ชั้นนอกแบบนี้ */
 .theme-card-simple .detail-card-inner {
-  padding: 28px;
+  padding: 32px 52px;
 }
 
 /* การ์ดที่ให้สีธีมลงพื้นทั้งใบ (containerColor:true) — สีพื้นหลังมาจาก
@@ -562,15 +603,77 @@
    หน้าหลัก) ไล่ระดับต่อเนื่องตามความกว้างจอแทน ไม่มี cutoff แข็งๆ อีกแล้ว
    2026-08-11 ตามคำขอ "responsive คร่าวๆ เรฟคือหน้าหลัก" */
 .theme-card-simple.container-tinted {
+  /* fallback เผื่อการ์ดไม่มี tone-N class ติดมา (ไม่ควรเกิดในทางปฏิบัติ เพราะ
+     ${tone} ใส่มาจาก character-render.js เสมอ) */
   background-image:
-    url("../ver11 Pic/ThemeLine Pic/theme bg fly.png"),
-    linear-gradient(90deg, #ffffff 0%, #facbdc 100%);
+    url("../ver11 Pic/Design Character Page/theme bg fly.png"),
+    linear-gradient(
+      90deg,
+      var(--theme-container-tint, #facbdc) 0%,
+      var(--theme-container-tint, #facbdc) 40%,
+      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 70%,
+      #ffffff 100%
+    );
   background-repeat: no-repeat, no-repeat;
   background-position:
-    left top,
+    left 70%,
     left top;
   background-size:
-    clamp(190px, 45vw, 600px) auto,
+    clamp(280px, 52vw, 680px) auto,
+    100% 100%;
+}
+
+/* สีไล่ของการ์ด Theme (container-tinted) — ใช้ var(--theme-container-tint)
+   ตัวเดียวกับที่ #theme-container ใช้ (data.themeBgColor ต่อตัวละคร ดู
+   characters-data.js) แทน tone-N เดิม เพราะ custom property ที่ตั้งบน
+   #theme-container ถูก inherit ลงมาถึงการ์ดลูกทุกใบอยู่แล้วโดยธรรมชาติของ CSS
+   (ไม่ต้อง set ซ้ำ ไม่ต้องมี .tone-N rule แยก 9 อันเหมือนก่อนหน้านี้) — ผลคือ
+   สีของการ์ดกับสีพื้นหลังของ container ตรงกันเป๊ะเสมอ ไม่มีทางเพี้ยนเป็นคนละสี
+   กันได้อีก (ก่อนหน้านี้การ์ดใช้ tone-N แต่ container ใช้ themeBgColor แยกกัน
+   ทำให้ MooDaeng การ์ดออกชมพูแต่ container ออกฟ้า ไม่ match กัน — แก้แล้ว)
+   2026-09-25 */
+.theme-card-simple.container-tinted {
+  background-image:
+    url("../ver11 Pic/Design Character Page/theme bg fly.png"),
+    linear-gradient(
+      90deg,
+      var(--theme-container-tint, #facbdc) 0%,
+      var(--theme-container-tint, #facbdc) 40%,
+      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 70%,
+      #ffffff 100%
+    );
+}
+
+/* บั๊กที่เจอจริง: ธีมที่ไม่มี item.icons (fallback ใช้ template เดียวกับ
+   Sticker เช่น "Angel Cloud Theme" ของ cloud) ไม่ได้เป็น .theme-card-simple
+   เลยไม่โดนกฎ container-tinted ด้านบน — พื้นหลังเลยยังเป็นสี tone-N ของ
+   Sticker (คนละสีกับ --theme-container-tint ที่ gap กับการ์ดใบอื่นใช้)
+   เกิดเป็นรอยตะเข็บสีไม่ต่อกันตรงช่องว่างระหว่างการ์ด — บังคับให้การ์ดทุกใบ
+   ใน #theme-container (ไม่ว่า template ไหน) ใช้ wing+tint เดียวกันหมด กัน
+   สีเพี้ยนที่รอยต่อ specificity ของ #id ชนะ .tone-N เดิมอยู่แล้วไม่ต้องพึ่ง
+   ลำดับไฟล์ 2026-09-26
+   2026-09-26 (รอบ 3): กลับมาเหลือ wing แค่ตัวเดียว (ตามคำขอ "ใช้ตัวเดียว")
+   ย้ายจากมุมซ้ายบน → ซ้ายล่าง แทน ไม่มี 2 ชั้นซ้อนกันแล้ว
+   2026-09-26 (รอบ 4): ย้ายอีกรอบตามรูปอ้างอิง THEME 1 (Candy) — ไม่ใช่ชิดขอบ
+   บน/ล่างเป๊ะๆ แต่ค่อนไปทาง "กลางๆ เยื้องขึ้นบนนิดนึง" ใช้ left 30% แทน
+   left top/left bottom เดิม ลดขนาดลงเล็กน้อยด้วยเพราะตำแหน่งกลางเสี่ยงทับ
+   เนื้อหาการ์ดมากกว่าตำแหน่งมุมเดิม */
+#theme-container .detail-card {
+  background-image:
+    url("../ver11 Pic/Design Character Page/theme bg fly.png"),
+    linear-gradient(
+      90deg,
+      var(--theme-container-tint, #facbdc) 0%,
+      var(--theme-container-tint, #facbdc) 40%,
+      color-mix(in srgb, var(--theme-container-tint, #facbdc) 35%, #ffffff) 70%,
+      #ffffff 100%
+    );
+  background-repeat: no-repeat, no-repeat;
+  background-position:
+    left 68%,
+    left top;
+  background-size:
+    clamp(280px, 50vw, 620px) auto,
     100% 100%;
 }
 
@@ -595,7 +698,7 @@
    ที่ Responsive mobile ตัด padding-right นี้ออก ให้ลูกศรอยู่ระดับ/แนวขวา
    เดียวกับ Sticker Set (วัดสดแล้ว 45px เท่ากันทั้งคู่) Desktop ไม่กระทบ
    2026-08-20 */
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   .theme-card-header-row {
     padding-right: 0;
   }
@@ -746,24 +849,12 @@
   flex-shrink: 0;
 }
 
-/* ช่วง tablet (721-960px) การ์ดยังเป็น 2 คอลัมน์แต่ container แคบกว่า desktop
-   มาก — วัดจริงแล้วแม้จำกัด cover-icon ไว้ที่ 140px ก็ยังเหลือที่ให้ตัวหนังสือ
-   แค่ ~87px (8 บรรทัด พับทีละคำ) ตัดปัญหาที่ต้นตอแทนไล่ลดขนาด icon ไปเรื่อยๆ:
-   ซ่อน cover-icon เฉพาะช่วงนี้ (เป็นแค่รูปสติ๊กเกอร์เดี่ยวประกอบ ไม่ใช่ข้อมูล
-   หลัก — ชื่อ/คำอธิบายยังอยู่ครบ) ให้ .detail-lang-stack ได้พื้นที่เต็มแทน
-   มือถือ (≤720px) ไม่กระทบ เพราะการ์ดซ้อนคอลัมน์เดียวอยู่แล้วไม่มีการแย่งพื้นที่
-   แบบนี้ — วางกฎ 2 บล็อกนี้ "หลัง" กฎฐานด้านบนเสมอ (specificity เท่ากัน ลำดับ
-   ไฟล์เป็นตัวตัดสิน ถ้าย้ายไปไว้ก่อนกฎฐานจะโดนกฎฐานทับ ไม่มีผลอะไรเลย — เคย
-   พลาดจุดนี้มาก่อนตอนพัฒนา) */
-@media (min-width: 721px) and (max-width: 960px) {
-  .detail-cover-icon {
-    display: none;
-  }
-}
-
-/* คลาย max-width ของ cover-icon ให้เท่ากับ max-height (190px) เฉพาะจอกว้าง
-   ที่ .detail-body มีที่ว่างพอ */
-@media (min-width: 961px) {
+/* เดิมช่วง tablet (721-960px) เคยซ่อน cover-icon ทั้งอันเพราะการ์ดยังเป็น 2
+   คอลัมน์แต่ container แคบเกินไป — ตอนนี้ iPad portrait (สูงสุด 1024px) ถูก
+   จัดให้เป็น layout เดียวกับ Responsive Mobile แล้ว (การ์ดคอลัมน์เดียว, ดู
+   @media (max-width: 1024px) ด้านล่างที่คุม .detail-cover-icon max-height:100px)
+   เลยไม่มีปัญหาแย่งพื้นที่แบบเดิมอีกต่อไป ตัดกฎซ่อน icon ทิ้งไป 2026-09-22 */
+@media (min-width: 1025px) {
   .detail-cover-icon {
     max-width: 190px;
   }
@@ -877,14 +968,14 @@ a.detail-preview-more:hover {
    ยังคง 20px เท่าเดิม ไม่กระทบความกว้างเนื้อหา) ขยับแถวไปขวา 10px ให้ห่างขอบ
    ซ้าย-ขวาเท่ากัน (55px ทั้งคู่) ดู centered จริง — Desktop/Tablet
    (padding-left ตั้งใจเป็น 0 ให้รูปซ้ายขนานกับ text ด้านบน) ไม่แตะ 2026-08-20 */
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   .theme-preview-row {
     padding-left: 10px;
     padding-right: 10px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   .detail-card {
     grid-template-columns: 1fr;
   }
@@ -895,6 +986,14 @@ a.detail-preview-more:hover {
   }
   .detail-lang-row {
     text-align: left;
+  }
+  /* มือถือ: cover-icon ขึ้นบนกึ่งกลาง เหนือ detail-lang-stack แทนที่จะอยู่
+     ข้างกันแบบ desktop/tablet — ลำดับ DOM เดิม (coverIcon มาก่อน
+     detail-lang-stack ใน character-render.js) ทำให้ column ได้ลำดับถูกอยู่
+     แล้ว ไม่ต้องใช้ order */
+  .detail-lang-group {
+    flex-direction: column;
+    align-items: center;
   }
   /* ที่ความกว้างนี้ .detail-card เป็นคอลัมน์เดียว (media ซ้อนบน body แทน
      อยู่ข้างกัน) .detail-body เลยไม่มีความสูงแน่นอนจาก grid stretch ให้

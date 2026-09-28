@@ -144,7 +144,7 @@
       </div>`;
   }
 
-  function renderSection(sectionId, containerId, items, labelPrefix, tone) {
+  function renderSection(sectionId, containerId, items, labelPrefix, tone, themeBgColor) {
     const section = document.getElementById(sectionId);
     const container = document.getElementById(containerId);
     if (!items || items.length === 0) {
@@ -155,6 +155,15 @@
     container.innerHTML = items
       .map((item, i) => buildDetailCard(item, i, labelPrefix, tone))
       .join("");
+    // #theme-container เท่านั้นที่ต้องมี wing (theme bg fly.png) + พื้นหลังไล่สี
+    // ตามสีของ "ธีม" ตัวเอง (data.themeBgColor ต่อตัวละคร ดู characters-data.js)
+    // ไม่ใช้ tone-N ของ sticker อีกต่อไป เพราะ tone-N บางตัวไม่ตรงกับสีจริงของ
+    // ธีม (เช่น MooDaeng tone-2 เป็นชมพู แต่ธีมจริงต้องฟ้า) — ตั้งผ่าน CSS
+    // custom property แทน ไม่กระทบ sticker/emoji container เพราะเช็ค
+    // labelPrefix ก่อน 2026-09-22
+    if (labelPrefix === "Theme") {
+      container.style.setProperty("--theme-container-tint", themeBgColor || `var(${tone})`);
+    }
 
     // วงกลมพรีวิว 4 วงใน .topic-banner ของ section นี้
     const thumbsEl = document.getElementById(`${labelPrefix.toLowerCase()}-topic-thumbs`);
@@ -237,14 +246,11 @@
     if (ogTitle) ogTitle.setAttribute("content", `${data.name} — AngelTo`);
     if (ogDesc) ogDesc.setAttribute("content", data.descTH || data.descEN || `สติกเกอร์และธีมของ ${data.name} จาก AngelTo`);
     if (ogImage && data.cover) ogImage.setAttribute("content", data.cover);
-    // ตั้ง eyebrow ให้ตรงกับหมวดที่ตัวละครนี้มีจริง แทนที่จะขึ้น "Sticker Line"
-    // ตายตัวเหมือนเดิม (ตัวละครที่ไม่มี sticker เช่นบางกรณีจะผิดหมวด)
-    const categories = [];
-    if ((data.stickers || []).length) categories.push("Sticker");
-    if ((data.themes || []).length) categories.push("Theme");
-    if ((data.emoji || []).length) categories.push("Emoji");
+    // eyebrow เปลี่ยนจากหมวด (Sticker/Theme/Emoji) เป็นวันวางขาย — ใส่
+    // data.releaseDate ต่อตัวละครใน characters-data.js เมื่อมีวันจริง ถ้ายัง
+    // ไม่ระบุ ให้ fallback เป็น placeholder "00/00/20xx" ไปก่อน
     const eyebrowEl = document.getElementById("char-eyebrow");
-    if (eyebrowEl) eyebrowEl.textContent = data.eyebrow || categories.join(" · ") || "Collection";
+    if (eyebrowEl) eyebrowEl.textContent = `Release date: ${data.releaseDate || "00/00/20xx"}`;
 
     // ใส่ tone class ให้ hero เพื่อสไตล์เฉพาะตัวละคร (ตอนนี้ใช้กับ candy อย่างเดียว)
     const heroInner = document.querySelector(".char-hero-inner");
@@ -261,7 +267,7 @@
     }
 
     renderSection("sticker-section", "sticker-container", data.stickers, "Sticker", data.tone);
-    renderSection("theme-section", "theme-container", data.themes, "Theme", data.tone);
+    renderSection("theme-section", "theme-container", data.themes, "Theme", data.tone, data.themeBgColor);
     renderSection("emoji-section", "emoji-container", data.emoji, "Emoji", data.tone);
 
     // ============ SCROLL-TO + HIGHLIGHT รายการที่กดมาจากหน้าเมนู ============
