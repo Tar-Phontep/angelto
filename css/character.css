@@ -170,9 +170,8 @@
 /* top กลับมา 51% เหมือนเดิม (ตามคำขอ "เอา Text ไว้ที่เดิมก่อน" 2026-08-12 —
    เคยลองขยับทั้งแถวลงมาที่ 65% เพื่อเผื่อที่ให้วงพรีวิวใหญ่ขึ้น แต่ทำให้
    หัวข้อเลื่อนตามไปด้วย ไม่ทับปีกตรงจุดเดิมแล้ว) หัวข้อเลยอยู่ตำแหน่งเดิม
-   ส่วนวงพรีวิวขยับลงเป็นอิสระด้วย margin-top บน .topic-banner-thumbs แทน (ดู
-   ด้านล่าง) ไม่กระทบตำแหน่งหัวข้อเลย เพราะ margin-top ของ item หนึ่งใน flex
-   row ไม่ดันตัวอื่นที่ align-items:center อยู่ */
+   ส่วนวงพรีวิวขยับลงด้วย top แยกต่างหาก ให้จุดกึ่งกลางวงอยู่ที่ราว 71% ของ
+   banner ตามตำแหน่งจุดตัดในเรฟ */
 .topic-banner-inner {
   position: absolute;
   left: 5.5%;
@@ -212,7 +211,7 @@
   flex: 1 1 auto;
   min-width: 0;
   position: relative;
-  top: clamp(18px, 6.1vw, 93px);
+  top: 5.7vw;
   margin-left: clamp(7px, 5.33vw, 71px);
 }
 
@@ -352,7 +351,8 @@
 }
 
 #theme-container .detail-card-inner {
-  padding-inline: 36px;
+  padding-left: 36px;
+  padding-right: 0;
 }
 
 #sticker-container .detail-card-inner,
@@ -363,7 +363,7 @@
 }
 
 #theme-container .detail-card.theme-card-simple .detail-card-inner {
-  padding: 32px 52px;
+  padding: 32px 28px 32px 52px;
 }
 
 .detail-card.tone-1 {
@@ -425,6 +425,27 @@
   background: linear-gradient(90deg, var(--tone-9-light) 0%, #ffffff 100%);
 }
 
+#sticker-container .detail-card {
+  background: linear-gradient(
+    90deg,
+    var(--sticker-container-tint, var(--tone-1)) 0%,
+    #ffffff 100%
+  );
+}
+
+#sticker-container .detail-card.tone-alt-light {
+  background: linear-gradient(
+    90deg,
+    color-mix(
+        in srgb,
+        var(--sticker-container-tint, var(--tone-1)) 50%,
+        #ffffff
+      )
+      0%,
+    #ffffff 100%
+  );
+}
+
 .detail-card:hover {
   transform: translateY(-6px) scale(1.02);
   border-color: rgba(229, 106, 156, 0.55);
@@ -479,6 +500,12 @@
   min-width: 0;
 }
 
+.detail-main-image {
+  width: 100%;
+  max-width: 460px;
+  border-radius: var(--radius);
+}
+
 /* Theme ที่มีชุดภาพตัวอย่างจริงครบ 4 รูป — การ์ดคนละแบบกับ sticker เลย
    (ไม่ใช้ grid 2 คอลัมน์ของ .detail-card) แค่ชื่อด้านบน + รูปตัวอย่าง 4 รูป
    เรียงซ้ายไปขวาล้วนๆ ไม่มี desc/cover-icon/รูปใหญ่ซ้อน */
@@ -498,7 +525,7 @@
    56px แทนที่จะเป็น 100vw ตรงๆ) ทำให้ inset ทั้งสองชั้นบวกกันเพี้ยนไปจาก
    sticker/emoji ที่ไม่มี padding ชั้นนอกแบบนี้ */
 .theme-card-simple .detail-card-inner {
-  padding: 32px 52px;
+  padding: 32px 28px 32px 52px;
 }
 
 /* การ์ดที่ให้สีธีมลงพื้นทั้งใบ (containerColor:true) — สีพื้นหลังมาจาก
@@ -630,31 +657,17 @@
     100% 100%;
 }
 
-/* ปุ่มลิงก์ (moreLink/icon-next3.png) ย้ายมาอยู่ขนานกับข้อความหัวข้อ/
-   คำอธิบายแทนที่จะอยู่ท้ายแถวรูปตัวอย่างด้านล่างเหมือนเดิม — ชิดขวา จัดกึ่ง
-   กลางแนวตั้งเทียบกับบล็อกข้อความทั้งก้อน (align-items:center) ตัวปุ่มเองมี
-   margin-left:auto อยู่แล้วเลยไม่ต้องพึ่ง justify-content เพิ่ม
-   padding-right ขยับปุ่มเข้ามาจากขอบขวาการ์ด (ปรับตามฟีดแบ็ก "ขยับเข้าไป
-   ซ้ายกว่านี้" 2026-08-09 — เดิมชิดขอบขวาเป๊ะ ~28px จาก padding การ์ดฐาน) */
+/* ปุ่มของการ์ดธีมอยู่ข้างหัวข้อ จัดชิดขวาให้แนวเดียวกับปุ่มในการ์ดอื่น */
 .theme-card-header-row {
   display: flex;
   align-items: center;
   gap: 20px;
   margin-bottom: 20px;
-  padding-right: 48px;
+  padding-right: 0;
 }
 
-/* Responsive mobile (≤720px): Theme Set ลูกศร icon-next3.png เดิมอยู่ห่าง
-   จากขอบขวามากกว่า Sticker Set ถึง 48px (93px vs 45px) เพราะ
-   .theme-card-header-row มี padding-right:48px เพิ่มมา (ใส่ไว้แต่เดิมเพื่อ
-   Desktop โดยเฉพาะ ตามฟีดแบ็ก "ขยับเข้าไปซ้ายกว่านี้" 2026-08-09) —
-   ที่ Responsive mobile ตัด padding-right นี้ออก ให้ลูกศรอยู่ระดับ/แนวขวา
-   เดียวกับ Sticker Set (วัดสดแล้ว 45px เท่ากันทั้งคู่) Desktop ไม่กระทบ
-   2026-08-20 */
-@media (max-width: 1024px) {
-  .theme-card-header-row {
-    padding-right: 0;
-  }
+.theme-card-header-row .detail-preview-more {
+  margin-left: auto;
 }
 
 .theme-card-header {
@@ -853,7 +866,7 @@
 .detail-preview-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 12px 14px;
   padding-top: 18px;
@@ -865,7 +878,7 @@
   flex: 1 1 64px;
   width: 64px;
   min-width: 52px;
-  max-width: 88px;
+  max-width: 112px;
   aspect-ratio: 1 / 1;
   object-fit: contain;
   display: block;
@@ -939,18 +952,24 @@ a.detail-preview-more:hover {
   .detail-preview-more {
     width: 36px;
     height: 36px;
-    margin-left: 0;
-    flex-shrink: 0;
   }
 }
 
 @media (max-width: 480px) {
+  .detail-preview-row {
+    gap: 6px;
+  }
+
   .detail-preview-icon {
     flex: 0 0 44px;
     width: 44px;
     max-width: 44px;
     min-width: 44px;
   }
+}
+
+.detail-preview-row:not(.has-preview-icons) .detail-preview-more {
+  margin-left: auto;
 }
 
 @media (max-width: 1024px) {
@@ -999,6 +1018,49 @@ a.detail-preview-more:hover {
   /* cover-icon 220px (ขนาด desktop) บีบพื้นที่ข้อความจนแคบเกินไปบนการ์ดแคบ
      กว่านี้ ย่อลงให้เหลือพื้นที่ให้ข้อความพอสมควร */
   .detail-cover-icon {
+    max-width: 140px;
+    max-height: 140px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .detail-preview-row {
+    height: 100px;
+  }
+
+  .detail-preview-icon {
+    flex-basis: 76px;
+    width: 76px;
+    min-width: 76px;
+    max-width: 76px;
+  }
+
+  .detail-preview-more {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-main-image {
+    max-width: 360px;
+  }
+
+  .detail-cover-icon {
+    max-width: 110px;
     max-height: 100px;
+  }
+}
+
+@media (max-width: 360px) {
+  .detail-preview-row {
+    height: auto;
+    min-height: 70px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .detail-preview-row.has-preview-icons .detail-preview-more {
+    margin-left: auto;
   }
 }

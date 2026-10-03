@@ -17,6 +17,10 @@
       ? `<span class="lang-badge">${langMatch[1]}</span>`
       : "";
     const thTitle = item.nameTH || displayName;
+    const themeBgStyle =
+      labelPrefix === "Theme" && item.themeColor
+        ? ` style="--theme-container-tint: ${item.themeColor};"`
+        : "";
 
     // ลิงก์ที่ยังไม่มีจริง จะถูกเก็บเป็นข้อความในวงเล็บเหลี่ยม เช่น
     // "[ยังไม่เปิดขายบน LINE Store]" — เช็คแบบนี้แทนเทียบ string ตรงๆ
@@ -65,7 +69,7 @@
       // ให้เป็น none ไปด้วยทุกครั้ง — ต้องแยกสีพื้นออกจากรูปประดับ
       const cardStyle =
         useContainerColor && item.themeColor
-          ? ` style="--theme-bg-color: ${item.themeColor};"`
+          ? ` style="--theme-container-tint: ${item.themeColor};"`
           : "";
       const cardClass = useContainerColor ? " container-tinted" : "";
       return `
@@ -94,26 +98,31 @@
     // เดิมซ่อนทั้งแถวไปเลยถ้าไม่มี icons ทำให้รายการที่มีลิงก์จริงในข้อมูล
     // (เช่น Cloud 2 แพ็คแรก, MooNuum/Nangel Pink Love/Cloud ธีมปกติที่ไม่มี
     // ชุดไอคอน) กดลิงก์ไม่ได้เลยทั้งที่ข้อมูลมีลิงก์ถูกต้อง — บั๊กที่เจอ 2026-08-09
+    const detailImg = item.detailSheet || item.sheet;
     const previewIcons = (item.icons || [])
+      .filter((src) => src !== detailImg)
       .map(
         (src) =>
           `<img class="detail-preview-icon" src="${src}" alt="" loading="lazy" />`,
       )
       .join("");
-    const previewRow = `<div class="detail-preview-row">${previewIcons}${moreLink}</div>`;
+    const previewRow = `<div class="detail-preview-row${previewIcons ? " has-preview-icons" : ""}">${previewIcons}${moreLink}</div>`;
 
     // หน้า detail ใช้รูปตัวอย่างที่ครบกว่า (detailSheet) แทนรูปเดี่ยวที่ใช้ในเมนู
     // (item.sheet) — ถ้าไม่มี detailSheet ค่อย fallback ไปใช้ sheet แทน
-    const detailImg = item.detailSheet || item.sheet;
     const media = detailImg
-      ? `<img src="${detailImg}" alt="${displayName}" loading="lazy" style="width:100%; max-width:460px; border-radius:var(--radius);" />`
+      ? `<img class="detail-main-image" src="${detailImg}" alt="${displayName}" loading="lazy" />`
       : `<div class="sticker-sheet"><span>🩷</span><span>✨</span><span>🌟</span></div>
          <div class="sticker-sheet-label">ภาพตัวอย่างกำลังจะมาเร็วๆ นี้</div>`;
 
     // ไอคอนเล็กหัวการ์ด — ใช้ item.sheet (cover เดี่ยวสะอาดๆ) ถ้ามี
-    const coverIcon = item.sheet
-      ? `<img class="detail-cover-icon" src="${item.sheet}" alt="" loading="lazy" />`
-      : "";
+    // แต่ไม่แสดงซ้ำกับภาพใหญ่หรือไอคอนในแถว preview ของการ์ดเดียวกัน
+    const coverIcon =
+      item.sheet &&
+      item.sheet !== detailImg &&
+      !(item.icons || []).includes(item.sheet)
+        ? `<img class="detail-cover-icon" src="${item.sheet}" alt="" loading="lazy" />`
+        : "";
 
     // การ์ด Sticker ที่ติดกันของตัวละครเดียวกันสลับเข้ม/อ่อน (1=เข้ม, 2=อ่อน,
     // 3=เข้ม, ...) กันดูซ้ำเป็นสีเดียวแบนๆ ทั้งชุด — เฉพาะ Sticker เท่านั้น
@@ -153,7 +162,7 @@
     const innerHtml = `<div class="detail-card-inner">${cardBody}</div>`;
 
     return `
-      <div class="detail-card reveal ${tone}${altLightClass}" data-item-name="${item.name.replace(/"/g, "&quot;")}">${innerHtml}
+      <div class="detail-card reveal ${tone}${altLightClass}"${themeBgStyle} data-item-name="${item.name.replace(/"/g, "&quot;")}">${innerHtml}
       </div>`;
   }
 
@@ -164,6 +173,7 @@
     labelPrefix,
     tone,
     themeBgColor,
+    stickerBgColor,
   ) {
     const section = document.getElementById(sectionId);
     const container = document.getElementById(containerId);
@@ -180,7 +190,10 @@
     // ให้ fallback เป็น tone-N แทน เพื่อให้แพ็คสติ๊กเกอร์/ธีมทั้งชุดมีสีที่ต่อเนื่อง
     // กับ hero/character card และไม่เหลือพื้นขาวนวลแบบ neutral
     if (labelPrefix === "Sticker") {
-      container.style.setProperty("--sticker-container-tint", `var(${tone})`);
+      container.style.setProperty(
+        "--sticker-container-tint",
+        stickerBgColor || `var(--${tone})`,
+      );
     }
     if (labelPrefix === "Theme") {
       container.style.setProperty(
@@ -205,7 +218,7 @@
         (item) => item.bannerIcons && item.bannerIcons.length,
       );
       if (itemWithBannerIcons) {
-        thumbsEl.innerHTML = itemWithBannerIcons.bannerIcons
+        thumbsEl.innerHTML = [...new Set(itemWithBannerIcons.bannerIcons)]
           .slice(0, 4)
           .map(
             (src) =>
@@ -215,18 +228,21 @@
         return;
       }
 
-      // ปกติใช้ไอคอนแรกของแต่ละแพ็ค สูงสุด 4 แพ็ค (ตาม ver11 Pic/Design
-      // Character Page/Candy page design3.png) แต่ถ้ามีแพ็คน้อยกว่า 4 ให้ไล่
-      // หยิบไอคอนถัดไปของแพ็คเดิม (icon2, icon3, icon4...) มาเติมจนครบ 4 วง
+      // ใช้ไอคอนแรกของแต่ละแพ็คก่อน และข้าม source ซ้ำ (เช่น Sticker [TH]/[EN]
+      // ที่แชร์ไอคอนชุดเดียวกัน) ถ้ามีแพ็คน้อยกว่า 4 ให้ไล่หยิบไอคอนถัดไป
+      // ของแพ็คเดิม (icon2, icon3, icon4...) มาเติมจนครบ 4 วง
       // แทนที่จะเหลือแค่วงเดียว ถ้ารวมทุกไอคอนของทุกแพ็คแล้วยังไม่ครบ 4 ก็โชว์
       // เท่าที่มีจริง ไม่ปั้นข้อมูลเทียม
       // fallback เป็น item.sheet เมื่อไม่มี icons เลย (รายการ emoji ไม่มี
       // icons array แบบ sticker/theme มีแค่ sheet เดี่ยว — เจอบั๊กจริง
       // 2026-08-12 ตอนเช็ค Cloud/PomPom แล้ววงพรีวิว Emoji Set ว่างเปล่า)
       const thumbIcons = [];
+      const addThumbIcon = (src) => {
+        if (src && !thumbIcons.includes(src)) thumbIcons.push(src);
+      };
       items.forEach((item) => {
-        if (item.icons && item.icons.length) thumbIcons.push(item.icons[0]);
-        else if (item.sheet) thumbIcons.push(item.sheet);
+        if (item.icons && item.icons.length) addThumbIcon(item.icons[0]);
+        else if (item.sheet) addThumbIcon(item.sheet);
       });
       let extraIndex = 1;
       while (thumbIcons.length < 4) {
@@ -235,7 +251,7 @@
         );
         if (itemsWithMoreIcons.length === 0) break;
         itemsWithMoreIcons.forEach((item) => {
-          if (thumbIcons.length < 4) thumbIcons.push(item.icons[extraIndex]);
+          if (thumbIcons.length < 4) addThumbIcon(item.icons[extraIndex]);
         });
         extraIndex += 1;
       }
@@ -314,6 +330,8 @@
       data.stickers,
       "Sticker",
       data.tone,
+      undefined,
+      data.stickerBgColor,
     );
     renderSection(
       "theme-section",

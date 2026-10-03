@@ -428,14 +428,6 @@
   padding: 24px;
 }
 
-/* มีแค่การ์ดเดียว (Drinks & Beverages) ที่มี .arrow จริง การ์ดอื่นไม่มี —
-   padding-right เดิมที่กันพื้นที่ให้ลูกศรถูกใส่ไว้กับ .work-card ทุกใบเลย
-   ดันพรีวิว lottie ของการ์ดที่ไม่มีลูกศรเยื้องซ้าย ไม่ centered เลยย้ายมา
-   ใส่เฉพาะการ์ดที่มีลูกศรจริงแทน */
-.work-card:has(.arrow) {
-  padding-right: 64px;
-}
-
 .work-card h3 {
   margin: 0 0 8px;
   font-size: 1.15rem;
@@ -468,6 +460,8 @@
 
 /* ============ LOTTIE PLAYER (แอนิเมชันขยับได้จริง) ============ */
 .lottie-player {
+  display: grid;
+  place-items: center;
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: var(--radius);

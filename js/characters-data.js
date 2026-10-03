@@ -45,7 +45,7 @@ const characters = {
         nameTH: "ธีมหมูนุ่ม ขนมหวาน",
         sheet: "ver11 Pic/themes/main-covers/icon-sweet.png",
         detailSheet: "ver11 Pic/themes/main-covers/sweet1.png",
-        link: "https://line.me/S/shop/theme/detail?id=d690dff3-a90e-4a0d-892d-2f3dec8f1e0a",
+        link: "https://store.line.me/themeshop/product/d690dff3-a90e-4a0d-892d-2f3dec8f1e0a/en",
         descEN:
           "I'm an Angel Pig. Please call me \"MooNuum\", a soft pig. I have wings like an angel and stars on my ears. Let's eat candy and sweets with me.",
         descTH:
@@ -54,7 +54,7 @@ const characters = {
         // 2026-09-22) — เดิมธีมนี้ไม่มี icons เลยตกไปใช้การ์ดแบบ sticker (มี cover-icon
         // เดี่ยว ไม่มีแถวรูปตัวอย่าง) ตอนนี้มีชุดรูปครบ 4 แล้วเลยขึ้นการ์ดแบบ Theme
         // เต็มรูปแบบ (แถวรูป + พื้นหลังไล่สีตามโทนตัวละคร) เหมือนธีมอื่นๆ
-        themeColor: "var(--primary-pink)",
+        themeColor: "#f2bbcb",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/moonuum/icons/sweet-icon1.png",
@@ -86,6 +86,7 @@ const characters = {
     // ข้อจำกัดเดิมเลยไม่มีผลอีกต่อไป — ฟ้าอ่อนแบบนี้อยู่ในกลุ่มที่กฎสีอนุญาต
     // (ห้ามน้ำเงินเข้ม/แท้ๆ อนุญาตแค่ฟ้าอ่อน/ฟ้าท้องฟ้า) 2026-09-22
     themeBgColor: "#b7e3f0",
+    stickerBgColor: "#b7e3f0",
     cover: "ver11 Pic/characters/covers/main-moodaeng.png",
     descEN:
       "I'm an Angel Pig. Please call me \"MooDaeng\", pig pops. I have wings like an angel and stars on my ears. My head is like a ball. I think I can fly, let's play with me.",
@@ -115,15 +116,13 @@ const characters = {
         nameTH: "หมูเด้ง บินไปสู่ท้องฟ้า",
         sheet: "ver11 Pic/themes/main-covers/icon-fly.png",
         detailSheet: "ver11 Pic/themes/main-covers/fly1.png",
-        link: "https://line.me/S/shop/theme/detail?id=4a103636-dad2-42e3-a7ee-062754b37ebd",
+        link: "https://store.line.me/themeshop/product/4a103636-dad2-42e3-a7ee-062754b37ebd/en",
         descEN:
           "I'm an Angel Pig. Please call me \"MooDaeng\", pig pops. I have wings like an angel and stars on my ears. My head is like a ball. I think I can fly, let's play with me.",
         descTH:
           "ธีมน้องหมูสายพันธุ์นางฟ้า เรียกผมว่าหมูเด้งนะครับ ผมมีปีกแบบนางฟ้าและหูเป็นดาว หัวเหมือนลูกบอลเด้งๆ ผมคิดว่าผมบินได้นะ มาเล่นกันเถอะ",
-        // เดิมสีฟ้าอ่อน #b7e3f0 (ค่าเฉลี่ยจริงจากรูป) — เปลี่ยนเป็นสีชมพูแบรนด์
-        // 2026-08-09 ให้เข้ากับรูปประดับ theme-bg-fly.png (ไฟล์สีชมพูคงที่
-        // ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy/[[project_angelto_brand_state]])
-        themeColor: "var(--primary-pink)",
+        // ใช้ฟ้าอ่อน #b7e3f0 ตามภาพธีมจริงและข้อกำหนด handoff
+        themeColor: "#b7e3f0",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/moodaeng/icons/theme-icon1.png",
@@ -196,16 +195,14 @@ const characters = {
         nameTH: "กระต่ายซอฟท์ธีม",
         sheet: "ver11 Pic/themes/main-covers/icon-rabbitsoft.png",
         detailSheet: "ver11 Pic/themes/rabbit/rabbit1.png",
-        link: "https://line.me/S/shop/theme/detail?id=2515775a-f433-42e0-8890-e46f6eb971c7",
+        link: "https://store.line.me/themeshop/product/2515775a-f433-42e0-8890-e46f6eb971c7/en",
         descEN:
           "Rabbito & Rabbity. Rabbit so cute, kawaii. It's a soft tone and soft colour theme. Boy name Rabbito, girl name Rabbity from rabbit + o, rabbit + y.",
         // TH นี้แปลจาก EN เอง (เว็บเก่าโชว์แค่ EN สำหรับธีมนี้) รอคอนเฟิร์ม
         descTH:
           "Rabbito & Rabbity กระต่ายแสนน่ารักคาวาอี้ ธีมโทนสีนุ่มนวลอ่อนหวาน ผู้ชายชื่อ Rabbito ผู้หญิงชื่อ Rabbity มาจาก rabbit+o และ rabbit+y",
-        // เดิมชมพูอ่อน #f2d9e0 (ปรับจากสีจริง #f5f0be เหลืองอมเขียวที่ผิดกฎ) —
-        // เปลี่ยนเป็นสีชมพูแบรนด์ 2026-08-09 ให้เข้ากับรูปประดับ theme-bg-fly.png
-        // (ไฟล์สีชมพูคงที่ ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        // ปรับเหลืองอมเขียวจากภาพเป็นชมพูอ่อนตาม palette ใน handoff
+        themeColor: "#f2d9e0",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/rabbit/icons/soft-icon1.png",
@@ -227,7 +224,7 @@ const characters = {
         nameTH: "ขนมหวานอร่อย",
         sheet: "ver11 Pic/themes/main-covers/icon-dessert.png",
         detailSheet: "ver11 Pic/themes/rabbit/rabbit2.png",
-        link: "https://line.me/S/shop/theme/detail?id=d5430474-673a-4fab-aeaa-c9c65b4144aa",
+        link: "https://store.line.me/themeshop/product/d5430474-673a-4fab-aeaa-c9c65b4144aa/en",
         descEN:
           "Rabbito & Rabbity. Rabbit so cute, kawaii. It's a red theme and sweet dessert theme. Let's enjoy eating.",
         // TH นี้แปลจาก EN เอง (เว็บเก่าโชว์แค่ EN สำหรับธีมนี้) รอคอนเฟิร์ม
@@ -287,15 +284,13 @@ const characters = {
         // ตัวละคร Carrot Girl แทนไปก่อน
         sheet: "ver11 Pic/characters/covers/main-carrot.png",
         detailSheet: "ver11 Pic/themes/main-covers/carrot1theme.png",
-        link: "https://line.me/S/shop/theme/detail?id=29120618-5885-4a74-99c1-139755915c53",
+        link: "https://store.line.me/themeshop/product/29120618-5885-4a74-99c1-139755915c53/en",
         descEN:
           'A little girl who loves carrot and rabbit. I am called "Carrot Girl". Let\'s enjoy time with me and have a good time.',
         descTH:
           'เด็กน้อยที่ชอบแครอทและกระต่าย ฉันชื่อว่า "เด็กแครอท" มาเล่นกับฉันกัน และมีช่วงเวลาที่ดีกันเถอะ',
-        // เดิมสีส้มพีชอ่อน #edccad (ค่าเฉลี่ยจริงจากรูป) — เปลี่ยนเป็นสีชมพู
-        // แบรนด์ 2026-08-09 ให้เข้ากับรูปประดับ theme-bg-fly.png (ไฟล์สีชมพู
-        // คงที่ ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        // ใช้สีพีชอ่อนของตัวละครให้เข้ากับภาพ โดยเลี่ยงโทนน้ำตาล
+        themeColor: "var(--tone-4)",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/carrot/icons/theme-icon1.png",
@@ -325,12 +320,9 @@ const characters = {
     name: "Nature's Angel",
     nameTH: "นางฟ้าแห่งธรรมชาติ",
     tone: "tone-5",
-    // สีพื้นหลัง #theme-container — ตัวละครนี้มี 8 ธีมสีต่างกันมาก (ฟ้า/ม่วง/
-    // ดำอมม่วง/ชมพู ฯลฯ) เลือกสีเฉลี่ยจริงของธีมหลัก "Angel Green Slow Life"
-    // (#b8d4e0 ฟ้าอมม่วง — ปรับจากเขียวจริงที่ผิดกฎสีแล้ว ดู comment เดิมของ
-    // ธีมนั้น) เป็นตัวแทน เพราะเป็นธีมเดียวที่มี bannerIcons/ถือเป็น flagship
-    // ของตัวละครนี้อยู่แล้ว 2026-09-22
-    themeBgColor: "#b8d4e0",
+    // ใช้สีประจำตัว tone-5 เป็นพื้นหลัง Theme Set แทนสีฟ้าของธีม flagship
+    // เพื่อให้พื้นหลังสอดคล้องกับสีของ Nature's Angel
+    themeBgColor: "var(--tone-5)",
     cover: "ver11 Pic/characters/covers/main-nangel.png",
     descEN:
       'Pink is "Angel\'s Flower", cute girl. Green is "Angel\'s Leaf", funny girl. Purple is "Angel\'s Fruit", clever girl. Yellow is "Angel\'s Light", sweet girl.',
@@ -397,23 +389,31 @@ const characters = {
         nameTH: "นางฟ้าสีชมพูแห่งความรัก",
         sheet: "ver11 Pic/themes/main-covers/icon-pinklove.png",
         detailSheet: "ver11 Pic/themes/main-covers/pinklove1.png",
-        link: "https://line.me/S/shop/theme/detail?id=72463d8d-5c34-41eb-ba25-aab71336c7db",
+        link: "https://store.line.me/themeshop/product/72463d8d-5c34-41eb-ba25-aab71336c7db/en",
         descEN: "Angel Pink theme cute love, hearts and pink colour.",
         descTH: "ธีมนางฟ้าสีชมพู แบบน่ารักๆ เต็มไปด้วยความรัก โทนสีชมพู",
+        themeColor: "var(--primary-pink)",
+        containerColor: true,
+        icons: [
+          "ver11 Pic/themes/nangel/icons/pinklove-icon1.png",
+          "ver11 Pic/themes/nangel/icons/pinklove-icon2.png",
+          "ver11 Pic/themes/nangel/icons/pinklove-icon3.png",
+          "ver11 Pic/themes/nangel/icons/pinklove-icon4.png",
+        ],
       },
       {
         name: "Angel Green Slow Life",
         nameTH: "นางฟ้าสีเขียว Slow Life",
         sheet: "ver11 Pic/themes/main-covers/icon-slowlife.png",
         detailSheet: "ver11 Pic/themes/main-covers/slow1.png",
-        link: "https://line.me/S/shop/theme/detail?id=90a2ccd0-cddb-40cf-ae7f-2d23998a0fa9",
+        link: "https://store.line.me/themeshop/product/90a2ccd0-cddb-40cf-ae7f-2d23998a0fa9/en",
         descEN: "Angel Green Theme, Slow Life smooth, easy and comfortable.",
         descTH:
           "นางฟ้าแห่งธรรมชาติ ธีมนางฟ้าสีเขียว โทนชิวๆ สบายๆ สไตล์ Slow Life แบบน่ารักๆ",
         // เดิมฟ้าอมม่วง #b8d4e0 (ปรับจากสีจริง #a7dfbb เขียวที่ผิดกฎ) —
         // เปลี่ยนเป็นสีชมพูแบรนด์ 2026-08-09 ให้เข้ากับรูปประดับ
         // theme-bg-fly.png (ไฟล์สีชมพูคงที่ ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        themeColor: "#c4e2d2",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/nangel/icons/slowlife-icon1.png",
@@ -437,15 +437,15 @@ const characters = {
         nameTH: "นางฟ้าสีเหลือง",
         sheet: "ver11 Pic/themes/main-covers/icon-yellowwinter.png",
         detailSheet: "ver11 Pic/themes/main-covers/winter1.png",
-        link: "https://line.me/S/shop/theme/detail?id=c990f1b4-fba5-4f10-a595-22ac817e9ab6",
+        link: "https://store.line.me/themeshop/product/c990f1b4-fba5-4f10-a595-22ac817e9ab6/en",
         descEN: "Angel Yellow Theme, Cold Winter blue tone with falling snow.",
         descTH:
           "นางฟ้าแห่งธรรมชาติ ธีมนางฟ้าสีเหลือง โทนหน้าหนาว มีหิมะตก อากาศเย็นๆ",
-        // ชื่อธีมมี "Yellow" แต่รูปตัวอย่างจริงเป็นฟ้า/หิมะ ไม่มีเหลือง เดิมใช้
+        // ใช้ฟ้าอ่อนตามภาพฤดูหนาว; งดเหลืองตามข้อกำหนด palette ใน handoff
         // ค่าเฉลี่ยสีจริงจากรูป #acdbe8 (ฟ้าอ่อน) — เปลี่ยนเป็นสีชมพูแบรนด์
         // 2026-08-09 ให้เข้ากับรูปประดับ theme-bg-fly.png (ไฟล์สีชมพูคงที่
         // ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        themeColor: "#acdbe8",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/nangel/icons/winter-icon1.png",
@@ -459,14 +459,14 @@ const characters = {
         nameTH: "นางฟ้าสีม่วงบริสุทธิ์",
         sheet: "ver11 Pic/themes/main-covers/icon-purplepure.png",
         detailSheet: "ver11 Pic/themes/main-covers/pure1.png",
-        link: "https://line.me/S/shop/theme/detail?id=ae9bccd1-4406-4b60-b41b-226ca39e8feb",
+        link: "https://store.line.me/themeshop/product/ae9bccd1-4406-4b60-b41b-226ca39e8feb/en",
         descEN:
           "Angel Purple Pure theme for those who love purple and love angels.",
         descTH: "ธีมนางฟ้าสีม่วงบริสุทธิ์ รักสีม่วง รักนางฟ้า ใช้ธีมนี้สิ",
         // เดิมสีม่วงอ่อน #dcc4ec (ค่าเฉลี่ยจริงจากรูป) — เปลี่ยนเป็นสีชมพู
         // แบรนด์ 2026-08-09 ให้เข้ากับรูปประดับ theme-bg-fly.png (ไฟล์สีชมพู
         // คงที่ ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        themeColor: "#dcc4ec",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/nangel/icons/purple-icon1.png",
@@ -480,7 +480,7 @@ const characters = {
         nameTH: "นางฟ้าเดวิลยามค่ำคืน",
         sheet: "ver11 Pic/themes/main-covers/icon-blacknight.png",
         detailSheet: "ver11 Pic/themes/main-covers/black-night1.png",
-        link: "https://line.me/S/shop/theme/detail?id=448f2bad-f01b-4ea8-bbba-c96cee916d07",
+        link: "https://store.line.me/themeshop/product/448f2bad-f01b-4ea8-bbba-c96cee916d07/en",
         descEN:
           "Devil Theme, black midnight black tone with a little starlight.",
         descTH: "ธีมนางฟ้าเดวิลโทนสีดำ ธีมกลางคืน ฟ้ามืดมีแสงดาว",
@@ -490,7 +490,7 @@ const characters = {
         // เปลี่ยนเป็นสีชมพูแบรนด์แทน 2026-08-09 ให้เข้ากับรูปประดับ
         // theme-bg-fly.png ก็เลยไม่มีปัญหาความเข้มแบบเดิมอีกต่อไปด้วย (สีชมพู
         // แบรนด์อ่อนกว่า #4a3f5c มาก contrast กับ --text ผ่าน AA สบายๆ)
-        themeColor: "var(--primary-pink)",
+        themeColor: "#c4c1c8",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/nangel/icons/night-icon1.png",
@@ -504,7 +504,7 @@ const characters = {
         nameTH: "ดอกไม้ของนางฟ้าสีชมพู",
         sheet: "ver11 Pic/themes/main-covers/icon-pinkflower.png",
         detailSheet: "ver11 Pic/themes/main-covers/flower1.png",
-        link: "https://line.me/S/shop/theme/detail?id=37c4d8ae-7bdb-40ef-abd2-8b57fd6e5337",
+        link: "https://store.line.me/themeshop/product/37c4d8ae-7bdb-40ef-abd2-8b57fd6e5337/en",
         descEN:
           "Angel Pink theme with white-pink flowers best wishes, get well soon and thinking-of-you, in pink and blue tones.",
         descTH:
@@ -512,7 +512,7 @@ const characters = {
         // เดิมสีฟ้าอ่อน #b1d6e8 (ค่าเฉลี่ยจริงจากรูป) — เปลี่ยนเป็นสีชมพู
         // แบรนด์ 2026-08-09 ให้เข้ากับรูปประดับ theme-bg-fly.png (ไฟล์สีชมพู
         // คงที่ ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        themeColor: "#b1d6e8",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/nangel/icons/flower-icon1.png",
@@ -526,7 +526,7 @@ const characters = {
         nameTH: "นางฟ้าแห่งธรรมชาติ - สายรุ้งพาสเทล",
         sheet: "ver11 Pic/themes/main-covers/icon-rainbow.png",
         detailSheet: "ver11 Pic/themes/main-covers/rainbow1S.png",
-        link: "https://store.line.me/themeshop/product/67b413ea-81ee-440c-b2d4-88c98c6a440a/",
+        link: "https://store.line.me/themeshop/product/67b413ea-81ee-440c-b2d4-88c98c6a440a/en",
         descEN:
           "Angel love sky, nature and rainbow. Soft pastel tone colors. Kawaii Angel with angel's doll.",
         descTH:
@@ -534,7 +534,7 @@ const characters = {
         // เดิมสีชมพู-ม่วงอ่อน #ead8e5 (ค่าเฉลี่ยจริงจากรูป) — เปลี่ยนเป็นสีชมพู
         // แบรนด์ 2026-08-09 ให้เข้ากับรูปประดับ theme-bg-fly.png (ไฟล์สีชมพู
         // คงที่ ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        themeColor: "#ead8e5",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/nangel/icons/rainbow-icon1.png",
@@ -548,14 +548,14 @@ const characters = {
         nameTH: "หน้าร้อนนางฟ้าไปทะเล",
         sheet: "ver11 Pic/themes/main-covers/icon-summer.png",
         detailSheet: "ver11 Pic/themes/main-covers/summer1.png",
-        link: "https://line.me/S/shop/theme/detail?id=7b75c6bb-b776-4f30-bfae-1781b65939dd",
+        link: "https://store.line.me/themeshop/product/7b75c6bb-b776-4f30-bfae-1781b65939dd/en",
         descEN:
           "The angel goes traveling in summer off to the beach, yeah! Hot time.",
         descTH: "หน้าร้อนแล้วไปเที่ยวทะเลกับนางฟ้าแห่งธรรมชาติกันเถอะ เย้ !!",
         // เดิมชมพูฝุ่น #e3cdd0 (ปรับจากสีจริง #d9d2c1 เบจ/น้ำตาลอ่อนที่เข้าข่าย
         // ผิดกฎ) — เปลี่ยนเป็นสีชมพูแบรนด์ 2026-08-09 ให้เข้ากับรูปประดับ
         // theme-bg-fly.png (ไฟล์สีชมพูคงที่ ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        themeColor: "#e3cdd0",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/nangel/icons/summer-icon1.png",
@@ -680,18 +680,13 @@ const characters = {
         nameTH: "ธีมแคนดี้เกิร์ล เด็กลูกกวาด",
         sheet: "ver11 Pic/themes/main-covers/icon-candy.png",
         detailSheet: "ver11 Pic/themes/candy/candy1.png",
-        link: "https://store.line.me/themeshop/product/0c92491b-4325-4f7b-8814-317fcc5948e1",
+        link: "https://store.line.me/themeshop/product/0c92491b-4325-4f7b-8814-317fcc5948e1/en",
         descEN:
           "Little cute girl. They have 5 girls that are kawaii like a sweet candy. Candy more and more theme.",
         descTH:
           "กลุ่มเด็กน้อยน่ารัก มีสีสันสดใสราวกับลูกกวาดแสนหวาน มีนิสัยที่ชอบพูดซ้ำๆ แบบเด็กๆ ธีมลูกกวาด",
-        // เดิมใช้ค่าเฉลี่ยสีจริงจากรูปตัวอย่าง (#d7cfe0 ม่วงอ่อน) แต่พอลง
-        // เต็มพื้นการ์ดคู่กับรูปประดับ theme-bg-fly.png (โทนชมพู/แดงบานเย็น
-        // ล้วนๆ) แล้วสีม่วงกับชมพูมันคนละโทน ดูไม่เข้ากัน (ตามที่ลูกค้า/ผู้ใช้
-        // สังเกต 2026-08-09) — เปลี่ยนมาใช้ var(--primary-pink) ของแบรนด์แทน
-        // เพื่อให้พื้นหลังอยู่โทนสีเดียวกับรูปประดับเสมอ (รูปประดับเป็นไฟล์
-        // คงที่ ปรับสีตามธีมไม่ได้ พื้นหลังเลยต้องเป็นฝ่ายตามแทน)
-        themeColor: "var(--primary-pink)",
+        // ใช้สีม่วงอ่อน #d7cfe0 ตามภาพธีมจริงและ palette ที่อนุญาต
+        themeColor: "#d7cfe0",
         // ธีมนี้ให้สีลงพื้นการ์ดทั้งใบแทนถาดรูปอย่างเดียว (ต่างจากธีมอื่น) —
         // ดู character-render.js/character.css สำหรับการจัดการ contrast
         containerColor: true,
@@ -806,42 +801,48 @@ const characters = {
         name: "Angel Cloud",
         nameTH: "นางฟ้าเมฆ",
         sheet: "ver11 Pic/characters/cloud/sticker/cloudy1.png",
-        detailSheet: "ver11 Pic/characters/cloud/sticker/cloudy1.png",
+        detailSheet: "ver11 Pic/characters/cloud/sticker/cloudy3.png",
         link: "https://store.line.me/stickershop/product/6925111/en",
         descEN:
           "A sweet little cloud angel with a crown and sparkly eyes ready to brighten up your chats.",
         descTH:
           "นางฟ้าเมฆตัวน้อยน่ารัก สวมมงกุฎ ตาแวววาว พร้อมเติมความสดใสให้ทุกแชท",
+        icons: [
+          "ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_4.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_5.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_9.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_23.png",
+        ],
       },
       {
         name: "Angel Cloud Everyday",
         nameTH: "นางฟ้าเมฆ ทุกๆวัน",
         sheet: "ver11 Pic/characters/cloud/sticker/cloudy2.png",
-        detailSheet: "ver11 Pic/characters/cloud/sticker/cloudy2.png",
+        detailSheet: "ver11 Pic/StickerLine Pic/cloud/cloudSky set2.png",
         link: "https://store.line.me/stickershop/product/8067136/en",
         descEN:
           "Cloud girl's everyday expressions cheerful reactions for chatting day to day.",
         descTH: "สีหน้าคุณเมฆประจำวัน อารมณ์สดใสไว้ใช้ตอบแชททุกวัน",
+        icons: [
+          "ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_2.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_22.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_24.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_3.png",
+        ],
       },
-      // เพิ่ม 2026-08-07: แพ็คที่เคยขาดข้อมูล/ไฟล์ (ดู project_angelto_character_data_audit
-      // memory) ลูกค้าส่งไฟล์มาให้แล้ว (StickerLine Pic/cloud/cloudSky set1.png)
-      // descEN/descTH ไม่มีข้อความต้นฉบับจาก angelto.com — เขียนร่างขึ้นเองจาก
-      // เนื้อหาในชีท (มงกุฎ ดอกไม้ พระอาทิตย์ พระจันทร์ กาแฟ หัวใจ) รอคอนเฟิร์ม
       {
         name: "Angel Cloud - Spring Season",
         nameTH: "นางฟ้าเมฆ ฤดูใบไม้ผลิ",
-        sheet: "ver11 Pic/characters/cloud/sticker/cloudy3.png",
-        detailSheet: "ver11 Pic/characters/cloud/sticker/cloudy3.png",
+        sheet: "ver11 Pic/StickerLine Pic/cloud/cloud v3/cloud season icon.png",
+        detailSheet: "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-placeholder.png",
         link: "https://store.line.me/stickershop/product/15632189/en",
-        descEN:
-          "Cloud girl greets the spring season with flowers, sunshine, and a cup of coffee cheerful everyday reactions.",
-        descTH:
-          "คุณเมฆทักทายฤดูใบไม้ผลิด้วยดอกไม้ แสงแดด และกาแฟหอมๆ พร้อมมู้ดสดใสไว้ใช้ตอบแชททุกวัน",
+        descEN: "A cheerful Angel Cloud sticker set for happy everyday chats.",
+        descTH: "สติกเกอร์นางฟ้าเมฆแสนสดใส สำหรับส่งความสุขในทุกๆ วัน",
         icons: [
-          "ver11 Pic/characters/cloud/icons/spring-icon1.png",
-          "ver11 Pic/characters/cloud/icons/spring-icon2.png",
-          "ver11 Pic/characters/cloud/icons/spring-icon3.png",
-          "ver11 Pic/characters/cloud/icons/spring-icon4.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262150.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262151.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262152.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262153.png",
         ],
       },
     ],
@@ -856,6 +857,7 @@ const characters = {
         descEN:
           "A dreamy pink-and-lavender sky theme with the cloud angel floating above the clouds.",
         descTH: "ธีมท้องฟ้าโทนชมพู-ม่วงหวานฝัน กับนางฟ้าเมฆลอยอยู่เหนือก้อนเมฆ",
+        themeColor: "#d8ccde",
       },
       {
         name: "Angel Cloud Sky Theme",
@@ -865,10 +867,8 @@ const characters = {
         descEN:
           "A soft sky-blue theme with fluffy clouds all around bright and airy.",
         descTH: "ธีมโทนฟ้าอ่อนนุ่มนวล ล้อมรอบด้วยก้อนเมฆฟูๆ สดใสโปร่งสบาย",
-        // เดิมสีฟ้าอ่อน #addfee (ค่าเฉลี่ยจริงจากรูป) — เปลี่ยนเป็นสีชมพู
-        // แบรนด์ 2026-08-09 ให้เข้ากับรูปประดับ theme-bg-fly.png (ไฟล์สีชมพู
-        // คงที่ ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        // ใช้ฟ้าอ่อน #addfee ตามภาพธีม Sky จริง
+        themeColor: "#addfee",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/cloud/icons/sky-icon1.png",
@@ -960,10 +960,8 @@ const characters = {
         descEN:
           "A sweet pink theme with floating hearts around the angel pompom.",
         descTH: "ธีมโทนสีชมพูหวานๆ มีหัวใจลอยฟุ้งรอบตัวนางฟ้าปอมปอม",
-        // เดิมสีชมพูอ่อน #efc3d3 (ค่าเฉลี่ยจริงจากรูป) — เปลี่ยนเป็นสีชมพู
-        // แบรนด์ 2026-08-09 ให้เข้ากับรูปประดับ theme-bg-fly.png (ไฟล์สีชมพู
-        // คงที่ ปรับตามธีมไม่ได้ — ดูเหตุผลเต็มที่ Candy)
-        themeColor: "var(--primary-pink)",
+        // ใช้ชมพูอ่อน #efc3d3 ตามค่าเฉลี่ยสีจากภาพธีม
+        themeColor: "#efc3d3",
         containerColor: true,
         icons: [
           "ver11 Pic/themes/pompom/icons/theme-icon1.png",
