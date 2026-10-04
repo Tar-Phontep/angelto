@@ -851,13 +851,20 @@ const characters = {
     themes: [
       {
         name: "Angel Cloud Theme",
-        sheet: "ver11 Pic/themes/main-covers/icon-cloudtheme.png",
-        detailSheet: "ver11 Pic/themes/main-covers/cloud-theme1.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/15cloud icon.png",
+        detailSheet: "ver11 Pic/ThemeLine Pic/theme line -main/15cloud.png",
         link: "https://store.line.me/themeshop/product/d8fe3b7c-bb9e-49a7-8119-2cbeeec34809/en",
         descEN:
           "A dreamy pink-and-lavender sky theme with the cloud angel floating above the clouds.",
         descTH: "ธีมท้องฟ้าโทนชมพู-ม่วงหวานฝัน กับนางฟ้าเมฆลอยอยู่เหนือก้อนเมฆ",
         themeColor: "#d8ccde",
+        containerColor: true,
+        icons: [
+          "ver11 Pic/ThemeLine Pic/15cloud/themecloud1.png",
+          "ver11 Pic/ThemeLine Pic/15cloud/themecloud2.png",
+          "ver11 Pic/ThemeLine Pic/15cloud/themecloud3.png",
+          "ver11 Pic/ThemeLine Pic/15cloud/themecloud4.png",
+        ],
       },
       {
         name: "Angel Cloud Sky Theme",
