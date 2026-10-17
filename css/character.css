@@ -152,7 +152,7 @@
   margin-bottom: 32px;
   aspect-ratio: 1920 / 466;
   overflow: hidden;
-  background-image: url("../Ver11 Pic/Design Character Page/bgTopic.png");
+  background-image: url("../ver11 Pic/Design Character Page/bgTopic.png");
   background-size: 100% auto;
   background-position: top center;
   background-repeat: no-repeat;
@@ -225,7 +225,7 @@
 .topic-banner-thumb {
   width: clamp(30px, 10.05vw, 154px);
   aspect-ratio: 1;
-  background-image: url("../Ver11 Pic/Design Character Page/bg whCircle.png");
+  background-image: url("../ver11 Pic/Design Character Page/bg whCircle.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -598,7 +598,7 @@
   /* fallback เผื่อการ์ดไม่มี tone-N class ติดมา (ไม่ควรเกิดในทางปฏิบัติ เพราะ
      ${tone} ใส่มาจาก character-render.js เสมอ) */
   background-color: var(--theme-container-tint, #facbdc);
-  background-image: url("../Ver11 Pic/Design Character Page/theme bg fly.png");
+  background-image: url("../ver11 Pic/Design Character Page/theme bg fly.png");
   background-repeat: no-repeat;
   background-position: left 70%;
   background-size: clamp(280px, 52vw, 680px) auto;
@@ -615,7 +615,7 @@
    2026-09-25 */
 .theme-card-simple.container-tinted {
   background-image:
-    url("../Ver11 Pic/Design Character Page/theme bg fly.png"),
+    url("../ver11 Pic/Design Character Page/theme bg fly.png"),
     linear-gradient(
       90deg,
       var(--theme-container-tint, #facbdc) 0%,
@@ -641,7 +641,7 @@
 #theme-container .detail-card {
   background-color: var(--theme-container-tint, #facbdc);
   background-image:
-    url("../Ver11 Pic/Design Character Page/theme bg fly.png"),
+    url("../ver11 Pic/Design Character Page/theme bg fly.png"),
     linear-gradient(
       90deg,
       var(--theme-container-tint, #facbdc) 0%,

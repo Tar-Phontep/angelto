@@ -16,7 +16,7 @@ const characters = {
     // ค่าเฉลี่ยจริงจากรูป") เลย fallback ไปใช้ --tone-1 ของตัวละครเอง (ชมพูอ่อน
     // f2bbcb) แทน — ถ้ามีสีจริงของธีมนี้ทีหลัง เปลี่ยนเป็น hex ตรงได้เลย 2026-09-22
     themeBgColor: "var(--tone-1)",
-    cover: "Ver11 Pic/StickerLine Pic/main character pic/main-moonuum.png",
+    cover: "ver11 Pic/StickerLine Pic/main character pic/main-moonuum.png",
     descEN:
       'I\'m an Angel Pig. Please call me "MooNuum", a soft pig. I have wings like an angel and stars on my ears. Maybe I can fly?',
     descTH:
@@ -24,7 +24,7 @@ const characters = {
     stickers: [
       {
         name: "Moonuum หมูนุ่ม",
-        sheet: "Ver11 Pic/StickerLine Pic/moonuum/moonuum-main.png",
+        sheet: "ver11 Pic/StickerLine Pic/moonuum/moonuum-main.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/moonuum/sticker/moonuum1.png",
         link: "http://line.me/S/sticker/1046544",
         descEN:
@@ -43,7 +43,7 @@ const characters = {
       {
         name: "MooNuum Pink Sweets Theme",
         nameTH: "ธีมหมูนุ่ม ขนมหวาน",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/4moonuumSweet icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/4moonuumSweet icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/sweet1.png",
         link: "https://store.line.me/themeshop/product/d690dff3-a90e-4a0d-892d-2f3dec8f1e0a/en",
         descEN:
@@ -57,19 +57,19 @@ const characters = {
         themeColor: "#f2bbcb",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/4moonuum/moonuum1.png",
-          "Ver11 Pic/ThemeLine Pic/4moonuum/Screenshot 2569-08-31 at 17.57.08.png",
-          "Ver11 Pic/ThemeLine Pic/4moonuum/moonuum3.png",
-          "Ver11 Pic/ThemeLine Pic/4moonuum/moonuum4.png",
+          "ver11 Pic/ThemeLine Pic/4moonuum/moonuum1.png",
+          "ver11 Pic/ThemeLine Pic/4moonuum/Screenshot 2569-08-31 at 17.57.08.png",
+          "ver11 Pic/ThemeLine Pic/4moonuum/moonuum3.png",
+          "ver11 Pic/ThemeLine Pic/4moonuum/moonuum4.png",
         ],
         // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
         // UpdatePictureStickerTheme.zip (2026-09-22) ตัวละครนี้เป็นตัวสุดท้าย
         // ที่ยังไม่มี bannerIcons (มีแค่ rabbit/carrot/nangel/candy/cloud/pompom)
         bannerIcons: [
-          "Ver11 Pic/Design Character Page/theme moonuum icon1.png",
-          "Ver11 Pic/Design Character Page/theme moonuum icon2.png",
-          "Ver11 Pic/Design Character Page/theme moonuum icon3.png",
-          "Ver11 Pic/Design Character Page/theme moonuum icon4.png",
+          "ver11 Pic/Design Character Page/theme moonuum icon1.png",
+          "ver11 Pic/Design Character Page/theme moonuum icon2.png",
+          "ver11 Pic/Design Character Page/theme moonuum icon3.png",
+          "ver11 Pic/Design Character Page/theme moonuum icon4.png",
         ],
       },
     ],
@@ -87,7 +87,7 @@ const characters = {
     // (ห้ามน้ำเงินเข้ม/แท้ๆ อนุญาตแค่ฟ้าอ่อน/ฟ้าท้องฟ้า) 2026-09-22
     themeBgColor: "#b7e3f0",
     stickerBgColor: "#b7e3f0",
-    cover: "Ver11 Pic/StickerLine Pic/main character pic/main-moodaeng.png",
+    cover: "ver11 Pic/StickerLine Pic/main character pic/main-moodaeng.png",
     descEN:
       "I'm an Angel Pig. Please call me \"MooDaeng\", pig pops. I have wings like an angel and stars on my ears. My head is like a ball. I think I can fly, let's play with me.",
     descTH:
@@ -95,7 +95,7 @@ const characters = {
     stickers: [
       {
         name: "Moodaeng หมูเด้ง",
-        sheet: "Ver11 Pic/StickerLine Pic/main character pic/main-moodaeng.png",
+        sheet: "ver11 Pic/StickerLine Pic/main character pic/main-moodaeng.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/moodaeng/sticker/moodaeng1.png",
         link: "http://line.me/S/sticker/1122359",
         descEN:
@@ -114,7 +114,7 @@ const characters = {
       {
         name: "MooDaeng Fly to sky",
         nameTH: "หมูเด้ง บินไปสู่ท้องฟ้า",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/5moodeangSky icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/5moodeangSky icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/fly1.png",
         link: "https://store.line.me/themeshop/product/4a103636-dad2-42e3-a7ee-062754b37ebd/en",
         descEN:
@@ -125,10 +125,10 @@ const characters = {
         themeColor: "#b7e3f0",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/5moodaeng/themeMoodaeng1.png",
-          "Ver11 Pic/ThemeLine Pic/5moodaeng/themeMoodaeng2.png",
-          "Ver11 Pic/ThemeLine Pic/5moodaeng/themeMoodaeng3.png",
-          "Ver11 Pic/ThemeLine Pic/5moodaeng/themeMoodaeng4.png",
+          "ver11 Pic/ThemeLine Pic/5moodaeng/themeMoodaeng1.png",
+          "ver11 Pic/ThemeLine Pic/5moodaeng/themeMoodaeng2.png",
+          "ver11 Pic/ThemeLine Pic/5moodaeng/themeMoodaeng3.png",
+          "ver11 Pic/ThemeLine Pic/5moodaeng/themeMoodaeng4.png",
         ],
         // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
         // UpdatePictureStickerTheme.zip (2026-09-22) ตอนนี้ทุกตัวละครที่มี
@@ -152,7 +152,7 @@ const characters = {
     // ตัวละครนี้ (มี 2 ธีม อีกอันคือ Sweet Dessert #ecb3a5 ส้มอมชมพู แต่
     // container มีสีเดียว/หน้า เลยเลือกธีมหลักที่มี bannerIcons ด้วย) 2026-09-22
     themeBgColor: "#f2d9e0",
-    cover: "Ver11 Pic/StickerLine Pic/main character pic/main-rabbit.png",
+    cover: "ver11 Pic/StickerLine Pic/main character pic/main-rabbit.png",
     descEN:
       "Rabbit so cute. Angel Rabbit. Rabbito & Rabbity, rabbits are one of the cutest creatures. They're rabbits bred as angels.",
     descTH:
@@ -160,7 +160,7 @@ const characters = {
     stickers: [
       {
         name: "Rabbito & Rabbity [TH]",
-        sheet: "Ver11 Pic/StickerLine Pic/main character pic/main-rabbit.png",
+        sheet: "ver11 Pic/StickerLine Pic/main character pic/main-rabbit.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/rabbit/sticker/rabbit1.png",
         link: "http://line.me/S/sticker/1408572",
         descEN: "Rabbit so cute. Angel Rabbit.",
@@ -175,7 +175,7 @@ const characters = {
       },
       {
         name: "Rabbito & Rabbity [EN]",
-        sheet: "Ver11 Pic/StickerLine Pic/main character pic/main-rabbit.png",
+        sheet: "ver11 Pic/StickerLine Pic/main character pic/main-rabbit.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/rabbit/sticker/rabbit1.png",
         link: "http://line.me/S/sticker/1407680",
         descEN: "Rabbit so cute. Angel Rabbit.",
@@ -193,7 +193,7 @@ const characters = {
       {
         name: "Rabbito & Rabbity, Soft Theme",
         nameTH: "กระต่ายซอฟท์ธีม",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/9RabbitSoft icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/9RabbitSoft icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/9rabbitSoft/rabbit1.png",
         link: "https://store.line.me/themeshop/product/2515775a-f433-42e0-8890-e46f6eb971c7/en",
         descEN:
@@ -205,24 +205,24 @@ const characters = {
         themeColor: "#f2d9e0",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/9rabbitSoft/themesoft1.png",
-          "Ver11 Pic/ThemeLine Pic/9rabbitSoft/themesoft2.png",
-          "Ver11 Pic/ThemeLine Pic/9rabbitSoft/themesoft3.png",
-          "Ver11 Pic/ThemeLine Pic/9rabbitSoft/themesoft4.png",
+          "ver11 Pic/ThemeLine Pic/9rabbitSoft/themesoft1.png",
+          "ver11 Pic/ThemeLine Pic/9rabbitSoft/themesoft2.png",
+          "ver11 Pic/ThemeLine Pic/9rabbitSoft/themesoft3.png",
+          "ver11 Pic/ThemeLine Pic/9rabbitSoft/themesoft4.png",
         ],
         // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
         // Ver11 Pic/Design Character Page/ 2026-08-19
         bannerIcons: [
-          "Ver11 Pic/Design Character Page/theme rabbit icon1.png",
-          "Ver11 Pic/Design Character Page/theme rabbit icon2.png",
-          "Ver11 Pic/Design Character Page/theme rabbit icon3.png",
-          "Ver11 Pic/Design Character Page/theme rabbit icon4.png",
+          "ver11 Pic/Design Character Page/theme rabbit icon1.png",
+          "ver11 Pic/Design Character Page/theme rabbit icon2.png",
+          "ver11 Pic/Design Character Page/theme rabbit icon3.png",
+          "ver11 Pic/Design Character Page/theme rabbit icon4.png",
         ],
       },
       {
         name: "Rabbito & Rabbity: Sweet Dessert",
         nameTH: "ขนมหวานอร่อย",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/13Dessert icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/13Dessert icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/9rabbitSoft/rabbit2.png",
         link: "https://store.line.me/themeshop/product/d5430474-673a-4fab-aeaa-c9c65b4144aa/en",
         descEN:
@@ -235,10 +235,10 @@ const characters = {
         themeColor: "#f2a7a0",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/13dessert/themerabbit1.png",
-          "Ver11 Pic/ThemeLine Pic/13dessert/themerabbit2.png",
-          "Ver11 Pic/ThemeLine Pic/13dessert/themerabbit3.png",
-          "Ver11 Pic/ThemeLine Pic/13dessert/themerabbit4.png",
+          "ver11 Pic/ThemeLine Pic/13dessert/themerabbit1.png",
+          "ver11 Pic/ThemeLine Pic/13dessert/themerabbit2.png",
+          "ver11 Pic/ThemeLine Pic/13dessert/themerabbit3.png",
+          "ver11 Pic/ThemeLine Pic/13dessert/themerabbit4.png",
         ],
       },
     ],
@@ -251,7 +251,7 @@ const characters = {
     // สีพื้นหลัง #theme-container — คืนค่าสีเฉลี่ยจริงดั้งเดิม #edccad
     // (ส้มพีชอ่อน ดู comment เดิมของธีมด้านล่าง) 2026-09-22
     themeBgColor: "#edccad",
-    cover: "Ver11 Pic/StickerLine Pic/main character pic/main-carrot.png",
+    cover: "ver11 Pic/StickerLine Pic/main character pic/main-carrot.png",
     descEN:
       'A little girl who loves carrot and rabbit. I am called "Carrot Girl". Let\'s enjoy time with me and have a good time.',
     // ✅ อัปเดต: ดึง bio ไทยจริงจาก angelto.com (carrot.html) แล้ว — ก่อนหน้านี้เข้าใจผิดว่าเว็บเก่าไม่มี
@@ -260,7 +260,7 @@ const characters = {
     stickers: [
       {
         name: "Carrot Girl เด็กแครอท",
-        sheet: "Ver11 Pic/StickerLine Pic/CarrotGirl/carrot-main.png",
+        sheet: "ver11 Pic/StickerLine Pic/CarrotGirl/carrot-main.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/CarrotGirl/sticker/carrot1-all.png",
         link: "http://line.me/S/sticker/1078503",
         descEN:
@@ -282,7 +282,7 @@ const characters = {
         // ⚠️ ไฟล์ "6carrot icon.png" จากต้นทางจริงๆ เป็นรูป mockup 2 แผง ไม่ใช่
         // icon สี่เหลี่ยมแบบธีมอื่น (ไฟล์ตั้งชื่อผิดตั้งแต่ต้นทาง) เลยใช้รูป
         // ตัวละคร Carrot Girl แทนไปก่อน
-        sheet: "Ver11 Pic/StickerLine Pic/main character pic/main-carrot.png",
+        sheet: "ver11 Pic/StickerLine Pic/main character pic/main-carrot.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/carrot1theme.png",
         link: "https://store.line.me/themeshop/product/29120618-5885-4a74-99c1-139755915c53/en",
         descEN:
@@ -293,18 +293,18 @@ const characters = {
         themeColor: "var(--tone-4)",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/6carrot/themeCarrot1.png",
-          "Ver11 Pic/ThemeLine Pic/6carrot/themeCarrot2.png",
-          "Ver11 Pic/ThemeLine Pic/6carrot/themeCarrot3.png",
-          "Ver11 Pic/ThemeLine Pic/6carrot/themeCarrot4.png",
+          "ver11 Pic/ThemeLine Pic/6carrot/themeCarrot1.png",
+          "ver11 Pic/ThemeLine Pic/6carrot/themeCarrot2.png",
+          "ver11 Pic/ThemeLine Pic/6carrot/themeCarrot3.png",
+          "ver11 Pic/ThemeLine Pic/6carrot/themeCarrot4.png",
         ],
         // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
         // Ver11 Pic/Design Character Page/ 2026-08-19
         bannerIcons: [
-          "Ver11 Pic/Design Character Page/theme carrot icon1.png",
-          "Ver11 Pic/Design Character Page/theme carrot icon2.png",
-          "Ver11 Pic/Design Character Page/theme carrot icon3.png",
-          "Ver11 Pic/Design Character Page/theme carrot icon4.png",
+          "ver11 Pic/Design Character Page/theme carrot icon1.png",
+          "ver11 Pic/Design Character Page/theme carrot icon2.png",
+          "ver11 Pic/Design Character Page/theme carrot icon3.png",
+          "ver11 Pic/Design Character Page/theme carrot icon4.png",
         ],
       },
     ],
@@ -323,7 +323,7 @@ const characters = {
     // ใช้สีประจำตัว tone-5 เป็นพื้นหลัง Theme Set แทนสีฟ้าของธีม flagship
     // เพื่อให้พื้นหลังสอดคล้องกับสีของ Nature's Angel
     themeBgColor: "var(--tone-5)",
-    cover: "Ver11 Pic/StickerLine Pic/main character pic/main-nangel.png",
+    cover: "ver11 Pic/StickerLine Pic/main character pic/main-nangel.png",
     descEN:
       'Pink is "Angel\'s Flower", cute girl. Green is "Angel\'s Leaf", funny girl. Purple is "Angel\'s Fruit", clever girl. Yellow is "Angel\'s Light", sweet girl.',
     descTH:
@@ -332,7 +332,7 @@ const characters = {
       {
         name: "Nature's Angel",
         nameTH: "นางฟ้าแห่งธรรมชาติ",
-        sheet: "Ver11 Pic/StickerLine Pic/main character pic/main-Nangel1.png",
+        sheet: "ver11 Pic/StickerLine Pic/main character pic/main-Nangel1.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/NatureAngel/sticker/angelN1.png",
         link: "https://store.line.me/stickershop/product/1139363/en",
         // เว็บเก่าตรง Sticker 1 มีบั๊ก copy-paste เอา desc ของ Candy มาแปะ
@@ -351,7 +351,7 @@ const characters = {
       {
         name: "Nature's Angel Travel 2 [TH]",
         nameTH: "นางฟ้าไปเที่ยว",
-        sheet: "Ver11 Pic/StickerLine Pic/main character pic/main-Nangel2.png",
+        sheet: "ver11 Pic/StickerLine Pic/main character pic/main-Nangel2.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/NatureAngel/sticker/travel1.png",
         link: "http://line.me/S/sticker/1202967",
         descEN:
@@ -368,7 +368,7 @@ const characters = {
       {
         name: "Nature's Angel Travel 2 [EN]",
         nameTH: "นางฟ้าไปเที่ยว",
-        sheet: "Ver11 Pic/StickerLine Pic/main character pic/main-Nangel2.png",
+        sheet: "ver11 Pic/StickerLine Pic/main character pic/main-Nangel2.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/NatureAngel/sticker/travel2.png",
         link: "http://line.me/S/sticker/1199212",
         descEN:
@@ -387,7 +387,7 @@ const characters = {
       {
         name: "Angel Pink cute Love",
         nameTH: "นางฟ้าสีชมพูแห่งความรัก",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/1pinkLove icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/1pinkLove icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/pinklove1.png",
         link: "https://store.line.me/themeshop/product/72463d8d-5c34-41eb-ba25-aab71336c7db/en",
         descEN: "Angel Pink theme cute love, hearts and pink colour.",
@@ -395,16 +395,16 @@ const characters = {
         themeColor: "var(--primary-pink)",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/1pinkLove/pinkLove1.png",
-          "Ver11 Pic/ThemeLine Pic/1pinkLove/pinkLove2.png",
-          "Ver11 Pic/ThemeLine Pic/1pinkLove/pinkLove3.png",
-          "Ver11 Pic/ThemeLine Pic/1pinkLove/pinkLove4.png",
+          "ver11 Pic/ThemeLine Pic/1pinkLove/pinkLove1.png",
+          "ver11 Pic/ThemeLine Pic/1pinkLove/pinkLove2.png",
+          "ver11 Pic/ThemeLine Pic/1pinkLove/pinkLove3.png",
+          "ver11 Pic/ThemeLine Pic/1pinkLove/pinkLove4.png",
         ],
       },
       {
         name: "Angel Green Slow Life",
         nameTH: "นางฟ้าสีเขียว Slow Life",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/2slowlife icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/2slowlife icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/slow1.png",
         link: "https://store.line.me/themeshop/product/90a2ccd0-cddb-40cf-ae7f-2d23998a0fa9/en",
         descEN: "Angel Green Theme, Slow Life smooth, easy and comfortable.",
@@ -416,26 +416,26 @@ const characters = {
         themeColor: "#c4e2d2",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/2slowLife/themeSlow1.png",
-          "Ver11 Pic/ThemeLine Pic/2slowLife/themeSlow2.png",
-          "Ver11 Pic/ThemeLine Pic/2slowLife/themeSlow3.png",
-          "Ver11 Pic/ThemeLine Pic/2slowLife/themeSlow4.png",
+          "ver11 Pic/ThemeLine Pic/2slowLife/themeSlow1.png",
+          "ver11 Pic/ThemeLine Pic/2slowLife/themeSlow2.png",
+          "ver11 Pic/ThemeLine Pic/2slowLife/themeSlow3.png",
+          "ver11 Pic/ThemeLine Pic/2slowLife/themeSlow4.png",
         ],
         // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
         // Ver11 Pic/Design Character Page/ 2026-08-19 (ชุดเดียว ไม่ผูกกับธีม
         // ใดธีมหนึ่งโดยเฉพาะ ใส่ไว้ที่ธีมแรกที่มี icons ครบ เพราะ render
         // logic แค่หา field นี้จาก item ไหนก็ได้ในอาเรย์)
         bannerIcons: [
-          "Ver11 Pic/Design Character Page/theme nAngel icon1.png",
-          "Ver11 Pic/Design Character Page/theme nAngel icon2.png",
-          "Ver11 Pic/Design Character Page/theme nAngel icon3.png",
-          "Ver11 Pic/Design Character Page/theme nAngel icon4.png",
+          "ver11 Pic/Design Character Page/theme nAngel icon1.png",
+          "ver11 Pic/Design Character Page/theme nAngel icon2.png",
+          "ver11 Pic/Design Character Page/theme nAngel icon3.png",
+          "ver11 Pic/Design Character Page/theme nAngel icon4.png",
         ],
       },
       {
         name: "Angel Yellow Winter",
         nameTH: "นางฟ้าสีเหลือง",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/3yellowCold icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/3yellowCold icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/winter1.png",
         link: "https://store.line.me/themeshop/product/c990f1b4-fba5-4f10-a595-22ac817e9ab6/en",
         descEN: "Angel Yellow Theme, Cold Winter blue tone with falling snow.",
@@ -448,16 +448,16 @@ const characters = {
         themeColor: "#acdbe8",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/3cold/themeCold1.png",
-          "Ver11 Pic/ThemeLine Pic/3cold/themeCold2.png",
-          "Ver11 Pic/ThemeLine Pic/3cold/themeCold3.png",
-          "Ver11 Pic/ThemeLine Pic/3cold/themeCold4.png",
+          "ver11 Pic/ThemeLine Pic/3cold/themeCold1.png",
+          "ver11 Pic/ThemeLine Pic/3cold/themeCold2.png",
+          "ver11 Pic/ThemeLine Pic/3cold/themeCold3.png",
+          "ver11 Pic/ThemeLine Pic/3cold/themeCold4.png",
         ],
       },
       {
         name: "Angel Purple Pure",
         nameTH: "นางฟ้าสีม่วงบริสุทธิ์",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/7purplePure icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/7purplePure icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/pure1.png",
         link: "https://store.line.me/themeshop/product/ae9bccd1-4406-4b60-b41b-226ca39e8feb/en",
         descEN:
@@ -469,16 +469,16 @@ const characters = {
         themeColor: "#dcc4ec",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/7pure/themePure1.png",
-          "Ver11 Pic/ThemeLine Pic/7pure/themePure2.png",
-          "Ver11 Pic/ThemeLine Pic/7pure/themePure3.png",
-          "Ver11 Pic/ThemeLine Pic/7pure/themePure4.png",
+          "ver11 Pic/ThemeLine Pic/7pure/themePure1.png",
+          "ver11 Pic/ThemeLine Pic/7pure/themePure2.png",
+          "ver11 Pic/ThemeLine Pic/7pure/themePure3.png",
+          "ver11 Pic/ThemeLine Pic/7pure/themePure4.png",
         ],
       },
       {
         name: "Devil Black Night",
         nameTH: "นางฟ้าเดวิลยามค่ำคืน",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/8blackNight icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/8blackNight icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/black-night1.png",
         link: "https://store.line.me/themeshop/product/448f2bad-f01b-4ea8-bbba-c96cee916d07/en",
         descEN:
@@ -493,16 +493,16 @@ const characters = {
         themeColor: "#c4c1c8",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/8night/themeNight1.png",
-          "Ver11 Pic/ThemeLine Pic/8night/themeNight2.png",
-          "Ver11 Pic/ThemeLine Pic/8night/themeNight3.png",
-          "Ver11 Pic/ThemeLine Pic/8night/themeNight4.png",
+          "ver11 Pic/ThemeLine Pic/8night/themeNight1.png",
+          "ver11 Pic/ThemeLine Pic/8night/themeNight2.png",
+          "ver11 Pic/ThemeLine Pic/8night/themeNight3.png",
+          "ver11 Pic/ThemeLine Pic/8night/themeNight4.png",
         ],
       },
       {
         name: "Angel Pink Flower",
         nameTH: "ดอกไม้ของนางฟ้าสีชมพู",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/10pinkFlower icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/10pinkFlower icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/flower1.png",
         link: "https://store.line.me/themeshop/product/37c4d8ae-7bdb-40ef-abd2-8b57fd6e5337/en",
         descEN:
@@ -515,16 +515,16 @@ const characters = {
         themeColor: "#b1d6e8",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/10flower/themeFlower1.png",
-          "Ver11 Pic/ThemeLine Pic/10flower/themeFlower2.png",
-          "Ver11 Pic/ThemeLine Pic/10flower/themeFlower3.png",
-          "Ver11 Pic/ThemeLine Pic/10flower/themeFlower4.png",
+          "ver11 Pic/ThemeLine Pic/10flower/themeFlower1.png",
+          "ver11 Pic/ThemeLine Pic/10flower/themeFlower2.png",
+          "ver11 Pic/ThemeLine Pic/10flower/themeFlower3.png",
+          "ver11 Pic/ThemeLine Pic/10flower/themeFlower4.png",
         ],
       },
       {
         name: "Nature's Angel: Rainbow Pastel",
         nameTH: "นางฟ้าแห่งธรรมชาติ สายรุ้งพาสเทล",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/11rainbow icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/11rainbow icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/rainbow1S.png",
         link: "https://store.line.me/themeshop/product/67b413ea-81ee-440c-b2d4-88c98c6a440a/en",
         descEN:
@@ -537,16 +537,16 @@ const characters = {
         themeColor: "#ead8e5",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/11rainbow/themeRainbow1.png",
-          "Ver11 Pic/ThemeLine Pic/11rainbow/themeRainbow2.png",
-          "Ver11 Pic/ThemeLine Pic/11rainbow/themeRainbow3.png",
-          "Ver11 Pic/ThemeLine Pic/11rainbow/themeRainbow4.png",
+          "ver11 Pic/ThemeLine Pic/11rainbow/themeRainbow1.png",
+          "ver11 Pic/ThemeLine Pic/11rainbow/themeRainbow2.png",
+          "ver11 Pic/ThemeLine Pic/11rainbow/themeRainbow3.png",
+          "ver11 Pic/ThemeLine Pic/11rainbow/themeRainbow4.png",
         ],
       },
       {
         name: "Nature's Angel: Summer Beach",
         nameTH: "หน้าร้อนนางฟ้าไปทะเล",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/12summer icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/12summer icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/summer1.png",
         link: "https://store.line.me/themeshop/product/7b75c6bb-b776-4f30-bfae-1781b65939dd/en",
         descEN:
@@ -558,10 +558,10 @@ const characters = {
         themeColor: "#e3cdd0",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/12summer/themeSummer1.png",
-          "Ver11 Pic/ThemeLine Pic/12summer/themeSummer2.png",
-          "Ver11 Pic/ThemeLine Pic/12summer/themeSummer3.png",
-          "Ver11 Pic/ThemeLine Pic/12summer/themeSummer4.png",
+          "ver11 Pic/ThemeLine Pic/12summer/themeSummer1.png",
+          "ver11 Pic/ThemeLine Pic/12summer/themeSummer2.png",
+          "ver11 Pic/ThemeLine Pic/12summer/themeSummer3.png",
+          "ver11 Pic/ThemeLine Pic/12summer/themeSummer4.png",
         ],
       },
     ],
@@ -578,7 +578,7 @@ const characters = {
     // ม่วงกับชมพูดูไม่เข้ากัน — ตอนนี้ wing เปลี่ยนเป็นแบบขาวโปร่งแสงแล้ว
     // เหตุผลเดิมไม่มีผลอีกต่อไป 2026-09-22
     themeBgColor: "#d7cfe0",
-    cover: "Ver11 Pic/StickerLine Pic/main character pic/main-candyGirl.png",
+    cover: "ver11 Pic/StickerLine Pic/main character pic/main-candyGirl.png",
     descEN:
       "Little cute girl. They have 5 girls that are kawaii like a sweet candy.",
     descTH:
@@ -587,7 +587,7 @@ const characters = {
       {
         name: "Kawaii Candy Girl",
         nameTH: "แคนดี้เกิร์ล เด็กลูกกวาด",
-        sheet: "Ver11 Pic/StickerLine Pic/candyGirl/candyGirl1-main.png",
+        sheet: "ver11 Pic/StickerLine Pic/candyGirl/candyGirl1-main.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/candyGirl/set1/detail.png",
         link: "https://store.line.me/stickershop/product/1967171/",
         descEN:
@@ -606,8 +606,8 @@ const characters = {
       {
         name: "Kawaii Candy Girl 2: Error!",
         nameTH: "แคนดี้เกิร์ล 2 พัง พังอีกละ",
-        sheet: "Ver11 Pic/StickerLine Pic/candyGirl/error-main.png",
-        detailSheet: "Ver11 Pic/StickerLine Pic/candyGirl/error all.png",
+        sheet: "ver11 Pic/StickerLine Pic/candyGirl/error-main.png",
+        detailSheet: "ver11 Pic/StickerLine Pic/candyGirl/error all.png",
         link: "http://line.me/S/sticker/4160972",
         descEN:
           "Purple Sweet Potato is a bit stubborn and moody like a kid, grumbling about traffic and broken trains.",
@@ -623,7 +623,7 @@ const characters = {
       {
         name: "Kawaii Candy Girl 3: Cheer up",
         nameTH: "แคนดี้เกิร์ล 3 มาเชียร์",
-        sheet: "Ver11 Pic/StickerLine Pic/candyGirl/cheerup-main.png",
+        sheet: "ver11 Pic/StickerLine Pic/candyGirl/cheerup-main.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/candyGirl/set3/detail.png",
         link: "https://store.line.me/stickershop/product/3840916/",
         descEN:
@@ -644,8 +644,8 @@ const characters = {
       {
         name: "Candy Kawaii Girl 4: Working",
         nameTH: "แคนดี้เกิร์ล 4 ประชุมๆ",
-        sheet: "Ver11 Pic/StickerLine Pic/candyGirl/working-main.png",
-        detailSheet: "Ver11 Pic/StickerLine Pic/candyGirl/working all.png",
+        sheet: "ver11 Pic/StickerLine Pic/candyGirl/working-main.png",
+        detailSheet: "ver11 Pic/StickerLine Pic/candyGirl/working all.png",
         link: "https://store.line.me/stickershop/product/18989751",
         descEN:
           "Candy girl is stuck in consecutive meetings, a relatable office life moment sent straight from her busy day.",
@@ -660,8 +660,8 @@ const characters = {
       {
         name: "Candy Kawaii Girl 5: Love Oshi",
         nameTH: "แคนดี้เกิร์ล 5 ไลฟ์มาแล้วนะ",
-        sheet: "Ver11 Pic/StickerLine Pic/candyGirl/oshi-main.png",
-        detailSheet: "Ver11 Pic/StickerLine Pic/candyGirl/oshi all.png",
+        sheet: "ver11 Pic/StickerLine Pic/candyGirl/oshi-main.png",
+        detailSheet: "ver11 Pic/StickerLine Pic/candyGirl/oshi all.png",
         link: "https://store.line.me/stickershop/product/28152569/",
         descEN:
           "Candy girl is head over heels for her favorite idol, living that fangirl life to the fullest.",
@@ -678,7 +678,7 @@ const characters = {
       {
         name: "Candy Kawaii Girl Theme: Candy",
         nameTH: "ธีมแคนดี้เกิร์ล เด็กลูกกวาด",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/14candy icon.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/14candy icon.png",
         detailSheet: "Ver11 Pic/ThemeLine Pic/14candy/candy1.png",
         link: "https://store.line.me/themeshop/product/0c92491b-4325-4f7b-8814-317fcc5948e1/en",
         descEN:
@@ -691,10 +691,10 @@ const characters = {
         // ดู character-render.js/character.css สำหรับการจัดการ contrast
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/14candy/themeCandy1.png",
-          "Ver11 Pic/ThemeLine Pic/14candy/themeCandy2.png",
-          "Ver11 Pic/ThemeLine Pic/14candy/themeCandy3.png",
-          "Ver11 Pic/ThemeLine Pic/14candy/themeCandy4.png",
+          "ver11 Pic/ThemeLine Pic/14candy/themeCandy1.png",
+          "ver11 Pic/ThemeLine Pic/14candy/themeCandy2.png",
+          "ver11 Pic/ThemeLine Pic/14candy/themeCandy3.png",
+          "ver11 Pic/ThemeLine Pic/14candy/themeCandy4.png",
         ],
         // bannerIcons: รูปพรีวิววงกลม 4 วงเฉพาะแถบ .topic-banner (Theme Set)
         // เท่านั้น — คนละชุดกับ icons ด้านบน (ใช้ในถาดรูปตัวอย่างของการ์ด
@@ -702,10 +702,10 @@ const characters = {
         // ประดับ (เส้นประม่วง) ปั้นมาให้พร้อมใช้เลย 154x154px ไม่ต้องพึ่ง
         // bg whCircle.png + border-radius ครอบอีกชั้นแบบวงอื่น 2026-08-12
         bannerIcons: [
-          "Ver11 Pic/Design Character Page/theme candy icon1.png",
-          "Ver11 Pic/Design Character Page/theme candy icon2.png",
-          "Ver11 Pic/Design Character Page/theme candy icon3.png",
-          "Ver11 Pic/Design Character Page/theme candy icon4.png",
+          "ver11 Pic/Design Character Page/theme candy icon1.png",
+          "ver11 Pic/Design Character Page/theme candy icon2.png",
+          "ver11 Pic/Design Character Page/theme candy icon3.png",
+          "ver11 Pic/Design Character Page/theme candy icon4.png",
         ],
       },
     ],
@@ -715,7 +715,7 @@ const characters = {
     name: "Fox Boy",
     nameTH: "เด็กจิ้งจอก",
     tone: "tone-7",
-    cover: "Ver11 Pic/StickerLine Pic/main character pic/main-foxboy.png",
+    cover: "ver11 Pic/StickerLine Pic/main character pic/main-foxboy.png",
     descEN:
       "He is a little boy, a little fat. He looks like a fox. He loves to play games.",
     descTH:
@@ -724,7 +724,7 @@ const characters = {
       {
         name: "Fox Boy Gamer [TH]",
         nameTH: "เด็กจิ้งจอกบ้าเกม",
-        sheet: "Ver11 Pic/StickerLine Pic/foxboy/foxboy ver1.png",
+        sheet: "ver11 Pic/StickerLine Pic/foxboy/foxboy ver1.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/foxboy/sticker/fox1.png",
         link: "http://line.me/S/sticker/1351603",
         descEN:
@@ -741,7 +741,7 @@ const characters = {
       {
         name: "Fox Boy Gamer [EN]",
         nameTH: "เด็กจิ้งจอกบ้าเกม",
-        sheet: "Ver11 Pic/StickerLine Pic/foxboy/foxboy ver1.png",
+        sheet: "ver11 Pic/StickerLine Pic/foxboy/foxboy ver1.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/foxboy/sticker/fox1.png",
         link: "http://line.me/S/sticker/1352773",
         descEN:
@@ -758,7 +758,7 @@ const characters = {
       {
         name: "Fox Boy 2: Cheer Football",
         nameTH: "เด็กจิ้งจอก เชียร์บอล",
-        sheet: "Ver11 Pic/StickerLine Pic/foxboy/foxboy ver2.png",
+        sheet: "ver11 Pic/StickerLine Pic/foxboy/foxboy ver2.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/foxboy/sticker/fox2.png",
         link: "http://line.me/S/sticker/3942690",
         descEN:
@@ -785,7 +785,7 @@ const characters = {
     // มี bannerIcons/ถือเป็น flagship ของตัวละครนี้) อีกธีม "Angel Cloud
     // Theme" ไม่เคยมีค่าสีเฉลี่ยจริงถูกบันทึกไว้ 2026-09-22
     themeBgColor: "#addfee",
-    cover: "Ver11 Pic/StickerLine Pic/main character pic/main-cloudy.png",
+    cover: "ver11 Pic/StickerLine Pic/main character pic/main-cloudy.png",
     // descEN/descTH ระดับตัวละคร: เว็บเก่าไม่มี (มีแค่ emoji) ดัดแปลงจาก desc
     // ของ emoji ด้านล่างมาแทน รอคอนเฟิร์ม
     descEN:
@@ -800,49 +800,49 @@ const characters = {
       {
         name: "Angel Cloud",
         nameTH: "นางฟ้าเมฆ",
-        sheet: "Ver11 Pic/StickerLine Pic/main character pic/main-cloudy.png",
-        detailSheet: "Ver11 Pic/StickerLine Pic/cloud/cloudSky set1.png",
+        sheet: "ver11 Pic/StickerLine Pic/main character pic/main-cloudy.png",
+        detailSheet: "ver11 Pic/StickerLine Pic/cloud/cloudSky set1.png",
         link: "https://store.line.me/stickershop/product/6925111/en",
         descEN:
           "A sweet little cloud angel with a crown and sparkly eyes ready to brighten up your chats.",
         descTH:
           "นางฟ้าเมฆตัวน้อยน่ารัก สวมมงกุฎ ตาแวววาว พร้อมเติมความสดใสให้ทุกแชท",
         icons: [
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_4.png",
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_5.png",
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_9.png",
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_23.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_4.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_5.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_9.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v1/cloudy_23.png",
         ],
       },
       {
         name: "Angel Cloud Everyday",
         nameTH: "นางฟ้าเมฆ ทุกๆวัน",
-        sheet: "Ver11 Pic/StickerLine Pic/cloud/cloudy2.png",
-        detailSheet: "Ver11 Pic/StickerLine Pic/cloud/cloudSky set2.png",
+        sheet: "ver11 Pic/StickerLine Pic/cloud/cloudy2.png",
+        detailSheet: "ver11 Pic/StickerLine Pic/cloud/cloudSky set2.png",
         link: "https://store.line.me/stickershop/product/8067136/en",
         descEN:
           "Cloud girl's everyday expressions cheerful reactions for chatting day to day.",
         descTH: "สีหน้าคุณเมฆประจำวัน อารมณ์สดใสไว้ใช้ตอบแชททุกวัน",
         icons: [
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_2.png",
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_22.png",
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_24.png",
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_3.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_2.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_22.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_24.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v2/cloudy_3.png",
         ],
       },
       {
         name: "Angel Cloud: Spring Season",
         nameTH: "นางฟ้าเมฆ ฤดูใบไม้ผลิ",
-        sheet: "Ver11 Pic/StickerLine Pic/cloud/cloud v3/cloud season icon.png",
-        detailSheet: "Ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-placeholder.png",
+        sheet: "ver11 Pic/StickerLine Pic/cloud/cloud v3/cloud season icon.png",
+        detailSheet: "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-placeholder.png",
         link: "https://store.line.me/stickershop/product/15632189/en",
         descEN: "A cheerful Angel Cloud sticker set for happy everyday chats.",
         descTH: "สติกเกอร์นางฟ้าเมฆแสนสดใส สำหรับส่งความสุขในทุกๆ วัน",
         icons: [
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262150.png",
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262151.png",
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262152.png",
-          "Ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262153.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262150.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262151.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262152.png",
+          "ver11 Pic/StickerLine Pic/cloud/cloud v3/spring-preview-407262153.png",
         ],
       },
     ],
@@ -851,8 +851,8 @@ const characters = {
     themes: [
       {
         name: "Angel Cloud Theme",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/15cloud icon.png",
-        detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/15cloud.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/15cloud icon.png",
+        detailSheet: "ver11 Pic/ThemeLine Pic/theme line -main/15cloud.png",
         link: "https://store.line.me/themeshop/product/d8fe3b7c-bb9e-49a7-8119-2cbeeec34809/en",
         descEN:
           "A dreamy pink and lavender sky theme with the cloud angel floating above the clouds.",
@@ -860,16 +860,16 @@ const characters = {
         themeColor: "#d8ccde",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/15cloud/themecloud1.png",
-          "Ver11 Pic/ThemeLine Pic/15cloud/themecloud2.png",
-          "Ver11 Pic/ThemeLine Pic/15cloud/themecloud3.png",
-          "Ver11 Pic/ThemeLine Pic/15cloud/themecloud4.png",
+          "ver11 Pic/ThemeLine Pic/15cloud/themecloud1.png",
+          "ver11 Pic/ThemeLine Pic/15cloud/themecloud2.png",
+          "ver11 Pic/ThemeLine Pic/15cloud/themecloud3.png",
+          "ver11 Pic/ThemeLine Pic/15cloud/themecloud4.png",
         ],
       },
       {
         name: "Angel Cloud Sky Theme",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/17cloudSky icon.png",
-        detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/17cloudSky.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/17cloudSky icon.png",
+        detailSheet: "ver11 Pic/ThemeLine Pic/theme line -main/17cloudSky.png",
         link: "https://store.line.me/themeshop/product/3ded0c5b-fbef-4fac-86eb-64672733b152/en",
         descEN:
           "A soft sky blue theme with fluffy clouds all around, bright and airy.",
@@ -878,18 +878,18 @@ const characters = {
         themeColor: "#addfee",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/17cloudSky/themeSky1.png",
-          "Ver11 Pic/ThemeLine Pic/17cloudSky/themeSky2.png",
-          "Ver11 Pic/ThemeLine Pic/17cloudSky/themeSky3.png",
-          "Ver11 Pic/ThemeLine Pic/17cloudSky/themeSky4.png",
+          "ver11 Pic/ThemeLine Pic/17cloudSky/themeSky1.png",
+          "ver11 Pic/ThemeLine Pic/17cloudSky/themeSky2.png",
+          "ver11 Pic/ThemeLine Pic/17cloudSky/themeSky3.png",
+          "ver11 Pic/ThemeLine Pic/17cloudSky/themeSky4.png",
         ],
         // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
         // Ver11 Pic/Design Character Page/ 2026-08-19
         bannerIcons: [
-          "Ver11 Pic/Design Character Page/theme cloud icon1.png",
-          "Ver11 Pic/Design Character Page/theme cloud icon2.png",
-          "Ver11 Pic/Design Character Page/theme cloud icon3.png",
-          "Ver11 Pic/Design Character Page/theme cloud icon4.png",
+          "ver11 Pic/Design Character Page/theme cloud icon1.png",
+          "ver11 Pic/Design Character Page/theme cloud icon2.png",
+          "ver11 Pic/Design Character Page/theme cloud icon3.png",
+          "ver11 Pic/Design Character Page/theme cloud icon4.png",
         ],
       },
     ],
@@ -913,7 +913,7 @@ const characters = {
     // สีพื้นหลัง #theme-container — คืนค่าสีเฉลี่ยจริงดั้งเดิม #efc3d3 (ชมพู
     // อ่อน ดู comment เดิมที่ theme "Angel PomPom Theme" ด้านล่าง) 2026-09-22
     themeBgColor: "#efc3d3",
-    cover: "Ver11 Pic/StickerLine Pic/main character pic/main-angelPom.png",
+    cover: "ver11 Pic/StickerLine Pic/main character pic/main-angelPom.png",
     // descEN/descTH ระดับตัวละคร: เว็บเก่าไม่มี (มีแค่ emoji) ดัดแปลงจาก desc
     // ของ emoji ด้านล่างมาแทน รอคอนเฟิร์ม
     descEN: "PomPom is an angel round, fluffy and always in a good mood.",
@@ -927,7 +927,7 @@ const characters = {
       {
         name: "Angel PomPom",
         nameTH: "นางฟ้าปอมปอม",
-        sheet: "Ver11 Pic/StickerLine Pic/main character pic/main-angelPom.png",
+        sheet: "ver11 Pic/StickerLine Pic/main character pic/main-angelPom.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/angelpom/sticker/pompom-set1.png",
         link: "https://store.line.me/stickershop/product/6990685/en",
         descEN:
@@ -944,7 +944,7 @@ const characters = {
       {
         name: "Angel PomPom 2",
         nameTH: "นางฟ้าปอมปอม",
-        sheet: "Ver11 Pic/StickerLine Pic/angelpom/AngelPom2.png",
+        sheet: "ver11 Pic/StickerLine Pic/angelpom/AngelPom2.png",
         detailSheet: "Ver11 Pic/StickerLine Pic/angelpom/sticker/pompom-set2.png",
         link: "https://store.line.me/stickershop/product/8810735/en",
         descEN:
@@ -961,8 +961,8 @@ const characters = {
     themes: [
       {
         name: "Angel PomPom Theme",
-        sheet: "Ver11 Pic/ThemeLine Pic/theme line -main/16pompom icon.png",
-        detailSheet: "Ver11 Pic/ThemeLine Pic/theme line -main/16pompom.png",
+        sheet: "ver11 Pic/ThemeLine Pic/theme line -main/16pompom icon.png",
+        detailSheet: "ver11 Pic/ThemeLine Pic/theme line -main/16pompom.png",
         link: "https://store.line.me/themeshop/product/1c5036e0-00ff-45dc-a755-9c9c8e1702af/en",
         descEN:
           "A sweet pink theme with floating hearts around the angel pompom.",
@@ -971,18 +971,18 @@ const characters = {
         themeColor: "#efc3d3",
         containerColor: true,
         icons: [
-          "Ver11 Pic/ThemeLine Pic/16pompom/themePom1.png",
-          "Ver11 Pic/ThemeLine Pic/16pompom/themePom2.png",
-          "Ver11 Pic/ThemeLine Pic/16pompom/themePom3.png",
-          "Ver11 Pic/ThemeLine Pic/16pompom/themePom4.png",
+          "ver11 Pic/ThemeLine Pic/16pompom/themePom1.png",
+          "ver11 Pic/ThemeLine Pic/16pompom/themePom2.png",
+          "ver11 Pic/ThemeLine Pic/16pompom/themePom3.png",
+          "ver11 Pic/ThemeLine Pic/16pompom/themePom4.png",
         ],
         // bannerIcons: วงพรีวิว .topic-banner (Theme Set) เฉพาะ — ไฟล์ใหม่จาก
         // Ver11 Pic/Design Character Page/ 2026-08-19
         bannerIcons: [
-          "Ver11 Pic/Design Character Page/theme pom icon1.png",
-          "Ver11 Pic/Design Character Page/theme pom icon2.png",
-          "Ver11 Pic/Design Character Page/theme pom icon3.png",
-          "Ver11 Pic/Design Character Page/theme pom icon4.png",
+          "ver11 Pic/Design Character Page/theme pom icon1.png",
+          "ver11 Pic/Design Character Page/theme pom icon2.png",
+          "ver11 Pic/Design Character Page/theme pom icon3.png",
+          "ver11 Pic/Design Character Page/theme pom icon4.png",
         ],
       },
     ],
