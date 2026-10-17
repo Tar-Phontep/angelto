@@ -27,7 +27,7 @@
             <h3 class="card-title">${data.name}</h3>
             <p class="card-meta">${label}</p>
           </div>
-          <span class="arrow"><img src="ver11 Pic/icons/icon-arrow.png" alt="" loading="lazy" /></span>
+          <span class="arrow"><img src="Ver11 Pic/icon web social/icon arrow.png" alt="" loading="lazy" /></span>
         </div>
       </a>`,
     );
@@ -63,14 +63,14 @@
     // ยังโชว์ชื่อเต็มพร้อมป้ายภาษาเหมือนเดิม)
     const displayName = item.name.replace(/\s*\[(TH|EN|JP)\]\s*$/, "");
     return `
-      <a class="card${toneClass} reveal" data-type="${typeLabel.toLowerCase()}" href="character.html?slug=${slug}&item=${encodeURIComponent(item.name)}">
+      <a class="card${toneClass} reveal" data-type="${typeLabel.toLowerCase()}" href="character.html?slug=${slug}&type=${typeLabel.toLowerCase()}&item=${encodeURIComponent(item.name)}">
         <div class="card-media"><img src="${img}" alt="${displayName}" loading="lazy" /></div>
         <div class="card-body">
           <div>
             <h3 class="card-title">${displayName}</h3>
             <p class="card-meta">${typeLabel}</p>
           </div>
-          <span class="arrow"><img src="ver11 Pic/icons/icon-arrow.png" alt="" loading="lazy" /></span>
+          <span class="arrow"><img src="Ver11 Pic/icon web social/icon arrow.png" alt="" loading="lazy" /></span>
         </div>
       </a>`;
   }

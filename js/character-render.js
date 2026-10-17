@@ -30,7 +30,7 @@
       !isRealLink && item.link
         ? item.link.replace(/^\[|\]$/g, "")
         : "ยังไม่มีลิงก์";
-    const moreIcon = `<img src="ver11 Pic/icons/icon-next3.png" alt="" loading="lazy" />`;
+    const moreIcon = `<img src="Ver11 Pic/icon web social/icon next3.png" alt="" loading="lazy" />`;
     const moreLink = isRealLink
       ? `<a class="detail-preview-more" href="${item.link}" target="_blank" rel="noopener" aria-label="ดูใน LINE Store">${moreIcon}</a>`
       : `<span class="detail-preview-more" style="opacity:0.5; cursor:not-allowed;" title="${statusText}">${moreIcon}</span>`;
@@ -288,13 +288,13 @@
     }
 
     document.getElementById("page-title").textContent =
-      `${data.name} — AngelTo`;
+      `${data.name} | AngelTo`;
 
     // อัปเดต Open Graph tags ให้ตรงกับตัวละครนี้ (สำหรับตอนแชร์ลิงก์หน้านี้)
     const ogTitle = document.getElementById("og-title");
     const ogDesc = document.getElementById("og-description");
     const ogImage = document.getElementById("og-image");
-    if (ogTitle) ogTitle.setAttribute("content", `${data.name} — AngelTo`);
+    if (ogTitle) ogTitle.setAttribute("content", `${data.name} | AngelTo`);
     if (ogDesc)
       ogDesc.setAttribute(
         "content",
@@ -354,16 +354,50 @@
     // อันไหนคืออันที่กด" — เจาะจงไปที่การ์ดนั้นเลยพร้อมไฮไลต์กรอบชมพู
     const targetItem = params.get("item");
     if (targetItem) {
-      const targetCard = Array.from(
-        document.querySelectorAll("[data-item-name]"),
-      ).find((el) => el.dataset.itemName === targetItem);
+      const sectionByType = {
+        sticker: "sticker-section",
+        theme: "theme-section",
+        emoji: "emoji-section",
+      };
+      const targetType = params.get("type");
+      const targetSection = Object.prototype.hasOwnProperty.call(
+        sectionByType,
+        targetType,
+      )
+        ? sectionByType[targetType]
+        : null;
+      const cards = targetSection
+        ? document.querySelectorAll(`#${targetSection} [data-item-name]`)
+        : document.querySelectorAll("[data-item-name]");
+      const targetCard = Array.from(cards).find(
+        (el) => el.dataset.itemName === targetItem,
+      );
       if (targetCard) {
         targetCard.classList.add("is-target");
-        setTimeout(() => {
-          if (typeof targetCard.scrollIntoView === "function") {
-            targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        targetCard.classList.add("is-visible");
+        const centerTargetCard = () => {
+          const rect = targetCard.getBoundingClientRect();
+          const targetScrollY =
+            window.scrollY + rect.top + rect.height / 2 - window.innerHeight / 2;
+          const maxScrollY =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const extraBottomSpace = Math.max(0, targetScrollY - maxScrollY);
+          const currentBottomSpace =
+            Number.parseFloat(getComputedStyle(document.body).paddingBottom) ||
+            0;
+
+          if (extraBottomSpace > currentBottomSpace) {
+            document.body.style.paddingBottom = `${Math.ceil(extraBottomSpace) + 1}px`;
           }
+
+          window.scrollTo({ top: targetScrollY, behavior: "instant" });
+        };
+        setTimeout(() => {
+          centerTargetCard();
         }, 150);
+        // Lazy-loaded images above the target can change the page height after
+        // the first scroll, so align once more after nearby images have loaded.
+        setTimeout(centerTargetCard, 650);
       }
     }
 
